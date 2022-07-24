@@ -43,7 +43,6 @@ const Input: React.FC<Attributes> = ({ holder, innerRef, type, errorMessage }) =
       { invalidField && <span>campo errado</span>}
       { messageError && <span>{ errorMessage }</span> }
     </div>
-    
   );
 };
 
