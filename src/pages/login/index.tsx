@@ -1,9 +1,10 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Input from '../../components/Input';
 
 function Login() {
   const userInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
+  const [invalidUser, setInvalidUser] = useState(false);
 
   const verifyFields = () => {
     const userValue = userInputRef.current?.value;
@@ -15,7 +16,7 @@ function Login() {
   const sigIn = () => {
     const isInvalidFields = verifyFields();
 
-    if(isInvalidFields) console.log('tenta de novo');
+    if(isInvalidFields) setInvalidUser(true);
     else console.log('pode entrar');
   };
 
@@ -45,6 +46,8 @@ function Login() {
         <button type="submit" onClick={ sigIn }>
           Entrar
         </button>
+
+        { invalidUser && <span>Usuario ou senha incorreto</span> }
       </form>
     </section>
   );

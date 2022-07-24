@@ -37,7 +37,10 @@ const Input: React.FC<Attributes> = ({ holder, innerRef, type, errorMessage }) =
         placeholder={ holder }
         onFocus={ setFieldStatus }
         onBlur={ verifyLengthInput }
-        onInvalid={ () => setInvalidField(true)}
+        onInvalid={ (e) => {
+          e.preventDefault();
+          setInvalidField(true);
+        }}
       />
 
       { invalidField && <span>campo errado</span>}
