@@ -14,7 +14,7 @@ function Login() {
   };
 
   const sigIn = () => {
-    const isInvalidFields = verifyFields();
+    const isInvalidFields = verifyFields();   
 
     if(isInvalidFields) setInvalidUser(true);
     else console.log('pode entrar');
@@ -47,7 +47,7 @@ function Login() {
           Entrar
         </button>
 
-        { invalidUser && <span>Usuario ou senha incorreto</span> }
+        { invalidUser && <span>Usuário ou senha incorreto</span> }
       </form>
     </section>
   );
