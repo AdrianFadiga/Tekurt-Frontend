@@ -1,6 +1,8 @@
-export interface IOptionsRequest {
+export type Headers = { authorization: string }
+
+export interface IOptionsRequest<T> {
   method: string,
-  data?: any,
+  data?: T,
   url: string,
-  headers?: { authorization: string }
+  headers?: Headers
 }

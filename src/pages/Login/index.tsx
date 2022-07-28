@@ -5,6 +5,7 @@ import { IResponseAPI } from '../../interfaces/IResponseAPI';
 import { requestAPI } from '../../services/requestAPI';
 import { setToken } from '../../services/setTokenLocalStorage';
 import { useNavigate } from 'react-router-dom';
+import { createOptionsRequest } from '../../services/createOptionsRequest';
 
 function Login() {
   const userInputRef = useRef<HTMLInputElement>(null);
@@ -32,23 +33,18 @@ function Login() {
   };
 
   const sigIn = async () => {
-    const isInvalidFields = verifyFields();   
+    const isInvalidFields = verifyFields();
 
     if(isInvalidFields) setInvalidUser(true);
     else {
       const user = userInputRef.current?.value;
       const password = passwordInputRef.current?.value;
 
-      const options: IOptionsRequest = {
-        method: 'POST',
-        url: 'login',
-        data: { user, password }
-      };
+      const options = createOptionsRequest('POST', { user, password }, 'login');
 
-      const response = await requestAPI(options);      
-
+      const response = await requestAPI(options);
       if (response.error) failRequest(response);
-      else sucessRequest(response);      
+      else sucessRequest(response);
     }
   };
 
