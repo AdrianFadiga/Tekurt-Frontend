@@ -1,23 +1,54 @@
 import { useRef, useState } from 'react';
 import Input from '../../components/Input';
+import { IOptionsRequest } from '../../interfaces/IOptionsRequest';
+import { IResponseAPI } from '../../interfaces/IResponseAPI';
+import { requestAPI } from '../../services/requestAPI';
+import { setToken } from '../../services/setTokenLocalStorage';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const userInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
   const [invalidUser, setInvalidUser] = useState(false);
+  const navigate = useNavigate();
 
   const verifyFields = () => {
-    const userValue = userInputRef.current?.value;
-    const passwordValue = passwordInputRef.current?.value;
+    const user = userInputRef.current?.value;
+    const password = passwordInputRef.current?.value;
     
-    return !userValue?.length || !passwordValue?.length;
+    return !user?.length || !password?.length;
   };
 
-  const sigIn = () => {
+  const sucessRequest = (response: IResponseAPI) => {
+    const { token } = response.data;
+
+    setToken(token);
+    navigate('/feed');
+  };
+
+  const failRequest = () => {
+    setInvalidUser(true);
+  };
+
+  const sigIn = async () => {
     const isInvalidFields = verifyFields();   
 
     if(isInvalidFields) setInvalidUser(true);
-    else console.log('pode entrar');
+    else {
+      const user = userInputRef.current?.value;
+      const password = passwordInputRef.current?.value;
+
+      const options: IOptionsRequest = {
+        method: 'POST',
+        url: 'login',
+        data: { user, password }
+      };
+
+      const response = await requestAPI(options);      
+
+      if (response.error) failRequest();
+      else sucessRequest(response);      
+    }
   };
 
   return (
