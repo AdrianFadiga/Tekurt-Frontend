@@ -26,8 +26,9 @@ function Login() {
     navigate('/feed');
   };
 
-  const failRequest = () => {
-    setInvalidUser(true);
+  const failRequest = (response: IResponseAPI) => {
+    if (response.status === 404) setInvalidUser(true);
+    navigate('/deu-ruim');
   };
 
   const sigIn = async () => {
@@ -46,7 +47,7 @@ function Login() {
 
       const response = await requestAPI(options);      
 
-      if (response.error) failRequest();
+      if (response.error) failRequest(response);
       else sucessRequest(response);      
     }
   };
