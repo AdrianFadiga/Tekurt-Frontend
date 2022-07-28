@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 import Input from '../../components/Input';
-import { IOptionsRequest } from '../../interfaces/IOptionsRequest';
 import { IResponseAPI } from '../../interfaces/IResponseAPI';
 import { requestAPI } from '../../services/requestAPI';
 import { setToken } from '../../services/setTokenLocalStorage';
@@ -22,7 +21,6 @@ function Login() {
 
   const sucessRequest = (response: IResponseAPI) => {
     const { token } = response.data;
-
     setToken(token);
     navigate('/feed');
   };
