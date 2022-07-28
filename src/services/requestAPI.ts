@@ -1,22 +1,17 @@
 import axios from 'axios';
+import { IOptionsRequest } from '../interfaces/IOptionsRequest';
+import { IResponseAPI } from '../interfaces/IResponseAPI';
 
-type OptionsRequest = {
-  method: string,
-  data?: any,
-  url: string,
-  headers?: { authorization: string }
-}
-
-export const requestAPI = async (options: OptionsRequest) => {
+export const requestAPI = async (options: IOptionsRequest) => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
   const newOptions = { ...options, url: `${BASE_URL}/${options.url}` };
   try {
-    const { data } = await axios(newOptions);
+    const { data, status } = await axios(newOptions);
 
-    return { data };
+    return { data, status } as IResponseAPI;
   } catch (err: any) {
     const { data, status } = err.response;
 
-    return { data, status, error: true };
+    return { data, status, error: true } as IResponseAPI;
   }
 };
