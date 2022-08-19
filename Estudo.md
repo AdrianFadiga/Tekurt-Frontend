@@ -21,3 +21,12 @@ Recomendado quando
 # useCallback
   - Resolver problemas de igualdade referencial
   - recomendado usar quando a função é usado em outros componentes, ou esta sendo utilizada em conjunto do contextAPI
+
+
+# Refs
+  Passar ref de um elemento pai para filho, usar o RefForwardingComponent<elemento, props>
+
+  exportar esse componente com forwardRef(componente)
+
+# useImperativeHandle
+  expoe coisas do componente filho para o pai, usando a ref

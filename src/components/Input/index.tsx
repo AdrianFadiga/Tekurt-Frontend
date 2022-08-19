@@ -11,6 +11,8 @@ const Input: React.FC<Attributes> = ({ holder, innerRef, type, errorMessage }) =
   const [invalidField, setInvalidField] = useState(false);
   const [messageError, setMessageError] = useState(false);
 
+  console.log('renderizou input', holder);
+
   const verifyLengthInput = () => {    
     const value = innerRef.current?.value;
     
