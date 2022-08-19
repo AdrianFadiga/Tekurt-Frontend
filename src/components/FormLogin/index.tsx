@@ -4,6 +4,7 @@ import { IResponseAPI } from '../../interfaces/IResponseAPI';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { setToken } from '../../services/setTokenLocalStorage';
+import BtnSubmit from '../BtnSubmit';
 import Input from '../Input';
 
 function FormLogin() {
@@ -35,8 +36,10 @@ function FormLogin() {
   const sigIn = async () => {
     const isInvalidFields = verifyFields();
 
-    if(isInvalidFields) setInvalidUser(true);
-    else {
+    if(isInvalidFields) {
+      setInvalidUser(true);
+      setTimeout(() => setInvalidUser(false), 2000);
+    } else {
       const user = userInputRef.current?.value;
       const password = passwordInputRef.current?.value;
 
@@ -68,9 +71,7 @@ function FormLogin() {
 
       <br></br>
 
-      <button type="submit" onClick={ sigIn }>
-          Entrar
-      </button>
+      <BtnSubmit action={ sigIn } content="Entrar" />
 
       { invalidUser && <span>Usuário ou senha incorreto</span> }
     </form>

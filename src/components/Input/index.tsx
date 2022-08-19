@@ -39,7 +39,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ e
         { ...rest }
       />
 
-      { invalidField && <span>campo errado</span>}
+      { invalidField && <span>campo errado</span> }
       { messageError && <span>{ errorMessage }</span> }
     </div>
   );
