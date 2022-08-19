@@ -1,4 +1,5 @@
 import React, { forwardRef, InputHTMLAttributes, useState } from 'react';
+import { InputStyle } from './style';
 
 interface Attributes extends InputHTMLAttributes<HTMLInputElement>{
   errorMessage: string
@@ -26,7 +27,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ e
   };
 
   return (
-    <div>
+    <InputStyle>
       <input
         required
         ref={ ref }
@@ -41,7 +42,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ e
 
       { invalidField && <span>campo errado</span> }
       { messageError && <span>{ errorMessage }</span> }
-    </div>
+    </InputStyle>
   );
 };
 
