@@ -26,8 +26,10 @@ function FormLogin() {
   };
 
   const failRequest = (response: IResponseAPI) => {
-    if (response.status === 404) setInvalidUser(true);
-    navigate('/deu-ruim');
+    console.log(response.status);
+    
+    if (response.status === 403) setInvalidUser(true);
+    else navigate('/deu-ruim');
   };
 
   const sigIn = async () => {
@@ -38,7 +40,7 @@ function FormLogin() {
       const user = userInputRef.current?.value;
       const password = passwordInputRef.current?.value;
 
-      const options = createOptionsRequest('POST', { user, password }, 'login');
+      const options = createOptionsRequest('POST', { user, password }, 'auth/signin');
 
       const response = await requestAPI(options);
       if (response.error) failRequest(response);
