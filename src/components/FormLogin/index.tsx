@@ -50,10 +50,9 @@ function FormLogin() {
 
   return (
     <form onSubmit={ (event) => event.preventDefault() }>
-
       <Input
-        holder='Email ou usuário'
-        innerRef={ userInputRef }
+        placeholder='Email ou usuário'
+        ref={ userInputRef }
         type="text"
         errorMessage="Insira o seu email ou nome de usuario"
       />
@@ -61,8 +60,8 @@ function FormLogin() {
       <br></br>
 
       <Input
-        holder='Senha'
-        innerRef={ passwordInputRef }
+        placeholder='Senha'
+        ref={ passwordInputRef }
         type="password"
         errorMessage="Insira a sua senha"
       />

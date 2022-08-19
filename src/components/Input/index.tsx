@@ -1,20 +1,15 @@
-import React, { useState } from 'react';
+import React, { forwardRef, InputHTMLAttributes, useState } from 'react';
 
-interface Attributes {
-  holder: string
-  innerRef: React.RefObject<HTMLInputElement>
-  type: string
+interface Attributes extends InputHTMLAttributes<HTMLInputElement>{
   errorMessage: string
 }
 
-const Input: React.FC<Attributes> = ({ holder, innerRef, type, errorMessage }) => {
+const Input: React.ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ errorMessage, ...rest }, ref) => {
   const [invalidField, setInvalidField] = useState(false);
   const [messageError, setMessageError] = useState(false);
 
-  console.log('renderizou input', holder);
-
-  const verifyLengthInput = () => {    
-    const value = innerRef.current?.value;
+  const verifyLengthInput = ({ target }: React.ChangeEvent<HTMLInputElement>) => {    
+    const { value } = target;
     
     setMessageError(false);
     setInvalidField(!value?.length);
@@ -34,15 +29,14 @@ const Input: React.FC<Attributes> = ({ holder, innerRef, type, errorMessage }) =
     <div>
       <input
         required
-        type={ type }
-        ref={ innerRef }
-        placeholder={ holder }
+        ref={ ref }
         onFocus={ setFieldStatus }
         onBlur={ verifyLengthInput }
         onInvalid={ (e) => {
           e.preventDefault();
           setInvalidField(true);
         }}
+        { ...rest }
       />
 
       { invalidField && <span>campo errado</span>}
@@ -51,4 +45,4 @@ const Input: React.FC<Attributes> = ({ holder, innerRef, type, errorMessage }) =
   );
 };
 
-export default Input;
+export default forwardRef(Input);
