@@ -6,6 +6,7 @@ import { requestAPI } from '../../services/requestAPI';
 import { setToken } from '../../services/setTokenLocalStorage';
 import BtnSubmit from '../BtnSubmit';
 import Input from '../Input';
+import { FormStyle } from './style';
 
 function FormLogin() {
   const userInputRef = useRef<HTMLInputElement>(null);
@@ -52,7 +53,7 @@ function FormLogin() {
   };
 
   return (
-    <form onSubmit={ (event) => event.preventDefault() }>
+    <FormStyle onSubmit={ (event) => event.preventDefault() }>
       <Input
         placeholder='Email ou usuário'
         ref={ userInputRef }
@@ -67,10 +68,10 @@ function FormLogin() {
         errorMessage="Insira a sua senha"
       />
 
-      { invalidUser && <span>Usuário ou senha incorreto</span> }
+      { invalidUser && <span>Usuário ou senha incorretos</span> }
 
       <BtnSubmit action={ sigIn } content="Entrar" />
-    </form>
+    </FormStyle>
   );
 }
 
