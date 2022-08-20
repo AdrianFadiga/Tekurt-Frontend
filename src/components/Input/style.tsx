@@ -6,7 +6,6 @@ interface Props {
 
 export const InputStyle = styled.section<Props>`
   position: relative;
-  margin-bottom: 15px;
 
   input {
     width: 100%;
