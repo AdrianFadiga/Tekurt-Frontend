@@ -60,8 +60,6 @@ function FormLogin() {
         errorMessage="Insira o seu email ou nome de usuario"
       />
 
-      <br></br>
-
       <Input
         placeholder='Senha'
         ref={ passwordInputRef }
@@ -69,11 +67,9 @@ function FormLogin() {
         errorMessage="Insira a sua senha"
       />
 
-      <br></br>
+      { invalidUser && <span>Usuário ou senha incorreto</span> }
 
       <BtnSubmit action={ sigIn } content="Entrar" />
-
-      { invalidUser && <span>Usuário ou senha incorreto</span> }
     </form>
   );
 }
