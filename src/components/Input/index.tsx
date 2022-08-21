@@ -1,6 +1,7 @@
 import React, { forwardRef, InputHTMLAttributes, useState } from 'react';
 import { InputStyle } from './style';
 import { IoAlertCircleOutline } from 'react-icons/io5';
+import ErrorMessage from '../ErrorMessage';
 
 interface Attributes extends InputHTMLAttributes<HTMLInputElement>{
   errorMessage: string
@@ -42,7 +43,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ e
       />
 
       { invalidField && <IoAlertCircleOutline /> }
-      { messageError && <p>{ errorMessage }</p> }
+      { messageError && <ErrorMessage content={ errorMessage } /> }
     </InputStyle>
   );
 };
