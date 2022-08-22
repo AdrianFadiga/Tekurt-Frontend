@@ -1,13 +1,13 @@
-import React, { forwardRef, InputHTMLAttributes, useState } from 'react';
+import React, { ForwardRefRenderFunction, forwardRef, InputHTMLAttributes, useState } from 'react';
 import { InputStyle } from './style';
-import { IoAlertCircleOutline } from 'react-icons/io5';
+// import { IoAlertCircleOutline } from 'react-icons/io5';
 import ErrorMessage from '../ErrorMessage';
 
 interface Attributes extends InputHTMLAttributes<HTMLInputElement>{
   errorMessage: string
 }
 
-const Input: React.ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ errorMessage, ...rest }, ref) => {
+const Input: ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ errorMessage, ...rest }, ref) => {
   const [invalidField, setInvalidField] = useState(false);
   const [messageError, setMessageError] = useState(false);
 
@@ -28,6 +28,11 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ e
     }
   };
 
+  const teste = () => {
+    const { type } = ref.current;
+    ref.current.type = type === 'text' ? 'password' : 'text';
+  };
+
   return (
     <InputStyle invalidField={ invalidField }>
       <input
@@ -42,7 +47,8 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ e
         { ...rest }
       />
 
-      { invalidField && <IoAlertCircleOutline /> }
+      {/* { invalidField && <IoAlertCircleOutline /> } */}
+      <button onClick={ teste }>mostrar senha</button>
       { messageError && <ErrorMessage content={ errorMessage } /> }
     </InputStyle>
   );

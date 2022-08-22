@@ -32,7 +32,7 @@ function FormLogin() {
   const failRequest = (response: IResponseAPI) => {   
     console.log(response.status);
     
-    if (response.status === 403) setInvalidUser(true);
+    if (response.status === 401) setInvalidUser(true);
     else navigate('/deu-ruim');
   };
 
