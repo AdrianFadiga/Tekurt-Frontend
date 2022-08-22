@@ -4,4 +4,5 @@ export const LogoStyle = styled.div`
   color: var(--secondary-color);
   font-weight: 700;
   font-size: var(--xx-large-text);
+  text-align: center;
 `;

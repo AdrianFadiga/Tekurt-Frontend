@@ -8,6 +8,13 @@ export const GlobalStyle = createGlobalStyle`
     background-color: #F5F5F5;
   }
 
+  body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   :root {
     --small-text: 14px;
     --xx-large-text: 35px;
