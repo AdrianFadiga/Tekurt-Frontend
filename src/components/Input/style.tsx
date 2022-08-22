@@ -34,5 +34,6 @@ export const InputStyle = styled.section<Props>`
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
+    background-color: ${props => props.theme.colors.primary};
   }
 `;

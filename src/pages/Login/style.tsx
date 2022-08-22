@@ -7,6 +7,12 @@ export const LoginStyle = styled.main`
   flex-direction: column;
   justify-content: space-around;
 
+  span:nth-of-type(2) {
+    padding: 10px;
+    color: var(--placeholder-color);
+    width: 100%;
+  }
+
   @media(min-width: 500px) {
     width: 500px;
     padding: 38px 70px;

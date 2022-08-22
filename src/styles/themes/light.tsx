@@ -8,5 +8,6 @@ export default {
     placeholder: '#888888',
     alert: '#A72608',
     text: '#fff',
+    background: '#F5F5F5'
   }
 };

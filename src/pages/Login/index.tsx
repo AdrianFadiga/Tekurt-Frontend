@@ -13,7 +13,7 @@ function Login() {
       <Span>Esqueceu sua senha?</Span>
 
       <Span>Não tem uma conta? <a href="#">Cadastre-se</a></Span>
-      <ThemeBtn />
+      {/* <ThemeBtn /> */}
     </LoginStyle>
   );
 }
