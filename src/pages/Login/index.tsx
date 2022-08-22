@@ -1,5 +1,6 @@
 import FormLogin from '../../components/FormLogin';
 import Logo from '../../components/Logo';
+import { Span } from './Span';
 import { LoginStyle } from './style';
 
 function Login() {
@@ -8,9 +9,9 @@ function Login() {
       <Logo />
       <FormLogin />
 
-      <p>Esqueceu sua senha?</p>
+      <Span>Esqueceu sua senha?</Span>
 
-      <p>Não tem uma conta? Cadastre-se</p>
+      <Span>Não tem uma conta? <a href="#">Cadastre-se</a></Span>
     </LoginStyle>
   );
 }

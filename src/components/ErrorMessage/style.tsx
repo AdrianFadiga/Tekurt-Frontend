@@ -6,13 +6,13 @@ export const ErrorStyle = styled.div`
   color: var(--text-color);
   position: absolute;
   background-color: var(--alert-color);
-  font-size: 8px;
   padding: 5px;
   border-radius: 5px;
 
   p {
     background-color: var(--alert-color);
     z-index: 3;
+    font-size: 8px;
   }
 
   div {

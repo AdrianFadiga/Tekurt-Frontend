@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
 
   :root {
     --small-text: 14px;
-    --xx-large-text: 35px;
+    --xx-large-text: 40px;
 
     --primary-color: #F5F5F5;
     --secondary-color: #ED2590;

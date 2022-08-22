@@ -8,4 +8,5 @@ export const BtnStyle = styled.button`
   padding: 20px;
   color: var(--text-color);
   font-size: var(--small-text);
+  cursor: pointer;
 `;
