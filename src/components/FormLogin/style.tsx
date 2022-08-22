@@ -9,7 +9,7 @@ export const FormStyle = styled.form`
 
   span {
     position: absolute;
-    bottom: 70px;
+    bottom: 75px;
     font-size: var(--small-text);
     font-style: italic;
     color: var(--alert-color);
