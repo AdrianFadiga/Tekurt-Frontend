@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const Span = styled.span`
-  font-size: var(--small-text);
+  font-size: ${({ theme }) => theme.sizes.small};
   text-align: center;
-  color: var(--placeholder-color);
+  color: ${({ theme }) => theme.colors.placeholder};
 
   a {
     all: unset;
-    color: var(--secondary-color);
+    color: ${({ theme }) => theme.colors.secondary};
     cursor: pointer;
   }
 

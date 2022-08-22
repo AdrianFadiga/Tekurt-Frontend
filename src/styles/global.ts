@@ -14,17 +14,4 @@ export const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     justify-content: center;
   }
-
-  :root {
-    --small-text: 14px;
-    --xx-large-text: 40px;
-
-    --primary-color: ${props => props.theme.colors.primary};
-    --secondary-color: ${props => props.theme.colors.secondary};
-    --border-color: ${props => props.theme.colors.border};
-    --border-focus-color: ${props => props.theme.colors.borderFocus};
-    --placeholder-color: ${props => props.theme.colors.placeholder};
-    --alert-color: ${props => props.theme.colors.alert};
-    --text-color: ${props => props.theme.colors.text};
-  }
 `;

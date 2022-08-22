@@ -42,7 +42,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ e
         { ...rest }
       />
 
-      { invalidField && <IoAlertCircleOutline /> }
+      {/* { invalidField && <IoAlertCircleOutline /> } */}
       { messageError && <ErrorMessage content={ errorMessage } /> }
     </InputStyle>
   );

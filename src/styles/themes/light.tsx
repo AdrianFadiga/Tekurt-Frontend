@@ -7,7 +7,12 @@ export default {
     borderFocus: '#cfcece',
     placeholder: '#888888',
     alert: '#A72608',
-    text: '#fff',
+    text: '#000',
+    alertText: '#fff',
     background: '#F5F5F5'
+  },
+  sizes: {
+    small: '14px',
+    xxLarge: '40px',
   }
 };

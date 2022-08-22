@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const LogoStyle = styled.div`
-  color: var(--secondary-color);
+  color: ${({ theme }) => theme.colors.secondary};
   font-weight: 700;
-  font-size: var(--xx-large-text);
+  font-size: ${({ theme }) => theme.sizes.xxLarge};
   text-align: center;
 `;

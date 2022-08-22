@@ -9,7 +9,7 @@ export const LoginStyle = styled.main`
 
   span:nth-of-type(2) {
     padding: 10px;
-    color: var(--placeholder-color);
+    color: ${({ theme }) => theme.colors.placeholder};
     width: 100%;
   }
 

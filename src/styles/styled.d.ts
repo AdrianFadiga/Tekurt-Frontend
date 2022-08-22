@@ -12,6 +12,11 @@ declare module 'styled-components' {
       placeholder: string,
       alert: string,
       text: string,
+      alertText: string
+    },
+    sizes: {
+      small: string,
+      xxLarge: string,
     }
   }
 }

@@ -8,6 +8,11 @@ export default {
     placeholder: '#888888',
     alert: '#A72608',
     text: '#fff',
+    alertText: '#fff',
     background: '#202020'
+  },
+  sizes: {
+    small: '14px',
+    xxLarge: '40px',
   }
 };

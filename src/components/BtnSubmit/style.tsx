@@ -3,10 +3,10 @@ import styled from 'styled-components';
 export const BtnStyle = styled.button`
   width: 100%;
   border: none;
-  background-color: var(--secondary-color);
+  background-color: ${({ theme }) => theme.colors.secondary};
   border-radius: 30px;
   padding: 20px;
-  color: var(--text-color);
-  font-size: var(--small-text);
+  color: ${({ theme }) => theme.colors.alertText};
+  font-size: ${({ theme }) => theme.sizes.small};
   cursor: pointer;
 `;

@@ -10,30 +10,31 @@ export const InputStyle = styled.section<Props>`
   input {
     width: 100%;
     padding: 21px 30px;
-    border: 1px solid ${props => props.invalidField ? 'var(--alert-color)' : 'var(--border-color)'};
+    border: 1px solid ${props => props.invalidField ? props.theme.colors.alert : props.theme.colors.border};
     border-radius: 30px;
-    font-size: var(--small-text);
+    font-size: ${({ theme }) => theme.sizes.small};
     margin: 0 auto;
-    background-color: var(--primary-color);
+    background-color: ${({ theme }) => theme.colors.primary};
     outline: none;
     transition: 0.1s ease;
+    color: ${({ theme }) => theme.colors.text}
   }
 
   input:focus {
-    border: 1px solid var(--border-focus-color);
+    border: 1px solid ${({ theme }) => theme.colors.borderFocus};
   }
 
   input::placeholder {
-    color: var(--placeholder-color);
+    color: ${({ theme }) => theme.colors.placeholder};
   }
 
   svg {
-    color: var(--alert-color);
+    color: ${({ theme }) => theme.colors.alert};
     position: absolute;
     font-size: 120%;
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
-    background-color: ${props => props.theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.primary};
   }
 `;

@@ -10,9 +10,9 @@ export const FormStyle = styled.form`
   span {
     position: absolute;
     bottom: 75px;
-    font-size: var(--small-text);
+    font-size: ${({ theme }) => theme.sizes.small};
     font-style: italic;
-    color: var(--alert-color);
+    color: ${({ theme }) => theme.colors.alert};
     width: 100%;
     text-align: center;
     transition: 0.1s ease-in-out all;

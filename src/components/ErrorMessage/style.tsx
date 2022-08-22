@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const ErrorStyle = styled.div`
   top: 0px;
   left: 30px;
-  color: var(--text-color);
+  color: ${({ theme }) => theme.colors.alertText};
   position: absolute;
-  background-color: var(--alert-color);
+  background-color: ${({ theme }) => theme.colors.alert};
   padding: 5px;
   border-radius: 5px;
 
   p {
-    background-color: var(--alert-color);
+    background-color: ${({ theme }) => theme.colors.alert};
     z-index: 3;
     font-size: 8px;
   }
@@ -22,6 +22,6 @@ export const ErrorStyle = styled.div`
     height: 0px;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 6px solid var(--alert-color);
+    border-top: 6px solid ${({ theme }) => theme.colors.alert};
   }
 `;
