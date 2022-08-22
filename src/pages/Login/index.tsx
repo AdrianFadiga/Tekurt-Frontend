@@ -1,11 +1,16 @@
 import FormLogin from '../../components/FormLogin';
+import Logo from '../../components/Logo';
 
 function Login() {
   return (
-    <section>
-      Logo
+    <main>
+      <Logo />
       <FormLogin />
-    </section>
+
+      <p>Esqueceu sua senha?</p>
+
+      <p>Não tem uma conta? Cadastre-se</p>
+    </main>
   );
 }
 

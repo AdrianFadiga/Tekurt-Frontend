@@ -14,7 +14,7 @@ export const InputStyle = styled.section<Props>`
     border-radius: 30px;
     font-size: var(--small-text);
     margin: 0 auto;
-    background-color: var(--primary-bg-color);
+    background-color: var(--primary-color);
     outline: none;
     transition: 0.1s ease;
   }

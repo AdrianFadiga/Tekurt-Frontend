@@ -10,8 +10,10 @@ export const GlobalStyle = createGlobalStyle`
 
   :root {
     --small-text: 14px;
-    --primary-bg-color: #F5F5F5;
-    --secondary-bg-color: #ED2590;
+    --xx-large-text: 35px;
+
+    --primary-color: #F5F5F5;
+    --secondary-color: #ED2590;
     --border-color: #E5E5E9;
     --border-focus-color: #cfcece;
     --placeholder-color: #888888;
