@@ -1,3 +1,3 @@
 export const setToken = (token: string | undefined) => {
-  token ? localStorage.setItem('authTekurt', token) : localStorage.clear();
+  if (token) localStorage.setItem('authTekurt', token); 
 };

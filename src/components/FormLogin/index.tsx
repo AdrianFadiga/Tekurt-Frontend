@@ -6,6 +6,7 @@ import { requestAPI } from '../../services/requestAPI';
 import { setToken } from '../../services/setTokenLocalStorage';
 import BtnSubmit from '../BtnSubmit';
 import Input from '../Input';
+import { FormStyle } from './style';
 
 function FormLogin() {
   const userInputRef = useRef<HTMLInputElement>(null);
@@ -21,19 +22,21 @@ function FormLogin() {
   };
 
   const sucessRequest = (response: IResponseAPI) => {
-    const { token } = response.data;
-    setToken(token);
+    console.log(response);
+    
+    const { access_token } = response.data;
+    setToken(access_token);
     navigate('/feed');
   };
 
-  const failRequest = (response: IResponseAPI) => {
+  const failRequest = (response: IResponseAPI) => {   
     console.log(response.status);
     
-    if (response.status === 403) setInvalidUser(true);
+    if (response.status === 401) setInvalidUser(true);
     else navigate('/deu-ruim');
   };
 
-  const sigIn = async () => {
+  const sigIn = async () => {    
     const isInvalidFields = verifyFields();
 
     if(isInvalidFields) {
@@ -46,35 +49,32 @@ function FormLogin() {
       const options = createOptionsRequest('POST', { user, password }, 'auth/signin');
 
       const response = await requestAPI(options);
+
       if (response.error) failRequest(response);
       else sucessRequest(response);
     }
   };
 
   return (
-    <form onSubmit={ (event) => event.preventDefault() }>
+    <FormStyle onSubmit={ (event) => event.preventDefault() }>
       <Input
         placeholder='Email ou usuário'
-        ref={ userInputRef }
+        inputRef={ userInputRef }
         type="text"
         errorMessage="Insira o seu email ou nome de usuario"
       />
 
-      <br></br>
-
       <Input
         placeholder='Senha'
-        ref={ passwordInputRef }
+        inputRef={ passwordInputRef }
         type="password"
         errorMessage="Insira a sua senha"
       />
 
-      <br></br>
+      { invalidUser && <span>Usuário ou senha incorretos</span> }
 
       <BtnSubmit action={ sigIn } content="Entrar" />
-
-      { invalidUser && <span>Usuário ou senha incorreto</span> }
-    </form>
+    </FormStyle>
   );
 }
 
