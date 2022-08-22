@@ -6,7 +6,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   content: string
 }
 
-const BtnSubmit: React.FC<Props> = ({ action, content, ...rest })=>  {
+const BtnSubmit: React.FC<Props> = ({ action, content, ...rest })=>  {  
   return (
     <BtnStyle
       onClick={ action }

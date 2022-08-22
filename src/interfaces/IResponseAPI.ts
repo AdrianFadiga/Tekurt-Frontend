@@ -1,7 +1,7 @@
 export interface IResponseAPI {
   data: {
     message?: string,
-    token?: string
+    access_token?: string
   }
   status: number,
   error: boolean

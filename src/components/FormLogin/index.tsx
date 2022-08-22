@@ -22,19 +22,21 @@ function FormLogin() {
   };
 
   const sucessRequest = (response: IResponseAPI) => {
-    const { token } = response.data;
-    setToken(token);
+    console.log(response);
+    
+    const { access_token } = response.data;
+    setToken(access_token);
     navigate('/feed');
   };
 
-  const failRequest = (response: IResponseAPI) => {
+  const failRequest = (response: IResponseAPI) => {   
     console.log(response.status);
     
     if (response.status === 403) setInvalidUser(true);
     else navigate('/deu-ruim');
   };
 
-  const sigIn = async () => {
+  const sigIn = async () => {    
     const isInvalidFields = verifyFields();
 
     if(isInvalidFields) {
@@ -47,6 +49,7 @@ function FormLogin() {
       const options = createOptionsRequest('POST', { user, password }, 'auth/signin');
 
       const response = await requestAPI(options);
+
       if (response.error) failRequest(response);
       else sucessRequest(response);
     }
