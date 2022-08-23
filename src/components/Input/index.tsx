@@ -1,15 +1,18 @@
-import React, { ForwardRefRenderFunction, forwardRef, InputHTMLAttributes, useState } from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 import { InputStyle } from './style';
-// import { IoAlertCircleOutline } from 'react-icons/io5';
 import ErrorMessage from '../ErrorMessage';
+import { ShowPass } from './ShowPass';
+import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 
-interface Attributes extends InputHTMLAttributes<HTMLInputElement>{
-  errorMessage: string
+interface Props extends InputHTMLAttributes<HTMLInputElement>{
+  errorMessage: string,
+  inputRef: React.RefObject<HTMLInputElement>
 }
 
-const Input: ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ errorMessage, ...rest }, ref) => {
+const Input: React.FC<Props> = ({ errorMessage, inputRef, ...rest }) => {
   const [invalidField, setInvalidField] = useState(false);
   const [messageError, setMessageError] = useState(false);
+  const [showPass, setShowPass] = useState(false);
 
   const verifyLengthInput = ({ target }: React.ChangeEvent<HTMLInputElement>) => {    
     const { value } = target;
@@ -28,16 +31,23 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ errorMe
     }
   };
 
-  const teste = () => {
-    const { type } = ref.current;
-    ref.current.type = type === 'text' ? 'password' : 'text';
+  const changeType = () => {
+    const type = inputRef.current?.type;
+    if (inputRef.current) {
+      const newType = type === 'text'
+        ? 'password'
+        : 'text';
+      
+      inputRef.current.type = newType;
+      setShowPass(!showPass);
+    }
   };
 
   return (
     <InputStyle invalidField={ invalidField }>
       <input
         required
-        ref={ ref }
+        ref={ inputRef }
         onFocus={ setFieldStatus }
         onBlur={ verifyLengthInput }
         onInvalid={ (e) => {
@@ -47,11 +57,15 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, Attributes> = ({ errorMe
         { ...rest }
       />
 
-      {/* { invalidField && <IoAlertCircleOutline /> } */}
-      <button onClick={ teste }>mostrar senha</button>
+      { rest.type === 'password' && (
+        <ShowPass type="button" onClick={ changeType }>
+          { showPass ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }          
+        </ShowPass>
+      ) }
+
       { messageError && <ErrorMessage content={ errorMessage } /> }
     </InputStyle>
   );
 };
 
-export default forwardRef(Input);
+export default Input;

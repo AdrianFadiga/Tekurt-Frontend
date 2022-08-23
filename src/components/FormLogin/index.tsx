@@ -59,14 +59,14 @@ function FormLogin() {
     <FormStyle onSubmit={ (event) => event.preventDefault() }>
       <Input
         placeholder='Email ou usuário'
-        ref={ userInputRef }
+        inputRef={ userInputRef }
         type="text"
         errorMessage="Insira o seu email ou nome de usuario"
       />
 
       <Input
         placeholder='Senha'
-        ref={ passwordInputRef }
+        inputRef={ passwordInputRef }
         type="password"
         errorMessage="Insira a sua senha"
       />

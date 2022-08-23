@@ -27,14 +27,4 @@ export const InputStyle = styled.section<Props>`
   input::placeholder {
     color: ${({ theme }) => theme.colors.placeholder};
   }
-
-  svg {
-    color: ${({ theme }) => theme.colors.alert};
-    position: absolute;
-    font-size: 120%;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: ${({ theme }) => theme.colors.primary};
-  }
 `;
