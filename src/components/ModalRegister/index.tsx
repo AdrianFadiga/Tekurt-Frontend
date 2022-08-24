@@ -4,7 +4,7 @@ import { IResponseAPI } from '../../interfaces/IResponseAPI';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { setToken } from '../../services/setTokenLocalStorage';
-import { verifyFieldInputs } from '../../utils/verifyFieldsInputs';
+import { verifyFieldInputs } from '../../services/verifyFieldsInputs';
 import Input from '../Input';
 
 const ModalRegister = () => {
