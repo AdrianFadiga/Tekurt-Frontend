@@ -4,6 +4,7 @@ import { IResponseAPI } from '../../interfaces/IResponseAPI';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { setToken } from '../../services/setTokenLocalStorage';
+import { verifyFieldInputs } from '../../services/verifyFieldsInputs';
 import BtnSubmit from '../BtnSubmit';
 import Input from '../Input';
 import { FormStyle } from './style';
@@ -13,13 +14,6 @@ function FormLogin() {
   const passwordInputRef = useRef<HTMLInputElement>(null);
   const [invalidUser, setInvalidUser] = useState(false);
   const navigate = useNavigate();
-
-  const verifyFields = () => {
-    const user = userInputRef.current?.value;
-    const password = passwordInputRef.current?.value;
-    
-    return !user?.length || !password?.length;
-  };
 
   const sucessRequest = (response: IResponseAPI) => {
     console.log(response);
@@ -37,7 +31,7 @@ function FormLogin() {
   };
 
   const sigIn = async () => {    
-    const isInvalidFields = verifyFields();
+    const isInvalidFields = verifyFieldInputs([userInputRef, passwordInputRef]);
 
     if(isInvalidFields) {
       setInvalidUser(true);
