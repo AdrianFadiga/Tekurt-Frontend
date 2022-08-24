@@ -5,7 +5,7 @@ import { ShowPass } from './ShowPass';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement>{
-  errorMessage: string,
+  errorMessage: string
   inputRef: React.RefObject<HTMLInputElement>
 }
 
