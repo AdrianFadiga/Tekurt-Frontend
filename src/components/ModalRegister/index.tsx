@@ -13,6 +13,7 @@ const ModalRegister = () => {
   const firstNameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const passwordConfirmationRef = useRef<HTMLInputElement>(null);
   const [invalidUser, setInvalidUser] = useState(false);
   const navigate = useNavigate();
 
@@ -37,8 +38,11 @@ const ModalRegister = () => {
     const regexEmail = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     const isValidEmail = regexEmail.test(emailRef.current?.value || '');    
 
-    const isInvalidFields = [isInvalidLengthFields, !isValidEmail]
-      .some((errorCase) => errorCase);
+    const isInvalidFields = [
+      isInvalidLengthFields,
+      !isValidEmail,
+      passwordRef.current?.value !== passwordConfirmationRef.current?.value
+    ].some((errorCase) => errorCase);
 
     return isInvalidFields;
   };
@@ -68,24 +72,27 @@ const ModalRegister = () => {
         placeholder='Nome'
         inputRef={ firstNameRef }
         type="text"
-        errorMessage="Insira seu nome"
+        errorMessage="Insira seu nome de no mínimo 3 caracteres"
         maxLength={ 20 }
+        minLength={ 3 }
       />
 
       <Input
         placeholder='Sobrenome'
         inputRef={ lastNameRef }
         type="text"
-        errorMessage="Insira seu sobrenome"
+        errorMessage="Insira seu sobrenome de no mínimo 3 caracteres"
         maxLength={ 30 }
+        minLength={ 3 }
       />
 
       <Input
         placeholder='Usuário'
         inputRef={ usernameRef }
         type="text"
-        errorMessage="Insira o nome de usuário"
+        errorMessage="Insira o nome de usuário de no mínimo 3 caracteres"
         maxLength={ 20 }
+        minLength={ 3 }
       />
 
       <Input
@@ -94,14 +101,26 @@ const ModalRegister = () => {
         type="email"
         errorMessage="Insira um formato de email válido"
         maxLength={ 50 }
+        minLength={ 1 }
       />
 
       <Input
         placeholder='Senha'
         inputRef={ passwordRef }
         type="password"
-        errorMessage="Insira a senha usada para entrar na conta"
+        errorMessage="Insira uma senha de no mínimo 6 caracteres"
         maxLength={ 30 }
+        minLength={ 6 }
+      />
+
+      <Input
+        placeholder='Confirme a senha'
+        inputRef={ passwordConfirmationRef }
+        comparationInput={ passwordRef }
+        type="password"
+        errorMessage="Repita a senha"
+        maxLength={ 30 }
+        minLength={ 6 }
       />
 
       { invalidUser && <span>Usuário ou email já está em uso</span> }
