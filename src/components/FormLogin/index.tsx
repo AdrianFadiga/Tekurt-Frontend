@@ -16,16 +16,12 @@ function FormLogin() {
   const navigate = useNavigate();
 
   const sucessRequest = (response: IResponseAPI) => {
-    console.log(response);
-    
     const { access_token } = response.data;
     setToken(access_token);
     navigate('/feed');
   };
 
-  const failRequest = (response: IResponseAPI) => {   
-    console.log(response.status);
-    
+  const failRequest = (response: IResponseAPI) => {
     if (response.status === 401) setInvalidUser(true);
     else navigate('/deu-ruim');
   };
@@ -56,6 +52,7 @@ function FormLogin() {
         inputRef={ userInputRef }
         type="text"
         errorMessage="Insira o seu email ou nome de usuario"
+        maxLength={ 50 }
       />
 
       <Input
@@ -63,6 +60,7 @@ function FormLogin() {
         inputRef={ passwordInputRef }
         type="password"
         errorMessage="Insira a sua senha"
+        maxLength={ 50 }
       />
 
       { invalidUser && <span>Usuário ou senha incorretos</span> }
