@@ -4,7 +4,6 @@ import { IResponseAPI } from '../../interfaces/IResponseAPI';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { setToken } from '../../services/setTokenLocalStorage';
-import { verifyFieldInputs } from '../../services/verifyFieldsInputs';
 import BtnSubmit from '../BtnSubmit';
 import Input from '../Input';
 import { FormStyle } from './style';
@@ -12,6 +11,7 @@ import { FormStyle } from './style';
 function FormLogin() {
   const userInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const [invalidUser, setInvalidUser] = useState(false);
   const navigate = useNavigate();
 
@@ -21,15 +21,17 @@ function FormLogin() {
     navigate('/feed');
   };
 
-  const failRequest = (response: IResponseAPI) => {
-    if (response.status === 401) setInvalidUser(true);
-    else navigate('/deu-ruim');
+  const failRequest = (response: IResponseAPI) => {    
+    if (response.status === 403) {
+      setInvalidUser(true);
+      setTimeout(() => setInvalidUser(false), 2000);
+    } else navigate('/deu-ruim');
   };
 
   const sigIn = async () => {    
-    const isInvalidFields = verifyFieldInputs([userInputRef, passwordInputRef]);
+    const isValidFields = formRef.current?.checkValidity();
 
-    if(isInvalidFields) {
+    if(!isValidFields) {
       setInvalidUser(true);
       setTimeout(() => setInvalidUser(false), 2000);
     } else {
@@ -46,13 +48,14 @@ function FormLogin() {
   };
 
   return (
-    <FormStyle onSubmit={ (event) => event.preventDefault() }>
+    <FormStyle ref={ formRef } onSubmit={ (event) => event.preventDefault() }>
       <Input
         placeholder='Email ou usuário'
         inputRef={ userInputRef }
         type="text"
         errorMessage="Insira o seu email ou nome de usuario"
         maxLength={ 50 }
+        minLength={ 1 }
       />
 
       <Input
@@ -60,7 +63,7 @@ function FormLogin() {
         inputRef={ passwordInputRef }
         type="password"
         errorMessage="Insira a sua senha"
-        maxLength={ 50 }
+        minLength={ 1 }
       />
 
       { invalidUser && <span>Usuário ou senha incorretos</span> }

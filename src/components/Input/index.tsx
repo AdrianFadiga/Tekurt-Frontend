@@ -21,7 +21,7 @@ const Input: React.FC<Props> = ({ errorMessage, inputRef, comparationInput, ...a
 
     if (comparationInput) {
       setInvalidField(value !== comparationInput.current?.value);
-    } else if (attrs?.minLength) {
+    } else if (attrs.minLength) {
       setInvalidField(!(value?.length >= attrs?.minLength));
     }
   };

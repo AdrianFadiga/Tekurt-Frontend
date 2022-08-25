@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { IResponseAPI } from '../../interfaces/IResponseAPI';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
-import { verifyFieldInputs } from '../../services/verifyFieldsInputs';
 import Input from '../Input';
 import { setToken } from '../../services/setTokenLocalStorage';
 
@@ -14,6 +13,7 @@ const ModalRegister = () => {
   const lastNameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordConfirmationRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const [invalidUser, setInvalidUser] = useState(false);
   const navigate = useNavigate();
 
@@ -30,27 +30,11 @@ const ModalRegister = () => {
     navigate('/feed');
   };
 
-  const veryfyFields = () => {
-    const isInvalidLengthFields = verifyFieldInputs(
-      [emailRef, usernameRef, firstNameRef, lastNameRef, passwordRef]
-    );
-
-    const regexEmail = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    const isValidEmail = regexEmail.test(emailRef.current?.value || '');    
-
-    const isInvalidFields = [
-      isInvalidLengthFields,
-      !isValidEmail,
-      passwordRef.current?.value !== passwordConfirmationRef.current?.value
-    ].some((errorCase) => errorCase);
-
-    return isInvalidFields;
-  };
-
   const register = async () => {
-    const isInvalidFields = veryfyFields();
+    const isValidFields = formRef.current?.checkValidity()
+      && passwordRef.current?.value === passwordConfirmationRef.current?.value;
 
-    if(!isInvalidFields) {
+    if(isValidFields) {
       const options = createOptionsRequest('POST', {
         email: emailRef.current?.value,
         username: usernameRef.current?.value,
@@ -67,7 +51,7 @@ const ModalRegister = () => {
   };
   
   return (
-    <form onSubmit={(event) => event.preventDefault() }>
+    <form ref={ formRef } onSubmit={(event) => event.preventDefault() }>
       <Input
         placeholder='Nome'
         inputRef={ firstNameRef }
