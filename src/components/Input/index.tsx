@@ -5,20 +5,25 @@ import { ShowPass } from './ShowPass';
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement>{
-  errorMessage: string,
+  errorMessage: string
   inputRef: React.RefObject<HTMLInputElement>
+  comparationInput?: React.RefObject<HTMLInputElement>
 }
 
-const Input: React.FC<Props> = ({ errorMessage, inputRef, ...rest }) => {
+const Input: React.FC<Props> = ({ errorMessage, inputRef, comparationInput, ...attrs }) => {
   const [invalidField, setInvalidField] = useState(false);
   const [messageError, setMessageError] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
   const verifyLengthInput = ({ target }: React.ChangeEvent<HTMLInputElement>) => {    
     const { value } = target;
-    
     setMessageError(false);
-    setInvalidField(!value?.length);
+
+    if (comparationInput) {
+      setInvalidField(value !== comparationInput.current?.value);
+    } else if (attrs.minLength) {
+      setInvalidField(!(value?.length >= attrs?.minLength));
+    }
   };
 
   const setFieldStatus = () => {    
@@ -54,10 +59,10 @@ const Input: React.FC<Props> = ({ errorMessage, inputRef, ...rest }) => {
           e.preventDefault();
           setInvalidField(true);
         }}
-        { ...rest }
+        { ...attrs }
       />
 
-      { rest.type === 'password' && (
+      { attrs.type === 'password' && (
         <ShowPass type="button" onClick={ changeType }>
           { showPass ? <AiOutlineEye /> : <AiOutlineEyeInvisible /> }          
         </ShowPass>

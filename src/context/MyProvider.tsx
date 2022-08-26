@@ -2,7 +2,7 @@ import React from 'react';
 import { DefaultTheme } from 'styled-components';
 import dark from '../styles/themes/dark';
 import ligth from '../styles/themes/light';
-import usePersistedState from '../utils/usePersistedState';
+import usePersistedState from '../services/usePersistedState';
 import { MyContext } from './MyContext';
 
 interface Props {
