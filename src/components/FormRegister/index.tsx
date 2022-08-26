@@ -4,7 +4,10 @@ import { IResponseAPI } from '../../interfaces/IResponseAPI';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { setToken } from '../../services/setTokenLocalStorage';
+import BtnSubmit from '../BtnSubmit';
 import Input from '../Input';
+import Logo from '../Logo';
+import { RegisterStyle } from './style';
 
 const FormRegister = () => {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -51,7 +54,8 @@ const FormRegister = () => {
   };
   
   return (
-    <form ref={ formRef } onSubmit={(event) => event.preventDefault() }>
+    <RegisterStyle ref={ formRef } onSubmit={(event) => event.preventDefault() }>
+      <Logo />
       <Input
         placeholder='Nome'
         inputRef={ firstNameRef }
@@ -109,8 +113,8 @@ const FormRegister = () => {
 
       { invalidUser && <span>Usuário ou email já está em uso</span> }
 
-      <button type="submit" onClick={ register }>Registrar</button>
-    </form>
+      <BtnSubmit action={ register } content="Registrar" />
+    </RegisterStyle>
   );
 };
 

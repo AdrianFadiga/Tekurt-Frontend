@@ -1,18 +1,14 @@
-import { forwardRef, useCallback, useImperativeHandle, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { IResponseAPI } from '../../interfaces/IResponseAPI';
-import { createOptionsRequest } from '../../services/createOptionsRequest';
-import { requestAPI } from '../../services/requestAPI';
-import Input from '../Input';
-import { setToken } from '../../services/setTokenLocalStorage';
+import { forwardRef, useCallback, useImperativeHandle, useState } from 'react';
 import FormRegister from '../FormRegister';
+import { ModalStyle } from './style';
+import { AiOutlineClose } from 'react-icons/ai';
 
 export interface ModalHandles {
   openModal: () => void;
 }
 
 const ModalRegister: React.ForwardRefRenderFunction<ModalHandles> = (props, ref) => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const openModal = useCallback(() => {
     setVisible(true);
@@ -24,17 +20,13 @@ const ModalRegister: React.ForwardRefRenderFunction<ModalHandles> = (props, ref)
     };
   });
 
-  const handleClick = () => {
-    setVisible(false);
-  };
-  
   if  (!visible) return null;
 
   return (
-    <section>
-      <button onClick={ handleClick }>Fechar modal</button>
+    <ModalStyle>
+      <button className="close-btn" onClick={ () => setVisible(false) }><AiOutlineClose /></button>
       <FormRegister />
-    </section>
+    </ModalStyle>
   );
 };
 
