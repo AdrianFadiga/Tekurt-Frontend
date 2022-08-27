@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IResponseAPI } from '../../interfaces/IResponseAPI';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { setToken } from '../../services/setTokenLocalStorage';
+import { ErrorType } from '../../types/ErrorType';
+import { Token } from '../../types/Token';
 import BtnSubmit from '../BtnSubmit';
 import Input from '../Input';
 import { FormStyle } from './style';
@@ -15,14 +16,14 @@ function FormLogin() {
   const [invalidUser, setInvalidUser] = useState(false);
   const navigate = useNavigate();
 
-  const sucessRequest = (response: IResponseAPI) => {
-    const { access_token } = response.data;
+  const sucessRequest = (response: Token) => {
+    const { access_token } = response;
     setToken(access_token);
     navigate('/feed');
   };
 
-  const failRequest = (response: IResponseAPI) => {    
-    if (response.status === 403) {
+  const failRequest = (response: ErrorType) => {    
+    if (response.statusCode === 403) {
       setInvalidUser(true);
       setTimeout(() => setInvalidUser(false), 2000);
     } else navigate('/deu-ruim');
@@ -39,11 +40,11 @@ function FormLogin() {
       const password = passwordInputRef.current?.value;
 
       const options = createOptionsRequest('POST', { user, password }, 'auth/signin');
+      
+      const {data, error} = await requestAPI<Token>(options);
 
-      const response = await requestAPI(options);
-
-      if (response.error) failRequest(response);
-      else sucessRequest(response);
+      if (error) failRequest(data as unknown as ErrorType);
+      else sucessRequest(data);
     }
   };
 
