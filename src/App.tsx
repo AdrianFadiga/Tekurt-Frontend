@@ -4,6 +4,8 @@ import { GlobalStyle } from './styles/global';
 import { useContext } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { IContext, MyContext } from './context/MyContext';
+import Feed from './pages/Feed';
+import Home from './pages/Home';
 
 function App() {
   const { theme } = useContext(MyContext) as IContext;
@@ -13,9 +15,12 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={ <Login /> } />
+        <Route path="/feed" element={<Feed />} />
+        <Route path="/home" element={<Home />} />
       </Routes>  
     </ThemeProvider>    
   );
 }
 
 export default App;
+  
