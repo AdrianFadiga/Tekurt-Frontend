@@ -1,27 +1,21 @@
-import { useState } from "react";
-import { IUser } from "../../interfaces/IUser";
-import { createOptionsRequest } from "../../services/createOptionsRequest";
-import { requestAPI } from "../../services/requestAPI";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function SearchBar() {
-  const [searchValue, setSearchValue] = useState('')
-  const searchUser = async (searchValue: string) => {
-    const token = localStorage.getItem('authTekurt');
-    const options = createOptionsRequest('GET', {}, 'users', {authorization: `Bearer ${token}`});
-    const {data} = await requestAPI<IUser>(options);
-    console.log(data);
+  const [searchValue, setSearchValue] = useState('');
+  const navigate = useNavigate();
 
-  }
   return (
     <form>
       <input
-      type="text"
-      value={searchValue}
-      onChange={({target}) => setSearchValue(target.value)}
+        type="text"
+        value={searchValue}
+        onChange={({target}) => setSearchValue(target.value)}
       />
       <button
-      type="button"
-      onClick={() => searchUser(searchValue)}>
+        type="button"
+        disabled={searchValue.length === 0}
+        onClick={() => navigate(`/search/${searchValue}`)}>
         Search User
       </button>
     </form>

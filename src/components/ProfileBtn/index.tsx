@@ -1,7 +1,7 @@
-function UserContainer() {
+function ProfileBtn() {
   return (
-    <h1>UserContainer</h1>
+    <h1>ProfileBtn</h1>
   );
 }
 
-export default UserContainer;
+export default ProfileBtn;

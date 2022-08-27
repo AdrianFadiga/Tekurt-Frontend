@@ -29,7 +29,7 @@ function Profile() {
           />
         ))}
         {userBio.map((user, i) => (
-          <BioCard 
+          <BioCard
             key={`${i}${user}`}
             user={user}/>
         ))}
