@@ -1,11 +1,24 @@
 import styled from 'styled-components';
 
 export const ModalStyle = styled.section`
+  width: 100%;
+  height: 100vh;
   position: absolute;
-  margin: 0;
+  left: 0;
 
-  .close-btn {
-    all: unset;
-    color: ${({ theme }) => theme.colors.secondary};
+  .closeModal {
+    display: none;
+    border: none;
+  }
+
+  @media(min-width: 600px) {
+    .closeModal {
+      display: block;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100vh;
+    }
   }
 `;

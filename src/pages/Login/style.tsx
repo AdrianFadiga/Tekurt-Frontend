@@ -29,6 +29,6 @@ export const LoginStyle = styled.main`
       border-radius: 30px;
       margin: 0 auto;
       box-shadow: -1px 0px 11px -1px #0000003d;
-  }
+    }
   }
 `;
