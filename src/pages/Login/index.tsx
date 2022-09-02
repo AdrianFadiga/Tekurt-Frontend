@@ -15,13 +15,16 @@ function Login() {
 
   return (
     <LoginStyle>
-      <Logo />
-      <FormLogin />
+      <section className='cardLogin'>
+        <Logo />
+        <FormLogin />
 
-      <Span>Esqueceu sua senha?</Span>
+        <Span>Esqueceu sua senha?</Span>
 
-      <Span>Não tem uma conta?<button type="button" onClick={ handleOpenModal }>Cadastre-se</button></Span>
-      <ModalRegister ref={ modalRef }/>
+        <Span>Não tem uma conta?<button type="button" onClick={ handleOpenModal }>Cadastre-se</button></Span>
+        <ModalRegister ref={ modalRef }/>
+      </section>
+      
     </LoginStyle>
   );
 }

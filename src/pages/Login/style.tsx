@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 
 export const LoginStyle = styled.main`
-  height: 600px;
-  padding: 20px;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+
+  .cardLogin {
+    height: 600px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-around;
+  }
 
   span:nth-of-type(2) {
     padding: 10px;
@@ -14,10 +22,13 @@ export const LoginStyle = styled.main`
   }
 
   @media(min-width: 500px) {
-    width: 500px;
-    padding: 38px 70px;
-    border-radius: 30px;
-    margin: 0 auto;
-    box-shadow: -1px 0px 11px -1px #0000003d;
+    .cardLogin {
+      height: 600px;
+      width: 500px;
+      padding: 38px;
+      border-radius: 30px;
+      margin: 0 auto;
+      box-shadow: -1px 0px 11px -1px #0000003d;
+  }
   }
 `;
