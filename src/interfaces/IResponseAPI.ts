@@ -1,8 +1,5 @@
-export interface IResponseAPI {
-  data: {
-    message?: string,
-    access_token?: string
-  }
+export interface IResponseAPI<T> {
+  data: T,
   status: number,
-  error: boolean
+  error?: boolean
 }

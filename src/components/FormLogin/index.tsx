@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IResponseAPI } from '../../interfaces/IResponseAPI';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { setToken } from '../../services/setTokenLocalStorage';
+import { ErrorType } from '../../types/ErrorType';
+import { Token } from '../../types/Token';
 import BtnSubmit from '../BtnSubmit';
 import Input from '../Input';
 import { FormStyle } from './style';
@@ -11,35 +12,27 @@ import { FormStyle } from './style';
 function FormLogin() {
   const userInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const [invalidUser, setInvalidUser] = useState(false);
   const navigate = useNavigate();
 
-  const verifyFields = () => {
-    const user = userInputRef.current?.value;
-    const password = passwordInputRef.current?.value;
-    
-    return !user?.length || !password?.length;
-  };
-
-  const sucessRequest = (response: IResponseAPI) => {
-    console.log(response);
-    
-    const { access_token } = response.data;
+  const sucessRequest = (response: Token) => {
+    const { access_token } = response;
     setToken(access_token);
-    navigate('/feed');
+    navigate('/home');
   };
 
-  const failRequest = (response: IResponseAPI) => {   
-    console.log(response.status);
-    
-    if (response.status === 401) setInvalidUser(true);
-    else navigate('/deu-ruim');
+  const failRequest = (response: ErrorType) => {    
+    if (response.statusCode === 403) {
+      setInvalidUser(true);
+      setTimeout(() => setInvalidUser(false), 2000);
+    } else navigate('/deu-ruim');
   };
 
   const sigIn = async () => {    
-    const isInvalidFields = verifyFields();
+    const isValidFields = formRef.current?.checkValidity();
 
-    if(isInvalidFields) {
+    if(!isValidFields) {
       setInvalidUser(true);
       setTimeout(() => setInvalidUser(false), 2000);
     } else {
@@ -47,21 +40,23 @@ function FormLogin() {
       const password = passwordInputRef.current?.value;
 
       const options = createOptionsRequest('POST', { user, password }, 'auth/signin');
+      
+      const {data, error} = await requestAPI<Token>(options);
 
-      const response = await requestAPI(options);
-
-      if (response.error) failRequest(response);
-      else sucessRequest(response);
+      if (error) failRequest(data as unknown as ErrorType);
+      else sucessRequest(data);
     }
   };
 
   return (
-    <FormStyle onSubmit={ (event) => event.preventDefault() }>
+    <FormStyle ref={ formRef } onSubmit={ (event) => event.preventDefault() }>
       <Input
         placeholder='Email ou usuário'
         inputRef={ userInputRef }
         type="text"
         errorMessage="Insira o seu email ou nome de usuario"
+        maxLength={ 50 }
+        minLength={ 1 }
       />
 
       <Input
@@ -69,6 +64,7 @@ function FormLogin() {
         inputRef={ passwordInputRef }
         type="password"
         errorMessage="Insira a sua senha"
+        minLength={ 1 }
       />
 
       { invalidUser && <span>Usuário ou senha incorretos</span> }

@@ -16,7 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "hooks"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "files": [
     "src/styles/styled.d.ts"

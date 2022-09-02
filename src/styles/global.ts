@@ -7,11 +7,4 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     background-color: ${props => props.theme.colors.background};
   }
-
-  body {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
 `;
