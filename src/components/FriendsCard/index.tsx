@@ -5,12 +5,12 @@ interface Props {
   user: IUser
 }
 const FriendsCard: React.FC<Props> = ({user: {friends}}) => {
-  const filteredFriends = friends.filter((f) => f.status === 'accepted');
+  const acceptedFriends = friends.filter((f) => f.status === 'accepted');
   return (
     <section>
       <h1>FriendsCard</h1>
       <div>
-        {filteredFriends.map(({friend}, i) => (
+        {acceptedFriends.map(({friend}, i) => (
           <Link 
             to={`/user/${friend.username}`}
             key={`${i}asdasdas${i*2}`}>

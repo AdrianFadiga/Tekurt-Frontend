@@ -1,8 +1,12 @@
+import { useParams } from 'react-router-dom';
+
 const ProfileOptions = () => {
+  const { username } = useParams();
   return (
     <div>
       <button
         type="button"
+        onClick={() => console.log(username)}
       >
         Amigos
       </button>
