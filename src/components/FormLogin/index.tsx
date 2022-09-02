@@ -19,7 +19,7 @@ function FormLogin() {
   const sucessRequest = (response: Token) => {
     const { access_token } = response;
     setToken(access_token);
-    navigate('/feed');
+    navigate('/home');
   };
 
   const failRequest = (response: ErrorType) => {    

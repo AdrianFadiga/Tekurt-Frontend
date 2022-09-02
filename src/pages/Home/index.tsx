@@ -11,7 +11,7 @@ function Profile() {
   const [userBio, setUserBio] = useState<IUser[]>([]);
   const getProfile = async () => {
     const token = localStorage.getItem('authTekurt');
-    const options = createOptionsRequest('GET', {}, 'auth/me', {authorization: `Bearer ${token}`});
+    const options = createOptionsRequest('GET', {}, 'users/me', {authorization: `Bearer ${token}`});
     const response = await requestAPI(options);
     setUserBio([response.data as IUser]);
   };
@@ -33,7 +33,13 @@ function Profile() {
             key={`${i}${user}`}
             user={user}/>
         ))}
-        <FriendsCard />
+        {userBio.map((user, i) => (
+          <FriendsCard 
+            key={`${i}...${user}`}
+            user={user}
+          />
+
+        ))}
       </main>
     </section>
   );

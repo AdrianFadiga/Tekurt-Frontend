@@ -5,9 +5,9 @@ import { GlobalStyle } from './styles/global';
 import { useContext } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { IContext, MyContext } from './context/MyContext';
-import Feed from './pages/Feed';
 import Home from './pages/Home';
 import Search from './pages/Search';
+import Bio from './pages/Bio';
 // import store from './redux/store';
 
 function App() {
@@ -19,8 +19,8 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={ <Login /> } />
-        <Route path="/feed" element={<Feed />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/user/:username" element={<Bio />} />
         <Route path="/search/:searchValue" element={<Search />} />
       </Routes>  
     </ThemeProvider>    
