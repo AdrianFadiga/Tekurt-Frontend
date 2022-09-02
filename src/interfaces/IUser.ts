@@ -1,3 +1,5 @@
+import { Friend } from '../types/Friend';
+
 export interface IUser {
     id: string,
 	firstName: string,
@@ -14,4 +16,5 @@ export interface IUser {
 	active: boolean,
 	createdAt: string,
 	updatedAt: string,
+	friends: Friend[]
 }
