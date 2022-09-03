@@ -8,7 +8,7 @@ const ProfileOptions = () => {
     <div>
       <button
         type="button"
-        onClick={() => navigate(`/friends/${username || 'me'}`)}
+        onClick={() => navigate(`/friends/${username || ''}`)}
       >
         Amigos
       </button>

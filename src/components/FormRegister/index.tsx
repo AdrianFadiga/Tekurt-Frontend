@@ -34,7 +34,7 @@ const FormRegister: React.FC<Props> = ({ setVisible }) => {
   const successRequest = (response: IResponseAPI) => {
     const { access_token } = response.data;
     setToken(access_token);
-    navigate('/feed');
+    navigate('/home');
   };
 
   const register = async () => {
