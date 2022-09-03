@@ -1,12 +1,14 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const ProfileOptions = () => {
   const { username } = useParams();
+  const navigate = useNavigate();
+
   return (
     <div>
       <button
         type="button"
-        onClick={() => console.log(username)}
+        onClick={() => navigate(`/friends/${username || 'me'}`)}
       >
         Amigos
       </button>

@@ -1,19 +1,11 @@
-import { useEffect, useState } from 'react';
-import { IUser } from '../../interfaces/IUser';
-import { createOptionsRequest } from '../../services/createOptionsRequest';
-import { requestAPI } from '../../services/requestAPI';
+import { useContext, useEffect } from 'react';
+import { IContext, MyContext } from '../../context/MyContext';
 
 function ProfileBtn() {
-  const [profileImg, setProfileImg] = useState<string>('');
-  const getProfilePhoto = async () => {
-    const token = localStorage.getItem('authTekurt');
-    const options = createOptionsRequest('GET', {}, 'auth/me', {authorization: `Bearer ${token}`});
-    const response = await requestAPI<IUser>(options);
-    setProfileImg(response.data.imageUrl);
-  };
+  const { profileImg, getProfileImg } = useContext(MyContext) as IContext;
   useEffect(() => {
-    getProfilePhoto();
-  }, []);
+    if (!profileImg) getProfileImg();
+  }, [profileImg]);
   return (
     <img 
       src={profileImg}
