@@ -12,7 +12,8 @@ declare module 'styled-components' {
       placeholder: string,
       alert: string,
       text: string,
-      alertText: string
+      alertText: string,
+      secondaryBackground: string
     },
     sizes: {
       small: string,

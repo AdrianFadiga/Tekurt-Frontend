@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IResponseAPI } from '../../interfaces/IResponseAPI';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
@@ -9,7 +9,11 @@ import Input from '../Input';
 import Logo from '../Logo';
 import { RegisterStyle } from './style';
 
-const FormRegister = () => {
+interface Props {
+  setVisible: Dispatch<SetStateAction<boolean>>
+}
+
+const FormRegister: React.FC<Props> = ({ setVisible }) => {
   const emailRef = useRef<HTMLInputElement>(null);
   const usernameRef = useRef<HTMLInputElement>(null);
   const firstNameRef = useRef<HTMLInputElement>(null);
@@ -113,7 +117,10 @@ const FormRegister = () => {
 
       { invalidUser && <span>Usuário ou email já está em uso</span> }
 
-      <BtnSubmit action={ register } content="Registrar" />
+      <section>
+        <button type="button" onClick={ () => setVisible(false) }>Cancelar</button>
+        <BtnSubmit action={ register } content="Registrar" />
+      </section>
     </RegisterStyle>
   );
 };

@@ -9,7 +9,8 @@ export default {
     alert: '#A72608',
     text: '#fff',
     alertText: '#fff',
-    background: '#202020'
+    secondaryBackground: '#333333',
+    background: '#202020',
   },
   sizes: {
     small: '14px',

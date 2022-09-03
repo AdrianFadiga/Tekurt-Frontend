@@ -24,8 +24,8 @@ const ModalRegister: React.ForwardRefRenderFunction<ModalHandles> = (props, ref)
 
   return (
     <ModalStyle>
-      <button className="close-btn" onClick={ () => setVisible(false) }><AiOutlineClose /></button>
-      <FormRegister />
+      <button type='button' className='closeModal' onClick={() => setVisible(false) }/>
+      <FormRegister setVisible={ setVisible }/>
     </ModalStyle>
   );
 };
