@@ -1,42 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import BioCard from '../../components/BioCard';
 import FriendsCard from '../../components/FriendsCard';
-import { IUser } from '../../interfaces/IUser';
-import { createOptionsRequest } from '../../services/createOptionsRequest';
-import { requestAPI } from '../../services/requestAPI';
-import { Friend } from '../../types/Friend';
+import Navbar from '../../components/Navbar';
+import ProfileCard from '../../components/ProfileCard';
+import { useContext } from 'react';
+import { IContext, MyContext } from '../../context/MyContext';
 
-const Bio = () => {
-  const [userBio, setUserBio] = useState<IUser[]>([]);
-  const {username} = useParams();
-  const getProfile = async () => {
-    const token = localStorage.getItem('authTekurt');
-    const options = createOptionsRequest('GET', {}, `users/${username}`, {authorization: `Bearer ${token}`});
-    const response = await requestAPI(options);
-    setUserBio([response.data as IUser]);
-  };
+function Profile() {
+  const { username } = useParams();
+  const { profileInfo, getProfileInfo } = useContext(MyContext) as IContext;
+
   useEffect(() => {
-    getProfile();
-  }, []);
-  console.log(userBio);
+    getProfileInfo(username);
+  }, [username]);
   return (
     <section>
-      <h1>UserBio</h1>
-      {userBio.map((user, i) => (
-        <BioCard
-          key={`${i}${user}`}
-          user={user}/>
-      ))}
-      {userBio.map((user, i) => (
-        <FriendsCard 
-          key={`${i}...${user}`}
-          user={user}
-        />
+      <Navbar />
+      <main>
+        {profileInfo.map((user, i) => (
+          <ProfileCard 
+            key={`${user}${i}`}
+            user={user}
+          />
+        ))}
+        {profileInfo.map((user, i) => (
+          <BioCard
+            key={`${i}${user}`}
+            user={user}/>
+        ))}
+        {profileInfo.map((user, i) => (
+          <FriendsCard 
+            key={`${i}...${user}`}
+            user={user}
+          />
 
-      ))}
+        ))}
+      </main>
     </section>
   );
-};
+}
 
-export default Bio;
+export default Profile;
