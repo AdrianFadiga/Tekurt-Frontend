@@ -4,6 +4,7 @@ import Logo from '../../components/Logo';
 import { Span } from './Span';
 import { LoginStyle } from './style';
 import { useRef } from 'react';
+import ThemeBtn from '../../components/ThemeBtn';
 
 function Login() {
   const modalRef = useRef<ModalHandles>(null);
@@ -20,7 +21,7 @@ function Login() {
 
         <Span>Esqueceu sua senha?</Span>
 
-        <Span>Não tem uma conta?<button type="button" onClick={ handleOpenModal }>Cadastre-se</button></Span>
+        <Span>Não tem uma conta? <button type="button" className="btn-register" onClick={ handleOpenModal }>Cadastre-se</button></Span>
         <ModalRegister ref={ modalRef }/>
       </section>
     </LoginStyle>

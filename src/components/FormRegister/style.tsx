@@ -20,7 +20,7 @@ export const RegisterStyle = styled.form`
   }
 
   section:nth-last-of-type(1) button:nth-child(1) {
-    background-color: #333;
+    background-color: ${({ theme }) => theme.colors.secondaryBackground };
     border: none;
     color: ${({ theme }) => theme.colors.text };
   }
@@ -28,7 +28,9 @@ export const RegisterStyle = styled.form`
   @media(min-width: 600px) {
     position: fixed;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 900px;
     width: 600px;
     padding: 20px;
     border-radius: 30px;

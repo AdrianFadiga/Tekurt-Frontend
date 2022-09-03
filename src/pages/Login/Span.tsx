@@ -14,4 +14,14 @@ export const Span = styled.span`
   a:hover {
     text-decoration: underline;
   }
+
+  .btn-register {
+    border: none;
+    color: ${({ theme }) => theme.colors.secondary };
+    cursor: pointer;
+  }
+
+  .btn-register:hover {
+    text-decoration: underline;
+  }
 `;
