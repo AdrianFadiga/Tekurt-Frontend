@@ -1,15 +1,14 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { MdHomeFilled } from 'react-icons/md';
+import ThemeBtn from '../ThemeBtn';
 
 function HomeBtn() {
-  const navigate = useNavigate(); 
-
   return (
-    <button
-      type="button"
-      onClick={() => navigate('/home')}
+    <Link
+      to="/home"
     >
-      Home button
-    </button>
+      <MdHomeFilled />
+    </Link>
   );
 }
 

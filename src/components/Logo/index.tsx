@@ -1,8 +1,13 @@
 import { LogoStyle } from './style';
+import React from 'react';
 
-const Logo = () => {
+interface Props {
+  navbar?: boolean
+}
+
+const Logo: React.FC<Props> = ({ navbar }) => {
   return (
-    <LogoStyle>tekurt</LogoStyle>
+    <LogoStyle navbar={ navbar }>tekurt</LogoStyle>
   );
 };
 

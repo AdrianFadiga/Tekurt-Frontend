@@ -13,10 +13,12 @@ declare module 'styled-components' {
       alert: string,
       text: string,
       alertText: string,
-      secondaryBackground: string
+      secondaryBackground: string,
+      iconNav: string,
     },
     sizes: {
       small: string,
+      medium: string,
       xxLarge: string,
     }
   }

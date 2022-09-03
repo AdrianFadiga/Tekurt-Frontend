@@ -7,7 +7,7 @@ interface Props {
 const ProfileContainer: React.FC<Props> = ({user}) => {
   return (
     <div>
-      <img src={user.imageUrl} alt="profile-image"></img>
+      <img src={user.imageUrl} alt="profile-image" width="100%"/>
       <p>{`${user.firstName} ${user.lastName}`}</p>
       <p>{user.socialStatusId}</p>
     </div>
