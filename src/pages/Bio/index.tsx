@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import BioCard from '../../components/BioCard';
-import FriendsCard from '../../components/FriendsCard';
 import Navbar from '../../components/Navbar';
 import ProfileCard from '../../components/ProfileCard';
 import { useContext } from 'react';
 import { IContext, MyContext } from '../../context/MyContext';
+import FriendsDiv from '../../components/FriendsDiv';
 
 function Profile() {
   const { username } = useParams();
@@ -29,12 +29,12 @@ function Profile() {
             key={`${i}${user}`}
             user={user}/>
         ))}
-        {profileInfo.map((user, i) => (
-          <FriendsCard 
-            key={`${i}...${user}`}
-            user={user}
+        <h1>Friends</h1>
+        {profileInfo.map(({friends}) => (
+          <FriendsDiv
+            key={`${friends}`} 
+            friends={friends}
           />
-
         ))}
       </main>
     </section>
