@@ -46,16 +46,16 @@ export const OptionsStyle = styled.section`
     padding: 8px;
   }
 
-  ul {
-    position: absolute;
+  .list {
     all: unset;
+    position: absolute ;
     list-style: none;
     display: flex;
     flex-direction: column;
     width: 100%;
   }
 
-  ul li {
+  .list li {
     width: 100%;
     height: 48px;
     display: flex;
@@ -63,7 +63,7 @@ export const OptionsStyle = styled.section`
     padding: 6px 4px;
   }
 
-  ul li svg {
+  .list li svg {
     width: 40px;
     height: 44px;
     margin-right: 24px;
