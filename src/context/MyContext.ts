@@ -7,7 +7,7 @@ export interface IContext {
   toggleTheme(): void;
   profileInfo: IUser[];
   getProfileInfo(username: string | undefined): void;
-  profileImg: string | undefined;
+  profileImg: IUser | undefined;
   getProfileImg(): void;
 }
 
