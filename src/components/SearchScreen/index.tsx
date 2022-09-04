@@ -34,6 +34,7 @@ const SearchScreen: React.FC<Props> = ({ setModal }) => {
         <button onClick={ setModal }><IoMdArrowBack /></button>
         <input
           type="text"
+          className='searchInput'
           value={searchValue}
           onChange={({target}) => setSearchValue(target.value)}
         />

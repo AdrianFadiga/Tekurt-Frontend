@@ -15,7 +15,7 @@ export const SearchScreenStyle = styled.section`
     height: 48px;
   }
 
-  input {
+  .searchInput {
     display: block;
     width: 100%;
     border: none;
@@ -26,7 +26,7 @@ export const SearchScreenStyle = styled.section`
     padding-top: 15px;
   }
 
-  input:focus {
+  .searchInput:focus {
     outline: none;
     border-width: 2px;
   }
