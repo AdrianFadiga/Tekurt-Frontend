@@ -10,10 +10,12 @@ export default {
     text: '#000',
     alertText: '#fff',
     background: '#F5F5F5',
-    secondaryBackground: '#E5E5E9'
+    secondaryBackground: '#E5E5E9',
+    iconNav: '#bbbbbd'
   },
   sizes: {
     small: '14px',
+    medium: '25px',
     xxLarge: '40px',
   }
 };

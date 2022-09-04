@@ -11,9 +11,11 @@ export default {
     alertText: '#fff',
     secondaryBackground: '#333333',
     background: '#202020',
+    iconNav: '#CCCCD2'
   },
   sizes: {
     small: '14px',
+    medium: '25px',
     xxLarge: '40px',
   }
 };
