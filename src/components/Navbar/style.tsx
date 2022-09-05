@@ -58,4 +58,37 @@ export const NavStyle = styled.header`
     color:  ${({ theme }) => theme.colors.iconNav};
     font-size: 24px;
   }
+
+  @media(min-width: 992px) {
+    height: 140px;
+    padding: 0 5%;
+
+    .logo {
+      width: 20%;
+    }
+
+    nav {
+      width: 80%;
+    }
+
+    nav ul {
+      height: 100%;
+    }
+
+    ul li:nth-child(2) {
+      padding: 0;
+      width: 65%;
+      height: 60px;
+    }
+
+    ul li:nth-child(1) {
+      margin-right: 16px;
+    }
+
+    ul li:nth-child(3) {
+      width: 258px;
+      height: 70px;
+      margin-left: 35px;
+    }
+  }
 `;

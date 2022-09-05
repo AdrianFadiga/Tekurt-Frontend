@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const OptionsStyle = styled.section`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -48,7 +48,7 @@ export const OptionsStyle = styled.section`
 
   .list {
     all: unset;
-    position: absolute ;
+    position: absolute;
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -56,6 +56,7 @@ export const OptionsStyle = styled.section`
   }
 
   .list li {
+    cursor: pointer;
     width: 100%;
     height: 48px;
     display: flex;
@@ -68,5 +69,33 @@ export const OptionsStyle = styled.section`
     height: 44px;
     margin-right: 24px;
     padding: 8px;
+  }
+
+  @media(min-width: 992px) {
+    position: absolute;
+    top: 50px;
+    left: -25px;
+    height: min-content;
+    border-radius: 30px;
+    padding: 10px 30px;
+    width: 270px;
+    -webkit-box-shadow: -1px 2px 10px 7px rgba(0,0,0,0.13); 
+    box-shadow: -1px 2px 10px 7px rgba(0,0,0,0.13);
+
+    .list {
+      position: static;
+      width: 100%;
+    }
+
+    .list li {
+      width: 100% !important;
+      padding: 0 5px !important;
+      margin: 16px 0 !important;
+      height: 44px !important;
+    }
+
+    .mobileVisible {
+      display: none !important;
+    }
   }
 `;

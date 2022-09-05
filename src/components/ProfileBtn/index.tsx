@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { IContext, MyContext } from '../../context/MyContext';
 import OptionsUser from '../OptionsUser';
 import { ProfileStyle } from './style';
+import { RiArrowDownSLine } from 'react-icons/ri';
 
 function ProfileBtn() {
   const { profileImg, getProfileImg } = useContext(MyContext) as IContext;
@@ -21,6 +22,14 @@ function ProfileBtn() {
         onClick={ setModal }
         src={ profileImg?.imageUrl }
       />
+
+      <button className="profileBtn" type="button" onClick={ setModal }>
+        <div>
+          <p>{ profileImg?.username }</p>
+          <p>{ `${profileImg?.firstName} ${profileImg?.lastName}` }</p>
+        </div>
+        <RiArrowDownSLine />
+      </button>
 
       { openModal && (
         <OptionsUser setModal={ setModal }/>
