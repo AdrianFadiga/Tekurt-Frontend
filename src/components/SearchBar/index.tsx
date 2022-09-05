@@ -15,19 +15,22 @@ function SearchBar() {
 
   return (
     <SearchStyle>
-      <input
-        type="text"
-        value={searchValue}
-        onChange={({target}) => setSearchValue(target.value)}
-      />
-      <button
-        type="button"
-        disabled={searchValue.length === 0}
-        onClick={() => navigate(`/search/${searchValue}`)}
-        className="text"
-      >
-        <FiSearch onClick={ setModal }/>
-      </button>
+      <div className="input">
+        <input
+          type="text"
+          value={searchValue}
+          onChange={({target}) => setSearchValue(target.value)}
+        />
+        <button
+          type="button"
+          disabled={searchValue.length === 0}
+          onClick={() => navigate(`/search/${searchValue}`)}
+          className="text"
+        >
+          <FiSearch onClick={ setModal }/>
+        </button>
+      </div>
+      
 
       { openModal && (
         <SearchScreen setModal={ setModal }/>
