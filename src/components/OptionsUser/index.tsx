@@ -28,12 +28,12 @@ const OptionsUser: React.FC<Props> = ({ setModal }) => {
 
   return (
     <OptionsStyle>
-      <div>
+      <div className='mobileVisible'>
         <button type="button" onClick={ setModal }><AiOutlineClose /></button>
         Conta
       </div>
 
-      <div>
+      <div className='mobileVisible'>
         <img src={ profileImg?.imageUrl } alt="Imagem de perfil" />
         <span>{ profileImg?.username }</span>
       </div>

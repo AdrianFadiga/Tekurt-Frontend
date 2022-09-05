@@ -1,7 +1,7 @@
 import { Friend } from '../types/Friend';
 
 export interface IUser {
-    id: string,
+  id: string,
 	firstName: string,
 	lastName: string,
 	username: string,
