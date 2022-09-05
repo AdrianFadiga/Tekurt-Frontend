@@ -29,13 +29,13 @@ const MyProvider: React.FC<Props> = ({ children }) => {
     setProfileInfo([response.data as IUser]);
   }; 
   
-  const [profileImg, setProfileImg] = useState<string>('');
+  const [profileImg, setProfileImg] = useState<IUser>();
 
   const getProfileImg = async () => {
     const token = localStorage.getItem('authTekurt');
     const options = createOptionsRequest('GET', {}, 'auth/me', {authorization: `Bearer ${token}`});
     const response = await requestAPI<IUser>(options);
-    setProfileImg(response.data.imageUrl);
+    setProfileImg(response.data);
   };
 
   const state = {

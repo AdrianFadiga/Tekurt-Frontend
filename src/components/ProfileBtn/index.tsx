@@ -8,7 +8,7 @@ function ProfileBtn() {
   const [openModal, setOpenModal] = useState(false);
   
   useEffect(() => {
-    if (!profileImg) getProfileImg();
+    if (!profileImg?.imageUrl) getProfileImg();
   }, [profileImg]);
 
   const setModal = () => {
@@ -19,7 +19,7 @@ function ProfileBtn() {
     <ProfileStyle>
       <img
         onClick={ setModal }
-        src={ profileImg }
+        src={ profileImg?.imageUrl }
       />
 
       { openModal && (

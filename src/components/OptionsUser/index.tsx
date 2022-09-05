@@ -12,8 +12,8 @@ interface Props {
 }
 
 const OptionsUser: React.FC<Props> = ({ setModal }) => {
-  const { profileInfo, toggleTheme } = useContext(MyContext) as IContext;
-  console.log(profileInfo);
+  const { profileImg, toggleTheme } = useContext(MyContext) as IContext;
+  console.log(profileImg);
   const navigate = useNavigate();
 
   const navigateTo = (to: string) => {
@@ -34,8 +34,8 @@ const OptionsUser: React.FC<Props> = ({ setModal }) => {
       </div>
 
       <div>
-        <img src={ profileInfo[0].imageUrl } alt="Imagem de perfil" />
-        <span>{ profileInfo[0].username }</span>
+        <img src={ profileImg?.imageUrl } alt="Imagem de perfil" />
+        <span>{ profileImg?.username }</span>
       </div>
 
       <ul>
