@@ -21,12 +21,6 @@ const SearchScreen: React.FC<Props> = ({ setModal }) => {
       username: 'rihanna'
     },
     {
-      imageUrl: 'https://yt3.ggpht.com/ytc/AMLnZu9-LgELbaGCR96t3I8DaYUOi2YPzwPcTkfooMWb3Q=s900-c-k-c0x00ffffff-no-rj',
-      firstName: 'billie',
-      lastName: 'eilish',
-      username: 'blish'
-    },
-    {
       imageUrl: 'https://static.vakinha.com.br/uploads/vakinha/image/2768983/1648580920.954.png?ims=280x280',
       firstName: 'cesar',
       lastName: 'almeida',
@@ -54,21 +48,6 @@ const SearchScreen: React.FC<Props> = ({ setModal }) => {
       </section>
 
       <section>
-        { users.map((user, index) => (
-          <UserSearch key={ index } user={ user } />
-        )) }
-        { users.map((user, index) => (
-          <UserSearch key={ index } user={ user } />
-        )) }
-        { users.map((user, index) => (
-          <UserSearch key={ index } user={ user } />
-        )) }
-        { users.map((user, index) => (
-          <UserSearch key={ index } user={ user } />
-        )) }
-        { users.map((user, index) => (
-          <UserSearch key={ index } user={ user } />
-        )) }
         { users.map((user, index) => (
           <UserSearch key={ index } user={ user } />
         )) }

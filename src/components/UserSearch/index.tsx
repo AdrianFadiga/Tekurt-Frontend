@@ -24,7 +24,6 @@ const UserSearch: React.FC<Props> = ({ user }) => {
           <p>{ `${user.firstName} ${user.lastName}` }</p>
         </div> 
       </button>
-           
     </SearchUserStyle>
   );
 };
