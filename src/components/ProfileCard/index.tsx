@@ -1,18 +1,21 @@
-import { IUser } from '../../interfaces/IUser';
+import { useContext } from 'react';
+import { IContext, MyContext } from '../../context/MyContext';
 import ProfileContainer from '../ProfileContainer';
 import ProfileOptions from '../ProfileOptions';
 
-interface Props {
-  user: IUser
-}
 
-const ProfileCard: React.FC<Props> = ({user}) => {
-
+const ProfileCard = () => {
+  const { profileInfo } = useContext(MyContext) as IContext;
   return (
-    <div>
-      <ProfileContainer user={user} />
-      <ProfileOptions />
-    </div>
+    <>
+      {
+        profileInfo &&
+      <div>
+        <ProfileContainer user={profileInfo} />
+        <ProfileOptions user={profileInfo}/>
+      </div>
+      }
+    </>
   );
 };
 

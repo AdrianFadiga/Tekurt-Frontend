@@ -1,37 +1,36 @@
-import { IUser } from '../../interfaces/IUser';
+import { useContext } from 'react';
+import { IContext, MyContext } from '../../context/MyContext';
 
-interface Props {
-  user: IUser
-}
 
-const BioCard: React.FC<Props> = ({user}) => {
+const BioCard = () => {
+  const {profileInfo} = useContext(MyContext) as IContext;
   return (
     <section>
       <table>
         <tbody>
           <tr>
             <td>Sobre mim:</td>
-            <td>{user.biography}</td>
+            <td>{profileInfo?.biography}</td>
           </tr>
           <tr>
             <td>Relacionamento:</td>
-            <td>{user.socialStatusId}</td>
+            <td>{profileInfo?.socialStatusId}</td>
           </tr>
           <tr>
             <td>Crianças:</td>
-            <td>{user.children}</td>
+            <td>{profileInfo?.children}</td>
           </tr>
           <tr>
             <td>Fuma?</td>
-            <td>{user.smokes}</td>
+            <td>{profileInfo?.smokes}</td>
           </tr>
           <tr>
             <td>Bebe?</td>
-            <td>{user.drinkingId}</td>
+            <td>{profileInfo?.drinkingId}</td>
           </tr>
           <tr>
             <td>Signo</td>
-            <td>{user.signId}</td>
+            <td>{profileInfo?.signId}</td>
           </tr>
         </tbody>
       </table>

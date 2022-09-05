@@ -9,7 +9,7 @@ import FriendsDiv from '../../components/FriendsDiv';
 
 function Profile() {
   const { username } = useParams();
-  const { profileInfo, getProfileInfo } = useContext(MyContext) as IContext;
+  const { getProfileInfo } = useContext(MyContext) as IContext;
 
   useEffect(() => {
     getProfileInfo(username);
@@ -18,24 +18,10 @@ function Profile() {
     <section>
       <Navbar />
       <main>
-        {profileInfo.map((user, i) => (
-          <ProfileCard 
-            key={`${user}${i}`}
-            user={user}
-          />
-        ))}
-        {profileInfo.map((user, i) => (
-          <BioCard
-            key={`${i}${user}`}
-            user={user}/>
-        ))}
-        <h1>Friends</h1>
-        {profileInfo.map(({friends}) => (
-          <FriendsDiv
-            key={`${friends}`} 
-            friends={friends}
-          />
-        ))}
+        <ProfileCard />
+        <BioCard />
+        <h1>Amigos</h1>
+        <FriendsDiv />
       </main>
     </section>
   );
