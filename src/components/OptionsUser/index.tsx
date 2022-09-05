@@ -38,7 +38,7 @@ const OptionsUser: React.FC<Props> = ({ setModal }) => {
         <span>{ profileImg?.username }</span>
       </div>
 
-      <ul>
+      <ul className="list">
         <li onClick={ () => navigateTo('/home')}><BsPerson />Perfil</li>
         <li onClick={ toggleTheme }><CgDarkMode />Alternar Tema</li>
         <li onClick={ () => navigateTo('/about')}><AiOutlineInfoCircle />Sobre</li>

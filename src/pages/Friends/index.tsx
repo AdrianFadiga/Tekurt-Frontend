@@ -6,7 +6,7 @@ import FriendsDiv from '../../components/FriendsDiv';
 
 const Friends = () => {
   const { username } = useParams();
-  const { profileInfo, getProfileInfo } = useContext(MyContext) as IContext;
+  const { getProfileInfo } = useContext(MyContext) as IContext;
   useEffect(() => {
     getProfileInfo(username);
   }, [username]);
@@ -16,12 +16,7 @@ const Friends = () => {
       <Navbar />
       <h1>Amigos:</h1>
       <div>    
-        {profileInfo.map(({friends}, i) => (
-          <FriendsDiv
-            key={`${i}...${friends}`}
-            friends={friends}
-          />
-        ))}
+        <FriendsDiv />
       </div>
     </section>
   );

@@ -12,6 +12,7 @@ interface Props {
 const FriendsCard: React.FC<Props> = ({friend: {friend, friendId}, pending}) => {
   const {pathname} = useLocation();
   const [showButtons, setShowButtons] = useState<boolean>(pending && pathname === '/friends/');
+  const [showRejectInvite, setShowRejectInvite] = useState<boolean>(false);
   const showPendingInvite = !pending || pathname === '/friends/';
   const acceptFriend = async () => {
     const token = localStorage.getItem('authTekurt');
@@ -23,6 +24,8 @@ const FriendsCard: React.FC<Props> = ({friend: {friend, friendId}, pending}) => 
     const token = localStorage.getItem('authTekurt');
     const options = createOptionsRequest('DELETE', {}, `friend/${friendId}`, {authorization: `Bearer ${token}`});
     await requestAPI(options);
+    setShowButtons(false);
+    setShowRejectInvite(true);
   };
   return (
     <div>
@@ -50,6 +53,10 @@ const FriendsCard: React.FC<Props> = ({friend: {friend, friendId}, pending}) => 
           action={() => refuseFriend()}>
         </FriendBtn>
       </div>
+      }
+      {
+        showRejectInvite &&
+        <h1>Convite recusado</h1>
       }
     </div>   
   );
