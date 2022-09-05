@@ -20,6 +20,7 @@ const MyProvider: React.FC<Props> = ({ children }) => {
   };
   
   const [profileInfo, setProfileInfo] = useState<IUser[]>([]);
+  
   const getProfileInfo = async (username: string) => {
     const fetchRoute = username === undefined ? 'users/me' : `users/${username}`;
     const token = localStorage.getItem('authTekurt');
@@ -29,6 +30,7 @@ const MyProvider: React.FC<Props> = ({ children }) => {
   }; 
   
   const [profileImg, setProfileImg] = useState<string>('');
+
   const getProfileImg = async () => {
     const token = localStorage.getItem('authTekurt');
     const options = createOptionsRequest('GET', {}, 'auth/me', {authorization: `Bearer ${token}`});

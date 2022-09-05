@@ -3,7 +3,6 @@ import Logo from '../Logo';
 import SearchBar from '../SearchBar';
 import ProfileBtn from '../ProfileBtn';
 import { NavStyle } from './style';
-import ThemeBtn from '../ThemeBtn';
 
 function Navbar() {
   return (
