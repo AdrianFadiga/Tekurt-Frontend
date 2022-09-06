@@ -7,6 +7,7 @@ import { IContext, MyContext } from './context/MyContext';
 import Search from './pages/Search';
 import Bio from './pages/Bio';
 import Friends from './pages/Friends';
+import Posts from './pages/Posts';
 
 function App() {
   const { theme } = useContext(MyContext) as IContext;
@@ -19,8 +20,10 @@ function App() {
         <Route path="/home" element={<Bio />} />
         <Route path="/user/:username" element={<Bio />} />
         <Route path="/search/:searchValue" element={<Search />} />
-        <Route path="/friends/" element={<Friends />} />
+        <Route path="/friends" element={<Friends />} />
         <Route path="/friends/:username" element={<Friends />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/posts/:username" element={<Posts />} />
       </Routes>  
     </ThemeProvider>    
   );

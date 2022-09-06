@@ -63,6 +63,7 @@ const ProfileOptions: React.FC<Props> = ({user}) => {
       </button>
       <button
         type="button"
+        onClick={() => navigate(`/posts/${username || ''}`)}
       >
         Galeria
       </button>
