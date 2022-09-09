@@ -81,8 +81,14 @@ export const NavStyle = styled.header`
       height: 60px;
     }
 
-    ul li:nth-child(1) {
+    .homeBtn {
       margin-right: 16px;
+      border: 1px solid ${({ theme }) => theme.colors.border};
+      border-radius: 50%;
+      height: 60px;
+      width: 60px;
+      display: grid;
+      place-items: center;
     }
 
     ul li:nth-child(3) {

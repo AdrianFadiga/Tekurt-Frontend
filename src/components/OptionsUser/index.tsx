@@ -44,6 +44,7 @@ const OptionsUser: React.FC<Props> = ({ setModal }) => {
         <li onClick={ () => navigateTo('/about')}><AiOutlineInfoCircle />Sobre</li>
         <li onClick={ loggout }><IoLogOutOutline />Sair</li>
       </ul>
+      <button className="closeModal" onClick={ setModal } type="button"/>
     </OptionsStyle>
   );
 };

@@ -18,6 +18,7 @@ export const SearchStyle = styled.form`
 
   button {
     all: unset;
+    cursor: pointer;
   }
 
   @media(min-width: 992px) {
@@ -42,6 +43,7 @@ export const SearchStyle = styled.form`
       border: none;
       border-radius: 30px;
       padding-left: 55px;
+      padding-right: 20px;
       font-size: 20px;
       color: ${({ theme }) => theme.colors.text}
     }

@@ -8,15 +8,16 @@ const Gallery = () => {
   const {username} = useParams();
   const [userPosts, setUserPosts] = useState<IPost[]>([]);
   const userId = '12345';
+  
   const getPosts = async () => {
     // Criar função para buscar o userId com base no username
     const token = localStorage.getItem('authTekurt');
     const fetchUrl = username ? `posts/${userId}` : 'posts/me'; 
     const options = createOptionsRequest('GET', {}, fetchUrl, {authorization: `Bearer ${token}`});
     const response = await requestAPI<IPost[]>(options);
-    console.log(response);
     setUserPosts(response.data);
   };
+
   useEffect(() => {
     getPosts();
   }, [username]);

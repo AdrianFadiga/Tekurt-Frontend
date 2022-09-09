@@ -20,6 +20,14 @@ export const OptionsStyle = styled.section`
     z-index: 2;
   }
 
+  .closeModal {
+    display: none;
+  }
+
+  div:nth-child(1) button {
+    cursor: pointer;
+  }
+
   div:nth-child(2) {
     all: unset;
     margin-top: 52px;
@@ -96,6 +104,17 @@ export const OptionsStyle = styled.section`
 
     .mobileVisible {
       display: none !important;
+    }
+
+    .closeModal {
+      display: block;
+      background-color: transparent;
+      position: fixed;
+      z-index: -1;
+      width: 100%;
+      height: 100vh;
+      left: 0;
+      top: 0;
     }
   }
 `;

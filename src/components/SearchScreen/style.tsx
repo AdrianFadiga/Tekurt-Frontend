@@ -7,6 +7,7 @@ export const SearchScreenStyle = styled.section`
   width: 100%;
   height: 100vh;
   color: ${({ theme }) => theme.colors.text};
+  z-index: 2;
 
   section:nth-child(1) {
     display: flex;
@@ -35,10 +36,28 @@ export const SearchScreenStyle = styled.section`
     padding: 12px;
     width: 48px;
     height: 100%;
+    cursor: pointer;
   }
 
   section:nth-child(2) {
     height: calc(100vh - 48px);
     overflow: auto;
+  }
+
+  @media(min-width: 992px) {
+    position: absolute;
+    height: 400px;
+    width: 100%;
+    top: 60px;
+    -webkit-box-shadow: 1px 5px 8px -1px rgba(0,0,0,0.23); 
+    box-shadow: 1px 5px 8px -1px rgba(0,0,0,0.23);
+
+    section:nth-child(1) {
+      display: none;
+    }
+
+    section:nth-child(2) {
+      height: 100%;
+    }
   }
 `;
