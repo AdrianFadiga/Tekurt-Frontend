@@ -26,7 +26,7 @@ export const SearchStyle = styled.form`
       height: 60px;
       width: 100%;
       border-radius: 30px;
-      border: 1px solid ${({ theme }) => theme.colors.border};
+      border: ${({ theme }) => theme.title === 'light' && `1px solid ${theme.colors.border}`};
     }
 
     .input svg {
@@ -34,6 +34,7 @@ export const SearchStyle = styled.form`
       top: 50%;
       transform: translateY(-50%);
       left: 17px;
+      background-color: ${({ theme }) => theme.colors.background};
     }
 
     input {
@@ -45,7 +46,8 @@ export const SearchStyle = styled.form`
       padding-left: 55px;
       padding-right: 20px;
       font-size: 20px;
-      color: ${({ theme }) => theme.colors.text}
+      color: ${({ theme }) => theme.colors.text};
+      background-color: ${({ theme }) => theme.colors.background};
     }
 
     input:focus {

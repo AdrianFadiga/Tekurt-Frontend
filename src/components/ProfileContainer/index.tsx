@@ -1,4 +1,5 @@
 import { IUser } from '../../interfaces/IUser';
+import { ProfileContainerStyle } from './style';
 
 interface Props {
     user: IUser
@@ -6,11 +7,11 @@ interface Props {
 
 const ProfileContainer: React.FC<Props> = ({user}) => {
   return (
-    <div>
+    <ProfileContainerStyle>
       <img src={user.imageUrl} alt="profile-image" width="100%"/>
       <p>{`${user.firstName} ${user.lastName}`}</p>
       <p>{user.socialStatusId}</p>
-    </div>
+    </ProfileContainerStyle>
   );
 };
 

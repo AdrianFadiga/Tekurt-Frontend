@@ -11,6 +11,7 @@ export default {
     alertText: '#fff',
     background: '#F5F5F5',
     secondaryBackground: '#E5E5E9',
+    bodyBackground: '#F7FAFC',
     iconNav: '#bbbbbd'
   },
   sizes: {

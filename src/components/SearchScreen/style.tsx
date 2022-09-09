@@ -29,6 +29,7 @@ export const SearchScreenStyle = styled.section`
     color: ${({ theme }) => theme.colors.text};
     padding: 5px;
     padding-top: 15px;
+    background-color: ${({ theme }) => theme.colors.background};
   }
 
   .searchInput:focus {
