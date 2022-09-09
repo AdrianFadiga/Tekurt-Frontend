@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const LogoStyle = styled.div`
   color: ${({ theme }) => theme.colors.secondary};
   font-weight: 700;
-  font-size: ${({ theme }) => theme.sizes.xxLarge };
+  font-size: 23px;
   text-align: center;
+
+  @media(min-width: 992px) {
+    font-size: ${({ theme }) => theme.sizes.xxLarge };
+  }
 `;
