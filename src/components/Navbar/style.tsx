@@ -21,7 +21,7 @@ export const NavStyle = styled.header`
 
   .circle {
     background-color: ${({ theme }) => theme.colors.secondary};
-    padding: 4px;
+    padding: 6px;
     border-radius: 5px;
     display: grid;
     place-items: center;
@@ -30,8 +30,8 @@ export const NavStyle = styled.header`
 
   .circle span {
     border: 4px solid white;
-    width: 15px;
-    height: 15px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     background-color: ${({ theme }) => theme.colors.secondary};
   }

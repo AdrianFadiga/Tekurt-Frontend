@@ -11,7 +11,7 @@ function Navbar() {
         <div className='circle'>
           <span />
         </div>
-        <Logo navbar={ true }/>
+        <Logo />
       </div>
       <nav>
         <ul>
