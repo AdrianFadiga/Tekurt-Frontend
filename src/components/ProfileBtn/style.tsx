@@ -6,12 +6,14 @@ export const ProfileStyle = styled.div`
   display: grid;
   place-items: center;
   position: relative;
+  z-index: 1;
   
   img {
     border-radius: 50%;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    cursor: pointer;
   }
 
   .profileBtn {
@@ -33,6 +35,7 @@ export const ProfileStyle = styled.div`
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      cursor: pointer;
     }
 
     div p {
@@ -55,6 +58,10 @@ export const ProfileStyle = styled.div`
       justify-content: space-between;
       align-items: center;
       color: ${({ theme }) => theme.colors.text};
+    }
+
+    svg {
+      cursor: pointer;
     }
   }
 `;
