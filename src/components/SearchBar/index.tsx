@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
 import SearchScreen from '../SearchScreen';
 import { SearchStyle } from './style';
 
 function SearchBar() {
   const [searchValue, setSearchValue] = useState('');
   const [openModal, setOpenModal] = useState(false);
-  const navigate = useNavigate();
 
   const setModal = () => {
     setOpenModal(!openModal);
