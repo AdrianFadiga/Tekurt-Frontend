@@ -52,7 +52,24 @@ const SearchScreen: React.FC<Props> = ({ setModal }) => {
         { users.map((user, index) => (
           <UserSearch key={ index } user={ user } />
         )) }
+        { users.map((user, index) => (
+          <UserSearch key={ index } user={ user } />
+        )) }
+        { users.map((user, index) => (
+          <UserSearch key={ index } user={ user } />
+        )) }
+        { users.map((user, index) => (
+          <UserSearch key={ index } user={ user } />
+        )) }
+        { users.map((user, index) => (
+          <UserSearch key={ index } user={ user } />
+        )) }
+        { users.map((user, index) => (
+          <UserSearch key={ index } user={ user } />
+        )) }
       </section>
+
+      <button className="closeModal" onClick={ setModal } type="button"/>
     </SearchScreenStyle>
   );
 };

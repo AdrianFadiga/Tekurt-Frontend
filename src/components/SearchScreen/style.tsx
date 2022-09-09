@@ -9,6 +9,10 @@ export const SearchScreenStyle = styled.section`
   color: ${({ theme }) => theme.colors.text};
   z-index: 2;
 
+  .closeModal {
+    display: none;
+  }
+
   section:nth-child(1) {
     display: flex;
     justify-content: space-between;
@@ -44,6 +48,19 @@ export const SearchScreenStyle = styled.section`
     overflow: auto;
   }
 
+  section:nth-child(2)::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  section:nth-child(2)::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.secondaryBackground};
+  }
+
+  section:nth-child(2)::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.secondary};    /* color of the scroll thumb */
+    border-radius: 20px;
+  }
+
   @media(min-width: 992px) {
     position: absolute;
     height: 400px;
@@ -58,6 +75,18 @@ export const SearchScreenStyle = styled.section`
 
     section:nth-child(2) {
       height: 100%;
+    }
+
+    .closeModal {
+      display: block;
+      background-color: transparent;
+      position: fixed;
+      cursor: default;
+      z-index: -1;
+      width: 100%;
+      height: 100vh;
+      left: 0;
+      top: 0;
     }
   }
 `;
