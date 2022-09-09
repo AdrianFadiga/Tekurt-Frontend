@@ -28,7 +28,6 @@ const OptionsUser: React.FC<Props> = ({ setModal }) => {
 
   return (
     <OptionsStyle>
-      
       <div className='mobileVisible'>
         <button type="button" onClick={ setModal }><AiOutlineClose /></button>
         Conta

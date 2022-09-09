@@ -15,7 +15,7 @@ function Navbar() {
       </div>
       <nav>
         <ul>
-          <li><HomeBtn /></li>
+          <li className="homeBtn"><HomeBtn /></li>
           <li><SearchBar /></li>
           <li><ProfileBtn /></li>
         </ul>
