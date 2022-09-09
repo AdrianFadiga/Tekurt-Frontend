@@ -14,7 +14,7 @@ function SearchBar() {
   };
 
   return (
-    <SearchStyle>
+    <SearchStyle onSubmit={ (e) => event?.preventDefault() }>
       <div className="input">
         <input
           type="text"
@@ -22,16 +22,15 @@ function SearchBar() {
           onChange={({target}) => setSearchValue(target.value)}
         />
         <button
-          type="button"
+          type="submit"
           disabled={searchValue.length === 0}
-          onClick={() => navigate(`/search/${searchValue}`)}
+          onClick={ setModal }
           className="text"
         >
           <FiSearch onClick={ setModal }/>
         </button>
       </div>
       
-
       { openModal && (
         <SearchScreen setModal={ setModal }/>
       ) }

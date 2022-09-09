@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const SearchUserStyle = styled.div`
   height: 60px;
   width: 100%;
+  margin-bottom: 10px;
 
   .userSearch {
     display: flex;

@@ -18,6 +18,7 @@ export const SearchStyle = styled.form`
 
   button {
     all: unset;
+    cursor: pointer;
   }
 
   @media(min-width: 992px) {
