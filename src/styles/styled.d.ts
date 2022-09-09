@@ -14,6 +14,7 @@ declare module 'styled-components' {
       text: string,
       alertText: string,
       secondaryBackground: string,
+      bodyBackground: string,
       iconNav: string,
     },
     sizes: {

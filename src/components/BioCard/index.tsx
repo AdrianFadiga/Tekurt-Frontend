@@ -1,16 +1,18 @@
 import { useContext } from 'react';
 import { IContext, MyContext } from '../../context/MyContext';
+import { BioCardStyle } from './style';
 
 
 const BioCard = () => {
   const {profileInfo} = useContext(MyContext) as IContext;
   return (
-    <section>
+    <BioCardStyle>
+      <h2>Bio</h2>
       <table>
         <tbody>
           <tr>
             <td>Sobre mim:</td>
-            <td>{profileInfo?.biography}</td>
+            <td>{profileInfo?.biography}dddddddddddddddddd ddddddddddddddd ddddddddddddd ddddddd dd dddddddddd dddddddddddddddddddd</td>
           </tr>
           <tr>
             <td>Relacionamento:</td>
@@ -21,20 +23,20 @@ const BioCard = () => {
             <td>{profileInfo?.children}</td>
           </tr>
           <tr>
-            <td>Fuma?</td>
+            <td>Fuma:</td>
             <td>{profileInfo?.smokes}</td>
           </tr>
           <tr>
-            <td>Bebe?</td>
+            <td>Bebe:</td>
             <td>{profileInfo?.drinkingId}</td>
           </tr>
           <tr>
-            <td>Signo</td>
+            <td>Signo:</td>
             <td>{profileInfo?.signId}</td>
           </tr>
         </tbody>
       </table>
-    </section>
+    </BioCardStyle>
   );
 };
 

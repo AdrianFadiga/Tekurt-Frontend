@@ -6,7 +6,7 @@ export const NavStyle = styled.header`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  height: 48px;
+  height: 49px;
   align-items: center;
   padding: 0 10px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.secondaryBackground};
@@ -87,14 +87,24 @@ export const NavStyle = styled.header`
       height: 60px;
     }
 
-    .homeBtn {
-      margin-right: 16px;
-      border: 1px solid ${({ theme }) => theme.colors.border};
+    ul li:nth-child(1) {
+      padding: 0;
+      width: 10%;
+      height: 60px;
+    }
+
+    .homeBtn a {
       border-radius: 50%;
       height: 60px;
       width: 60px;
       display: grid;
       place-items: center;
+      border: ${({ theme }) => theme.title === 'light' && `1px solid ${theme.colors.border}`};
+      background-color: ${({ theme }) => theme.colors.background};
+    }
+
+    .homeBtn svg {
+      background-color: ${({ theme }) => theme.colors.background};
     }
 
     ul li:nth-child(3) {

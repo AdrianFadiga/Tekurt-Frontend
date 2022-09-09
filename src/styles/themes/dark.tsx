@@ -10,6 +10,7 @@ export default {
     text: '#fff',
     alertText: '#fff',
     secondaryBackground: '#333333',
+    bodyBackground: '#161616',
     background: '#202020',
     iconNav: '#CCCCD2'
   },

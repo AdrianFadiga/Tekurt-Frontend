@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { AiOutlineClose, AiOutlineInfoCircle } from 'react-icons/ai';
+import { AiFillInfoCircle, AiOutlineClose, AiOutlineInfoCircle } from 'react-icons/ai';
 import { IContext, MyContext } from '../../context/MyContext';
 import { OptionsStyle } from './style';
 import { CgDarkMode } from 'react-icons/cg';
-import { BsPerson } from 'react-icons/bs';
-import { IoLogOutOutline } from 'react-icons/io5';
+import { BsFillPersonFill, BsPerson } from 'react-icons/bs';
+import { IoLogOut, IoLogOutOutline } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
 interface Props {
@@ -39,10 +39,10 @@ const OptionsUser: React.FC<Props> = ({ setModal }) => {
       </div>
 
       <ul className="list">
-        <li onClick={ () => navigateTo('/home')}><BsPerson />Perfil</li>
+        <li onClick={ () => navigateTo('/home')}><BsFillPersonFill />Perfil</li>
         <li onClick={ toggleTheme }><CgDarkMode />Alternar Tema</li>
-        <li onClick={ () => navigateTo('/about')}><AiOutlineInfoCircle />Sobre</li>
-        <li onClick={ loggout }><IoLogOutOutline />Sair</li>
+        <li onClick={ () => navigateTo('/about')}><AiFillInfoCircle />Sobre</li>
+        <li onClick={ loggout }><IoLogOut />Sair</li>
       </ul>
       <button className="closeModal" onClick={ setModal } type="button"/>
     </OptionsStyle>
