@@ -7,4 +7,7 @@ export const ProfileCardStyle = styled.section`
   background-color: ${({ theme }) => theme.colors.background};
   padding: 40px;
   border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;

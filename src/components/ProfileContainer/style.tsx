@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
 export const ProfileContainerStyle = styled.div`
-  border: 1px solid red;
+  border-bottom: 2px solid ${({ theme }) => theme.colors.border};
   background-color: ${({ theme }) => theme.colors.background};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 22px;
 
   img {
     width: 132px;
@@ -11,5 +15,21 @@ export const ProfileContainerStyle = styled.div`
     border-radius: 50%;
     border: 2px solid blue;
     object-fit: cover;
+    margin-bottom: 18px;
+  }
+
+  p {
+    line-height: 25px;
+    background-color: transparent;
+  }
+
+  .username {
+    color: ${({ theme }) => theme.colors.text};
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors.placeholder};
   }
 `;

@@ -9,8 +9,8 @@ const ProfileContainer: React.FC<Props> = ({user}) => {
   return (
     <ProfileContainerStyle>
       <img src={user.imageUrl} alt="profile-image" width="100%"/>
-      <p>{`${user.firstName} ${user.lastName}`}</p>
-      <p>{user.socialStatusId}</p>
+      <p className='username'>{ user.username }</p>
+      <p>{`${user.firstName} ${user.lastName}`} - solteiro</p>
     </ProfileContainerStyle>
   );
 };

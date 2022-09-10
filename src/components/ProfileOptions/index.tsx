@@ -1,4 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
+import { BsFillPersonFill, BsHeartFill } from 'react-icons/bs';
+import { MdHomeFilled } from 'react-icons/md';
 import { useParams, useNavigate } from 'react-router-dom';
 import { IContext, MyContext } from '../../context/MyContext';
 import { IFriend } from '../../interfaces/IFriend';
@@ -6,6 +8,9 @@ import { IUser } from '../../interfaces/IUser';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import FriendBtn from '../FriendBtn';
+import { ProfileOptionsStyle } from './style';
+import { RiGamepadFill } from 'react-icons/ri';
+import { IoImage } from 'react-icons/io5';
 
 interface Props {
   user: IUser
@@ -37,11 +42,18 @@ const ProfileOptions: React.FC<Props> = ({user}) => {
   }, [user]);
 
   return (
-    <div>
+    <ProfileOptionsStyle>
+      <button
+        type="button"
+      >
+        <MdHomeFilled />
+        Início
+      </button>
       <button
         type="button"
         onClick={() => navigate(`/friends/${username || ''}`)}
       >
+        <BsFillPersonFill />
         Amigos
       </button>
       {
@@ -54,25 +66,23 @@ const ProfileOptions: React.FC<Props> = ({user}) => {
       <button
         type="button"
       >
+        <BsHeartFill />
         Depoimentos
-      </button>
-      <button
-        type="button"
-      >
-        Início
       </button>
       <button
         type="button"
         onClick={() => navigate(`/posts/${username || ''}`)}
       >
+        <IoImage />
         Galeria
       </button>
       <button
         type="button"
       >
+        <RiGamepadFill />
         Jogos
       </button>
-    </div>
+    </ProfileOptionsStyle>
   );
 };
 
