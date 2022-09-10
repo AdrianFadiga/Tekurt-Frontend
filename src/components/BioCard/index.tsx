@@ -12,7 +12,7 @@ const BioCard = () => {
         <tbody>
           <tr>
             <td>Sobre mim:</td>
-            <td>{profileInfo?.biography}dawdadwdddddddddddddddddddddddddddd dddddddddddddddddddddddddddddddddddddddddddddddddddddddd</td>
+            <td>{profileInfo?.biography}dddddddddddddddddd ddddddddddddddd ddddddddddddd ddddddd dd dddddddddd dddddddddddddddddddd</td>
           </tr>
           <tr>
             <td>Relacionamento:</td>
