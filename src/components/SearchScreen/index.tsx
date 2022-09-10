@@ -4,29 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import { SearchScreenStyle } from './style';
 import { IoMdArrowBack } from 'react-icons/io';
 import UserSearch from '../UserSearch';
+import { IUser } from '../../interfaces/IUser';
 
 interface Props {
   setModal: () => void;
+  filteredUsers: IUser[];
 }
 
-const SearchScreen: React.FC<Props> = ({ setModal }) => {
+const SearchScreen: React.FC<Props> = ({ setModal, filteredUsers }) => {
   const [searchValue, setSearchValue] = useState('');
   const navigate = useNavigate();
-
-  const users = [
-    {
-      imageUrl: 'https://pinion.community/wp-content/uploads/2022/05/rihanna-nao-sai-do-lado-do-filho.jpg',
-      firstName: 'rihanna',
-      lastName: 'lopes',
-      username: 'rihanna'
-    },
-    {
-      imageUrl: 'https://static.vakinha.com.br/uploads/vakinha/image/2768983/1648580920.954.png?ims=280x280',
-      firstName: 'cesar',
-      lastName: 'almeida',
-      username: 'dancarino'
-    }
-  ];
 
   return (
     <SearchScreenStyle>
@@ -49,22 +36,7 @@ const SearchScreen: React.FC<Props> = ({ setModal }) => {
       </section>
 
       <section>
-        { users.map((user, index) => (
-          <UserSearch key={ index } user={ user } />
-        )) }
-        { users.map((user, index) => (
-          <UserSearch key={ index } user={ user } />
-        )) }
-        { users.map((user, index) => (
-          <UserSearch key={ index } user={ user } />
-        )) }
-        { users.map((user, index) => (
-          <UserSearch key={ index } user={ user } />
-        )) }
-        { users.map((user, index) => (
-          <UserSearch key={ index } user={ user } />
-        )) }
-        { users.map((user, index) => (
+        { filteredUsers.map((user, index) => (
           <UserSearch key={ index } user={ user } />
         )) }
       </section>
