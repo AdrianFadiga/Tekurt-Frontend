@@ -11,25 +11,18 @@ function SearchBar() {
   const [openModal, setOpenModal] = useState(false);
   const [filteredUsers, setFilteredUsers] = useState<IUser[]>([]);
 
-  const getAllUsers = async () => {
-    const fetchRoute = searchValue ? `users/?filter=${searchValue}` : 'users';
+  const getFilteredUsers = async () => {
     const token = localStorage.getItem('authTekurt');
-    const options = createOptionsRequest('GET', {}, fetchRoute, {authorization: `Bearer ${token}`});
+    const options = createOptionsRequest('GET', {}, `users/?filter=${searchValue}`, {authorization: `Bearer ${token}`});
     const response = await requestAPI<IUser[]>(options);
     setFilteredUsers(response.data);
   };
 
   useEffect(() => {
     setTimeout(() => {
-      getAllUsers();
-    }, 2000);
+      getFilteredUsers();
+    }, 700);
   }, [searchValue]);
-
-  // useEffect(() => {
-  //   const foundUsers = allUsers.filter((user) => [user.username.toLowerCase(), user.firstName.toLowerCase(), user.lastName.toLowerCase()]
-  //     .some((u) => u.includes(searchValue.toLowerCase())));
-  //   setFilteredUsers(foundUsers);
-  // }, [searchValue]);
 
   const setModal = () => {
     setOpenModal(!openModal);
@@ -40,6 +33,8 @@ function SearchBar() {
       <div className="input">
         <input
           type="text"
+          onFocus={() => setOpenModal(true)}
+          onBlur={() => setOpenModal(false)}
           value={searchValue}
           onChange={({target}) => setSearchValue(target.value)}
         />
