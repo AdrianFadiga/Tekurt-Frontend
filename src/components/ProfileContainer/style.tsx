@@ -9,8 +9,8 @@ export const ProfileContainerStyle = styled.div`
   padding-bottom: 22px;
 
   img {
-    width: 132px;
-    height: 132px;
+    width: 150px;
+    height: 150px;
     padding: 6px;
     border-radius: 50%;
     border: 2px solid blue;
@@ -32,4 +32,10 @@ export const ProfileContainerStyle = styled.div`
   p {
     color: ${({ theme }) => theme.colors.placeholder};
   }
+
+  @media(min-width: 992px) {
+    width: 132px;
+    height: 132px;
+  }
+
 `;
