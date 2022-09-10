@@ -34,8 +34,9 @@ export const ProfileContainerStyle = styled.div`
   }
 
   @media(min-width: 992px) {
-    width: 132px;
-    height: 132px;
+    img {
+      width: 132px;
+      height: 132px;
+    }    
   }
-
 `;

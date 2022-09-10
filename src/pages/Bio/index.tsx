@@ -6,6 +6,7 @@ import ProfileCard from '../../components/ProfileCard';
 import { useContext } from 'react';
 import { IContext, MyContext } from '../../context/MyContext';
 import FriendsDiv from '../../components/FriendsDiv';
+import { BioStyle } from './style';
 
 function Profile() {
   const { username } = useParams();
@@ -15,7 +16,7 @@ function Profile() {
     getProfileInfo(username);
   }, [username]);
   return (
-    <section>
+    <BioStyle>
       <Navbar />
       <main>
         <ProfileCard />
@@ -23,7 +24,7 @@ function Profile() {
         <h1>Amigos</h1>
         <FriendsDiv />
       </main>
-    </section>
+    </BioStyle>
   );
 }
 
