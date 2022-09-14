@@ -5,6 +5,7 @@ import { IPost } from '../../interfaces/IPost';
 import { IUser } from '../../interfaces/IUser';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
+import { PostsStyle } from './style';
 
 const Gallery = () => {
   const {username} = useParams();
@@ -68,8 +69,8 @@ const Gallery = () => {
 
 
   return (
-    <section>
-      {/* <Navbar /> */}
+    <PostsStyle>
+      <Navbar />
       <h1>{username ? `Galeria do ${username}` : 'Sua galeria'}</h1>
       {userPosts.map((post) => (
         <div key={post.id}>
@@ -108,7 +109,7 @@ const Gallery = () => {
         }
       </div>
       }
-    </section>
+    </PostsStyle>
   );
 };
 
