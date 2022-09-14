@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { IPost } from '../../interfaces/IPost';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
+import { AddPostStyle } from './style';
 
 const AddPost = () => {
   const [selectedFile, setSelectedFile] = useState<File>();
@@ -40,8 +41,7 @@ const AddPost = () => {
   }, [selectedFile]);
 
   return (
-    
-    <div>
+    <AddPostStyle>
       <h1>Adicionar publicação</h1>
       <form onSubmit={(e) => e.preventDefault()}>
         <input 
@@ -69,8 +69,7 @@ const AddPost = () => {
         fileTypeError &&
           <h1>O arquivo deve ser uma imagem</h1>
       }
-    </div>
-      
+    </AddPostStyle>
   );
 };
 

@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { AiFillInfoCircle, AiOutlineClose, AiOutlineInfoCircle } from 'react-icons/ai';
+import { AiFillInfoCircle, AiOutlineClose } from 'react-icons/ai';
 import { IContext, MyContext } from '../../context/MyContext';
 import { OptionsStyle } from './style';
 import { CgDarkMode } from 'react-icons/cg';
-import { BsFillPersonFill, BsPerson } from 'react-icons/bs';
-import { IoLogOut, IoLogOutOutline } from 'react-icons/io5';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { IoLogOut } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
 interface Props {

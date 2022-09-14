@@ -7,8 +7,7 @@ export const ProfileOptionsStyle = styled.section`
   flex-direction: column;
   justify-content: space-between;
   background-color: transparent;
-
-
+  
   button {
     display: flex;
     padding: 10px 0;

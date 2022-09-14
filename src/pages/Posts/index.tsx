@@ -38,14 +38,16 @@ const Gallery = () => {
     <PostsStyle>
       <Navbar />
       <main>
-        <h1>{username ? `Galeria do ${username}` : 'Sua galeria'}</h1>
-        { userPosts.map((post) => (
-          <div key={post.id}>
-            <img src={post.mediaUrl}/>
-            <p>{post.content}</p>
-          </div>
-        ))}
-        { !username && <AddPost />}
+        <h1>Publicações</h1>
+        {/* { !username && <AddPost />} */}
+        <section className='posts'>
+          { userPosts.map((post) => (
+            <div className="post" key={post.id}>
+              <img src={post.mediaUrl} alt="Imagem do post"/>
+              <figcaption>{post.content}</figcaption>
+            </div>
+          ))}
+        </section>
       </main>
     </PostsStyle>
   );
