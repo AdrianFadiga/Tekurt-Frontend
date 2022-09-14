@@ -20,8 +20,7 @@ function SearchBar() {
 
   useEffect(() => {
     setTimeout(() => {
-      getFilteredUsers();
-      console.log(filteredUsers);      
+      getFilteredUsers();     
     }, 700);
   }, [searchValue]);
 
