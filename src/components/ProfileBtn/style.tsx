@@ -20,7 +20,7 @@ export const ProfileStyle = styled.div`
     display: none;
   }
 
-  @media(min-width: 992px) {
+  @media(min-width: 1200px) {
     height: 100%;
     width: 100%;
     display: flex;

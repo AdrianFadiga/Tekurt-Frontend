@@ -55,10 +55,11 @@ export const FriendsStyle = styled.section`
     background-color: transparent;
   }
 
-  @media(min-width: 992px) {
+  @media(min-width: 1200px) {
     width: 320px;
     border-radius: 30px;
     border-top: none;
+    border: ${({ theme }) => theme.title === 'light' && `1px solid ${theme.colors.border}`};
 
     .titleSection h1 {
       font-size: 14px;

@@ -79,7 +79,7 @@ export const OptionsStyle = styled.section`
     padding: 8px;
   }
 
-  @media(min-width: 992px) {
+  @media(min-width: 1200px) {
     position: absolute;
     top: 50px;
     left: -25px;

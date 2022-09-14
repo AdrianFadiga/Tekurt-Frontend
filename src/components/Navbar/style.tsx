@@ -59,9 +59,10 @@ export const NavStyle = styled.header`
     font-size: 24px;
   }
 
-  @media(min-width: 992px) {
+  @media(min-width: 1200px) {
     height: 140px;
     padding: 0 5%;
+    border-bottom: none;
 
     .logo {
       width: 20%;
@@ -74,7 +75,7 @@ export const NavStyle = styled.header`
     }
 
     nav {
-      width: 80%;
+      width: 100%;
     }
 
     nav ul {
@@ -83,7 +84,7 @@ export const NavStyle = styled.header`
 
     ul li:nth-child(2) {
       padding: 0;
-      width: 65%;
+      width: 50%;
       height: 60px;
     }
 
@@ -108,9 +109,13 @@ export const NavStyle = styled.header`
     }
 
     ul li:nth-child(3) {
-      width: 258px;
+      width: 30%;
       height: 70px;
       margin-left: 35px;
     }
+  }
+
+  @media(min-width: 1500px) {
+    width: 1500px;
   }
 `;

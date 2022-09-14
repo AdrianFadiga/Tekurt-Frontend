@@ -8,11 +8,17 @@ export const BioStyle = styled.section`
     flex-direction: column;
   }
 
-  @media(min-width: 992px) {
+  @media(min-width: 1200px) {
     margin-top: 140px;
+    display: grid;
+    place-items: center;
+
     
     main {
       flex-direction: row;
+      justify-content: space-between;
+      padding: 0 20px;
+      width: 1250px;
     }
   }
 `;

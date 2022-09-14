@@ -52,11 +52,12 @@ export const BioCardStyle = styled.section`
     background-color: transparent;
   }
 
-  @media(min-width: 992px) {
+  @media(min-width: 1200px) {
     width: 500px;
     height: 600px;
     border-radius: 30px;
     border: none;
+    border: ${({ theme }) => theme.title === 'light' && `1px solid ${theme.colors.border}`};
 
     table tbody tr {
       flex-direction: row;

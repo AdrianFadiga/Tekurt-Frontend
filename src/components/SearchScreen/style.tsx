@@ -62,7 +62,7 @@ export const SearchScreenStyle = styled.section`
     border-radius: 20px;
   }
 
-  @media(min-width: 992px) {
+  @media(min-width: 1200px) {
     position: absolute;
     height: min-content;
     max-height: 400px;
