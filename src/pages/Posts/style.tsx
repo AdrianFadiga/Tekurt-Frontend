@@ -9,7 +9,7 @@ export const PostsStyle = styled.section`
   .posts {
     display: grid;
     grid-template-columns: 33% 33% 33%;
-    grid-auto-rows: 30%;
+    grid-auto-rows: 25%;
     gap: 2px;
     background-color: transparent;
   }
@@ -40,10 +40,10 @@ export const PostsStyle = styled.section`
     position: absolute;
     width: 100%;
     height: 100%;
-    top: 0;
+    bottom: 0;
     transition: 0.3s all ease-in-out;
     opacity: 0;
-    background-color: #0000004e;
+    background-color: #00000070;
     display: grid;
     place-items: center;
     color: white;
@@ -61,13 +61,14 @@ export const PostsStyle = styled.section`
     main {
       width: 935px;
       border-top: 1px solid ${({ theme }) => theme.colors.border};
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
 
     .posts {
       display: grid;
       flex-wrap: wrap;
       grid-template-columns: 293px 293px 293px;
+      grid-auto-rows: auto;
       gap: 27px;
       justify-content: flex-start;
       background-color: transparent;
@@ -85,20 +86,7 @@ export const PostsStyle = styled.section`
     }
 
     figcaption {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      transition: 0.3s all ease-in-out;
-      opacity: 0;
-      background-color: #0000004e;
-      display: grid;
-      place-items: center;
-      color: white;
-    }
-
-    .post:hover figcaption {
-      opacity: 1;
+      border-radius: 15px;
     }
   }
 `;
