@@ -22,7 +22,7 @@ export const PostsStyle = styled.section`
     color: ${({ theme }) => theme.colors.text};
     background-color: transparent;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
     text-transform: uppercase;
     padding: 15px;
   }
@@ -61,6 +61,10 @@ export const PostsStyle = styled.section`
     margin-top: 140px;
     display: grid;
     place-items: center;
+
+    .desktop {
+      display: block;
+    }
 
     main {
       width: 935px;
