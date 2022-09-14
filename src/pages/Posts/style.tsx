@@ -4,7 +4,14 @@ export const PostsStyle = styled.section`
   main {
     display: flex;
     flex-direction: column;
-    margin-bottom: 25px;
+  }
+
+  .posts {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-auto-rows: 30%;
+    gap: 2px;
+    background-color: transparent;
   }
 
   main h1 {
@@ -16,18 +23,9 @@ export const PostsStyle = styled.section`
     padding: 15px;
   }
 
-  .posts {
-    display: grid;
-    flex-wrap: wrap;
-    grid-template-columns: 293px 293px 293px;
-    gap: 27px;
-    justify-content: flex-start;
-    background-color: transparent;
-  }
-
   .post {
-    width: 293px;
-    height: 293px;
+    width: 100%;
+    height: 100%;
     position: relative;
     cursor: pointer;
   }
@@ -39,20 +37,20 @@ export const PostsStyle = styled.section`
   }
 
   figcaption {
-    opacity: 0;
-  }
-
-  .post:hover figcaption {
-    transition: 0.3s all ease-in-out;
-    opacity: 1;
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
+    transition: 0.3s all ease-in-out;
+    opacity: 0;
     background-color: #0000004e;
     display: grid;
     place-items: center;
     color: white;
+  }
+
+  .post:hover figcaption {
+    opacity: 1;
   }
 
   @media(min-width: 1200px) {
@@ -63,6 +61,39 @@ export const PostsStyle = styled.section`
     main {
       width: 935px;
       border-top: 1px solid ${({ theme }) => theme.colors.border};
+      margin-bottom: 25px;
+    }
+
+    .posts {
+      display: grid;
+      flex-wrap: wrap;
+      grid-template-columns: 293px 293px 293px;
+      gap: 27px;
+      justify-content: flex-start;
+      background-color: transparent;
+    }
+
+    .post img {
+      width: 293px;
+      height: 293px;
+      object-fit: cover;
+    }
+
+    figcaption {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      transition: 0.3s all ease-in-out;
+      opacity: 0;
+      background-color: #0000004e;
+      display: grid;
+      place-items: center;
+      color: white;
+    }
+
+    .post:hover figcaption {
+      opacity: 1;
     }
   }
 `;
