@@ -21,7 +21,6 @@ function Profile() {
       <main>
         <ProfileCard />
         <BioCard />
-        <h1>Amigos</h1>
         <FriendsDiv />
       </main>
     </BioStyle>

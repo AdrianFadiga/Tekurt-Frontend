@@ -1,25 +1,47 @@
 import { useContext } from 'react';
 import { IContext, MyContext } from '../../context/MyContext';
 import FriendsCard from '../FriendsCard';
+import { FriendsStyle } from './style';
 
 
 const FriendsDiv = () => {
   const {profileInfo} = useContext(MyContext) as IContext;
   const pendingFriends = profileInfo?.friends.filter((f) => f.status === 'pending');
   const acceptedFriends = profileInfo?.friends.filter((f) => f.status === 'accepted');
+  console.log(acceptedFriends);
+
+  const friends = [{
+    friend: {
+      firstName: 'matheus',
+      imageUrl: 'https://pbs.twimg.com/profile_images/1433557875574534148/6q4ZzmrA_400x400.jpg',
+      lastName: 'ferreira',
+      username: 'theusferreira'
+    },
+    friendId: 'dwadaw',
+    status: 'accepted',
+    userId: 'ddd'
+  },
+  {
+    friend: {
+      firstName: 'matheus',
+      imageUrl: 'https://pbs.twimg.com/profile_images/1433557875574534148/6q4ZzmrA_400x400.jpg',
+      lastName: 'ferreira',
+      username: 'theusferreira'
+    },
+    friendId: 'dwadaw',
+    status: 'accepted',
+    userId: 'ddd'
+  }];
+  
   return (
-    <div>
-      <div className="pendingFriends">
-        {pendingFriends?.map((friend, i) => (
-          <FriendsCard
-            key={`${friend}${i}`} 
-            friend={friend}
-            pending={true}          
-          />
-        ))}
+    <FriendsStyle>
+      <div className='titleSection'>
+        <h1>Amigos</h1>
+        <a href="#">Ver todos</a>
       </div>
+
       <div className="acceptedFriends">
-        {acceptedFriends?.map((friend, i) => (
+        {friends?.map((friend, i) => (
           <FriendsCard 
             key={`${i}${friend}`}
             friend={friend}
@@ -27,7 +49,7 @@ const FriendsDiv = () => {
           />
         ))}
       </div>
-    </div>
+    </FriendsStyle>
   );
 };
 
