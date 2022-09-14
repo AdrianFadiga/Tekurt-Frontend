@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BsPlusSquareFill } from 'react-icons/bs';
+import { BsPlusSquare, BsPlusSquareFill } from 'react-icons/bs';
 import FormNewPost from '../FormNewPost';
 import { AddPostStyle } from './style';
 
@@ -17,7 +17,7 @@ const AddPost: React.FC<Props> = ({ className }) => {
   return (
     <AddPostStyle className={ className }>
       <button onClick={ setModal }>
-        <BsPlusSquareFill />
+        <BsPlusSquare />
       </button>
 
       { openModal && <FormNewPost /> }

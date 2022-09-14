@@ -9,6 +9,7 @@ export const AddPostStyle = styled.section`
     border: none;
     cursor: pointer;
     color: ${({ theme }) => theme.colors.secondary};
+    font-size: 24px;
   }
 
   @media(min-width: 1200px) {
