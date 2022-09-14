@@ -6,11 +6,15 @@ export const PostsStyle = styled.section`
     flex-direction: column;
   }
 
+  .desktop {
+    display: none;
+  }
+
   .posts {
     display: grid;
     grid-template-columns: 33% 33% 33%;
     grid-auto-rows: 25%;
-    gap: 2px;
+    gap: 0.5%;
     background-color: transparent;
   }
 

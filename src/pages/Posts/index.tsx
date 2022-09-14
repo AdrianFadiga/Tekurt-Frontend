@@ -39,7 +39,7 @@ const Gallery = () => {
       <Navbar />
       <main>
         <h1>Publicações</h1>
-        {/* { !username && <AddPost />} */}
+        { !username && <AddPost className='desktop'/> }
         <section className='posts'>
           { userPosts.map((post) => (
             <div className="post" key={post.id}>

@@ -65,6 +65,10 @@ export const NavStyle = styled.header`
     padding: 0 5%;
     border-bottom: none;
 
+    .mobile {
+      display: none;
+    }
+
     .logo {
       width: 20%;
       padding: 6px;
@@ -83,7 +87,7 @@ export const NavStyle = styled.header`
       height: 100%;
     }
 
-    ul li:nth-child(2) {
+    ul li:nth-child(3) {
       padding: 0;
       width: 50%;
       height: 60px;
@@ -109,10 +113,14 @@ export const NavStyle = styled.header`
       background-color: ${({ theme }) => theme.colors.background};
     }
 
-    ul li:nth-child(3) {
+    ul li:nth-child(4) {
       width: 30%;
       height: 70px;
       margin-left: 35px;
+    }
+
+    .newPost {
+      display: none;
     }
   }
 

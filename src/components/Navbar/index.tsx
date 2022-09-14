@@ -3,6 +3,7 @@ import Logo from '../Logo';
 import SearchBar from '../SearchBar';
 import ProfileBtn from '../ProfileBtn';
 import { NavStyle } from './style';
+import AddPost from '../AddPost';
 
 function Navbar() {
   return (
@@ -16,6 +17,7 @@ function Navbar() {
       <nav>
         <ul>
           <li className="homeBtn"><HomeBtn /></li>
+          <li><AddPost className="mobile"/></li>
           <li><SearchBar /></li>
           <li><ProfileBtn /></li>
         </ul>
