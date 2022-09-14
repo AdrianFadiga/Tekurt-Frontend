@@ -4,6 +4,7 @@ import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { Friend } from '../../types/Friend';
 import FriendBtn from '../FriendBtn';
+import { FriendsCardStyle } from './style';
 
 interface Props {
   friend: Friend
@@ -27,16 +28,21 @@ const FriendsCard: React.FC<Props> = ({friend: {friend, friendId}, pending}) => 
     setShowButtons(false);
     setShowRejectInvite(true);
   };
+  
   return (
-    <div>
-      {
+    <FriendsCardStyle>
+      <Link 
+        to={`/user/${friend.username}`}>
+        <img src={friend.imageUrl} />
+        <p>{friend.username}</p>
+      </Link>
+
+      {/* {
         showPendingInvite &&
-        <div>
+        <div className='friend'>
           <Link 
             to={`/user/${friend.username}`}>
             <img src={friend.imageUrl} />
-            <p>{friend.firstName}</p>
-            <p>{friend.lastName}</p>
             <p>{friend.username}</p>
           </Link>
         </div>
@@ -57,8 +63,8 @@ const FriendsCard: React.FC<Props> = ({friend: {friend, friendId}, pending}) => 
       {
         showRejectInvite &&
         <h1>Convite recusado</h1>
-      }
-    </div>   
+      } */}
+    </FriendsCardStyle>
   );
 };
 
