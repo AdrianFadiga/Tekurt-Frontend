@@ -8,6 +8,7 @@ export const ProfileOptionsStyle = styled.section`
   justify-content: space-between;
   background-color: transparent;
 
+
   button {
     display: flex;
     padding: 10px 0;
@@ -18,6 +19,17 @@ export const ProfileOptionsStyle = styled.section`
     color:  ${({ theme }) => theme.colors.text};
     font-size: 14px;
     font-weight: 600;
+    cursor: pointer;
+  }
+
+  button:hover {
+    color: ${({ theme }) => theme.colors.secondary};
+    transition: 0.1s all ease-in;
+  }
+
+  button:hover svg {
+    color: ${({ theme }) => theme.colors.secondary};
+    transition: 0.1s all ease-in;
   }
 
   button svg {
