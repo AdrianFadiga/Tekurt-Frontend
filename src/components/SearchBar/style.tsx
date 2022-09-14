@@ -21,7 +21,7 @@ export const SearchStyle = styled.form`
     cursor: pointer;
   }
 
-  @media(min-width: 992px) {
+  @media(min-width: 1200px) {
     .input {
       height: 60px;
       width: 100%;

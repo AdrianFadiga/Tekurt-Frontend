@@ -33,7 +33,7 @@ export const ProfileContainerStyle = styled.div`
     color: ${({ theme }) => theme.colors.placeholder};
   }
 
-  @media(min-width: 992px) {
+  @media(min-width: 1200px) {
     img {
       width: 132px;
       height: 132px;

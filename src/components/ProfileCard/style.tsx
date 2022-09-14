@@ -9,9 +9,10 @@ export const ProfileCardStyle = styled.section`
   flex-direction: column;
   justify-content: space-between;
 
-  @media(min-width: 992px) {
+  @media(min-width: 1200px) {
     width: 270px;
     height: 600px;
     border-radius: 30px;
+    border: ${({ theme }) => theme.title === 'light' && `1px solid ${theme.colors.border}`};
   }
 `;
