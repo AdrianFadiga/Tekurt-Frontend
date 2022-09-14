@@ -12,7 +12,6 @@ export const BioStyle = styled.section`
     margin-top: 140px;
     display: grid;
     place-items: center;
-
     
     main {
       flex-direction: row;
