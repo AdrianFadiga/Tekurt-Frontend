@@ -21,6 +21,7 @@ function SearchBar() {
   useEffect(() => {
     setTimeout(() => {
       getFilteredUsers();
+      console.log(filteredUsers);      
     }, 700);
   }, [searchValue]);
 
@@ -49,9 +50,12 @@ function SearchBar() {
       </div>
       
       { openModal && (
-        <SearchScreen 
-          setModal={ setModal }
-          filteredUsers={filteredUsers}/>
+        <>
+          <SearchScreen 
+            setModal={ setModal }
+            filteredUsers={filteredUsers}
+          />
+        </>        
       ) }
     </SearchStyle>
   );

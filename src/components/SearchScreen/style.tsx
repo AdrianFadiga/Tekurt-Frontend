@@ -64,11 +64,26 @@ export const SearchScreenStyle = styled.section`
 
   @media(min-width: 992px) {
     position: absolute;
-    height: 400px;
+    height: min-content;
+    max-height: 400px;
     width: 100%;
     top: 60px;
     -webkit-box-shadow: 1px 5px 8px -1px rgba(0,0,0,0.23); 
     box-shadow: 1px 5px 8px -1px rgba(0,0,0,0.23);
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: ${({ theme }) => theme.colors.secondaryBackground};
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: ${({ theme }) => theme.colors.secondary};
+      border-radius: 20px;
+    }
 
     section:nth-child(1) {
       display: none;
