@@ -61,14 +61,14 @@ export const PostsStyle = styled.section`
     main {
       width: 935px;
       border-top: 1px solid ${({ theme }) => theme.colors.border};
-      margin-bottom: 15px;
+      margin-bottom: 25px;
     }
 
     .posts {
       display: grid;
       flex-wrap: wrap;
       grid-template-columns: 293px 293px 293px;
-      grid-auto-rows: auto;
+      grid-auto-rows: 293px;
       gap: 27px;
       justify-content: flex-start;
       background-color: transparent;
