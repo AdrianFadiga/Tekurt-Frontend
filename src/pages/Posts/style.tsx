@@ -73,10 +73,15 @@ export const PostsStyle = styled.section`
       background-color: transparent;
     }
 
+    .post {
+      border-radius: 30px;
+    }
+
     .post img {
       width: 293px;
       height: 293px;
       object-fit: cover;
+      border-radius: 15px;
     }
 
     figcaption {
