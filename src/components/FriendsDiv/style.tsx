@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const FriendsStyle = styled.section`
-  width: 320px;
-  border-radius: 30px;
+  width: 100%;
   padding: 40px;
   background-color: ${({ theme }) => theme.colors.background};
   min-height: min-content;
   height: 450px;
   max-height: 450px;
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
 
   .titleSection {
     display: flex;
@@ -23,12 +23,12 @@ export const FriendsStyle = styled.section`
 
   .titleSection h1 {
     color: ${({ theme }) => theme.colors.text};
-    font-size: 14px;
+    font-size: 25px;
   }
 
   .titleSection a {
     color: ${({ theme }) => theme.colors.secondary};
-    font-size: 10px;
+    font-size: 20px;
     text-decoration: none;
   }
 
@@ -53,5 +53,19 @@ export const FriendsStyle = styled.section`
     display: grid;
     place-items: center;
     background-color: transparent;
+  }
+
+  @media(min-width: 992px) {
+    width: 320px;
+    border-radius: 30px;
+    border-top: none;
+
+    .titleSection h1 {
+      font-size: 14px;
+    }
+
+    .titleSection a {
+      font-size: 10px;
+    }
   }
 `;
