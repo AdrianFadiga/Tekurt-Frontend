@@ -61,44 +61,51 @@ export const NavStyle = styled.header`
   }
 
   @media(min-width: 1200px) {
-    height: 140px;
-    padding: 0 5%;
+    height: 70px;
+    padding: 0 12%;
     border-bottom: none;
 
+    .mobile {
+      display: none;
+    }
+
     .logo {
-      width: 20%;
+      width: 10%;
       padding: 6px;
     }
 
     .circle span {
-      width: 25px;
-      height: 25px;
+      width: 15px;
+      height: 15px;
     }
 
     nav {
       width: 100%;
+      padding: 0 20px;
     }
 
     nav ul {
       height: 100%;
     }
 
-    ul li:nth-child(2) {
+    ul li:nth-child(3) {
       padding: 0;
-      width: 50%;
-      height: 60px;
+      width: 70%;
+      height: 30px;
     }
 
     ul li:nth-child(1) {
       padding: 0;
       width: 10%;
-      height: 60px;
+      height: 30px;
+      display: flex;
+      justify-content: flex-end;
     }
 
     .homeBtn a {
       border-radius: 50%;
-      height: 60px;
-      width: 60px;
+      height: 30px;
+      width: 30px;
       display: grid;
       place-items: center;
       border: ${({ theme }) => theme.title === 'light' && `1px solid ${theme.colors.border}`};
@@ -106,13 +113,18 @@ export const NavStyle = styled.header`
     }
 
     .homeBtn svg {
+      font-size: 100%;
       background-color: ${({ theme }) => theme.colors.background};
     }
 
-    ul li:nth-child(3) {
+    ul li:nth-child(4) {
       width: 30%;
-      height: 70px;
+      height: 100%;
       margin-left: 35px;
+    }
+
+    .newPost {
+      display: none;
     }
   }
 

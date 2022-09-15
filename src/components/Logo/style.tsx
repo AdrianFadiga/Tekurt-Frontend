@@ -7,6 +7,6 @@ export const LogoStyle = styled.div`
   text-align: center;
 
   @media(min-width: 1200px) {
-    font-size: ${({ theme }) => theme.sizes.xxLarge };
+    font-size: 110%;
   }
 `;

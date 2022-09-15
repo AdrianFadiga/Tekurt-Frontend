@@ -6,11 +6,15 @@ export const PostsStyle = styled.section`
     flex-direction: column;
   }
 
+  .desktop {
+    display: none;
+  }
+
   .posts {
     display: grid;
     grid-template-columns: 33% 33% 33%;
     grid-auto-rows: 25%;
-    gap: 2px;
+    gap: 0.5%;
     background-color: transparent;
   }
 
@@ -18,7 +22,7 @@ export const PostsStyle = styled.section`
     color: ${({ theme }) => theme.colors.text};
     background-color: transparent;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
     text-transform: uppercase;
     padding: 15px;
   }
@@ -47,6 +51,9 @@ export const PostsStyle = styled.section`
     display: grid;
     place-items: center;
     color: white;
+    white-space: pre-wrap;
+    word-break: break-all;
+    padding: 0 10px;
   }
 
   .post:hover figcaption {
@@ -54,12 +61,16 @@ export const PostsStyle = styled.section`
   }
 
   @media(min-width: 1200px) {
-    margin-top: 140px;
+    margin-top: 70px;
     display: grid;
     place-items: center;
 
+    .desktop {
+      display: block;
+    }
+
     main {
-      width: 935px;
+      padding: 0 12%;
       border-top: 1px solid ${({ theme }) => theme.colors.border};
       margin-bottom: 25px;
     }

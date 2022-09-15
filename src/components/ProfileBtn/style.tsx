@@ -27,8 +27,8 @@ export const ProfileStyle = styled.div`
     justify-content: space-between;
 
     img {
-      height: 40px;
-      width: 40px;
+      height: 30px;
+      width: 30px;
     }
 
     div {
@@ -39,7 +39,7 @@ export const ProfileStyle = styled.div`
     }
 
     div p {
-      height: 20px;
+      height: 100%;
       overflow: hidden;
     }
 

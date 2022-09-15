@@ -96,6 +96,8 @@ export const OptionsStyle = styled.section`
     }
 
     .list li {
+      display: flex !important;
+      justify-content: flex-start !important;
       width: 100% !important;
       padding: 0 5px !important;
       margin: 16px 0 !important;

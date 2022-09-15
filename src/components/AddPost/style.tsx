@@ -1,5 +1,30 @@
 import styled from 'styled-components';
 
 export const AddPostStyle = styled.section`
-  background-color: transparent;
+  .desktop {
+    display: none;
+  }
+
+  button {
+    border: none;
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.secondary};
+    font-size: 24px;
+  }
+
+  @media(min-width: 1200px) {
+    text-align: right;
+    padding: 10px;
+
+    .desktop {
+      display: block;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      color: ${({ theme }) => theme.colors.secondary};
+      font-size: 40px;
+  }
+  }  
 `;

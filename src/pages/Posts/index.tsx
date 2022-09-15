@@ -35,11 +35,12 @@ const Gallery = () => {
   }, [username]);
 
   return (
+    // arrumar bug quando envia arquivo no formato webp e tbm arrumar a ordenação dos posts (por ordem de criação)
     <PostsStyle>
       <Navbar />
       <main>
         <h1>Publicações</h1>
-        {/* { !username && <AddPost />} */}
+        { !username && <AddPost className='desktop'/> }
         <section className='posts'>
           { userPosts.map((post) => (
             <div className="post" key={post.id}>

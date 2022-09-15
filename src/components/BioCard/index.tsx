@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import { IContext, MyContext } from '../../context/MyContext';
 import { BioCardStyle } from './style';
 
-
 const BioCard = () => {
   const {profileInfo} = useContext(MyContext) as IContext;
+  
   return (
     <BioCardStyle>
       <h2>Bio</h2>

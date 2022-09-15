@@ -36,6 +36,7 @@ function SearchBar() {
           onFocus={() => setOpenModal(true)}
           onBlur={() => setOpenModal(false)}
           value={searchValue}
+          placeholder="Pesquisar"
           onChange={({target}) => setSearchValue(target.value)}
         />
         <button

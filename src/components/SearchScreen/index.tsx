@@ -23,6 +23,7 @@ const SearchScreen: React.FC<Props> = ({ setModal, filteredUsers }) => {
           type="text"
           className='searchInput'
           value={searchValue}
+          placeholder="Pesquisar"
           onChange={({target}) => setSearchValue(target.value)}
         />
         <button
