@@ -8,7 +8,6 @@ const FriendsDiv = () => {
   const {profileInfo} = useContext(MyContext) as IContext;
   const pendingFriends = profileInfo?.friends.filter((f) => f.status === 'pending');
   const acceptedFriends = profileInfo?.friends.filter((f) => f.status === 'accepted');
-  console.log(acceptedFriends);
 
   const friends = [{
     friend: {
