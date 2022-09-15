@@ -59,6 +59,7 @@ const editBio = () => {
                 onChange={({target}) => setSocialStatusId(Number(target.value))}>
                 {socialStatus.map(({id, status}) => (
                   <option
+                    selected={profileInfo?.socialStatusId === id}
                     value={id} 
                     key={status}>
                     {status}
@@ -73,8 +74,14 @@ const editBio = () => {
               <select
                 onChange={({target}) => setChildren(target.value === 'true')}
               >
-                <option value="true">Sim</option>
-                <option value="false">Não</option>
+                <option 
+                  value="true"
+                  selected={children}
+                >Sim</option>
+                <option 
+                  value="false"
+                  selected={!children}
+                >Não</option>
               </select>
             </td>
           </tr>
@@ -84,8 +91,14 @@ const editBio = () => {
               <select
                 onChange={({target}) => setSmokes(target.value === 'true')}
               >
-                <option value="true">Sim</option>
-                <option value="false">Não</option>
+                <option 
+                  value="true"
+                  selected={smokes}
+                >Sim</option>
+                <option 
+                  value="false"
+                  selected={!smokes}
+                >Não</option>
               </select>
             </td>
           </tr>
@@ -96,6 +109,7 @@ const editBio = () => {
                 onChange={({target}) => setDrinkingId(Number(target.value))}>
                 {drinking.map(({id, option}) => (
                   <option
+                    selected={drinkingId === id}
                     value={id} 
                     key={option}>
                     {option}
@@ -111,6 +125,7 @@ const editBio = () => {
                 onChange={({target}) => setSignId(Number(target.value))}>
                 {signs.map(({id, sign}) => (
                   <option
+                    selected={profileInfo?.signId === id}
                     value={id} 
                     key={sign}>
                     {sign}
