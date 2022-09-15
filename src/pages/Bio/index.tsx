@@ -11,8 +11,8 @@ import { BioStyle } from './style';
 
 function Profile() {
   const { username } = useParams();
-  const { getProfileInfo } = useContext(MyContext) as IContext;
-  const [editing, setEditing] = useState<boolean>(false);
+  const { getProfileInfo, editingProfile, changePhoto } = useContext(MyContext) as IContext;
+  const [editingBio, setEditingBio] = useState<boolean>(false);
 
   useEffect(() => {
     getProfileInfo(username);
@@ -21,12 +21,19 @@ function Profile() {
     <BioStyle>
       <Navbar />
       <main>
-        <ProfileCard />
+        <ProfileCard 
+          editingBio={editingBio}
+        />
         {!username &&
-        <button onClick={() => setEditing(!editing)}>Editar perfil</button>
+        <button 
+          onClick={() => setEditingBio(!editingBio)}
+          disabled={editingProfile || changePhoto}
+        >
+            Editar perfil
+        </button>
         }
         {
-          editing ? <EditBio /> :  <BioCard />          
+          editingBio ? <EditBio /> :  <BioCard />          
         }
           
         <FriendsDiv />
