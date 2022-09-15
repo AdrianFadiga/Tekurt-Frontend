@@ -9,6 +9,11 @@ export interface IContext {
   getProfileInfo(username: string | undefined): void;
   profileImg: IUser | undefined;
   getProfileImg(): void;
+  editingProfile: boolean;
+  setEditingProfile(bool: boolean): void
+  changePhoto: boolean;
+  setChangePhoto(bool: boolean): void
+
 }
 
 export const MyContext = createContext<IContext | null>(null);
