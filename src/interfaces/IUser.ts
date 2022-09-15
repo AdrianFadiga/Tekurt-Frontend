@@ -7,14 +7,23 @@ export interface IUser {
 	username: string,
 	email: string,
 	imageUrl: string,
-	socialStatusId: string,
-	children: string,
-	smokes: string,
-	drinkingId: string,
-	signId: string,
+	socialStatusId: number,
+	children: boolean,
+	smokes: boolean,
+	drinkingId: number,
+	signId: number,
 	biography: string,
 	active: boolean,
 	createdAt: string,
 	updatedAt: string,
-	friends: Friend[]
+	friends: Friend[],
+	socialStatus: {
+		status: string
+	},
+	sign: {
+		sign: string
+	},
+	drinking: {
+		option: string
+	},
 }
