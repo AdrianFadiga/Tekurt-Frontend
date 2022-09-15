@@ -4,6 +4,7 @@ import { IPost } from '../../interfaces/IPost';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { FormPostStyle } from './style';
+import { BiArrowBack } from 'react-icons/bi';
 
 interface Props {
   setModal: () => void
@@ -60,6 +61,10 @@ const FormNewPost: React.FC<Props> = ({ setModal }) => {
     }
   };
 
+  const clearImage = () => {
+    setSelectedFile(undefined);
+  };
+
   return (
     <FormPostStyle>
       <button className="emptyModal" onClick={ setModal }/>
@@ -67,6 +72,7 @@ const FormNewPost: React.FC<Props> = ({ setModal }) => {
         <div className='contentPost'>
           { selectedFile ? (
             <>
+              <button onClick={ clearImage } className="backImage"><BiArrowBack /></button>
               <input 
                 type="text" 
                 onChange={({target}) => setContent(target.value)}
