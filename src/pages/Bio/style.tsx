@@ -9,7 +9,7 @@ export const BioStyle = styled.section`
   }
 
   @media(min-width: 1200px) {
-    margin-top: 140px;
+    margin-top: 70px;
     display: grid;
     place-items: center;
     

@@ -20,7 +20,7 @@ const AddPost: React.FC<Props> = ({ className }) => {
         <BsPlusSquare />
       </button>
 
-      { openModal && <FormNewPost /> }
+      { openModal && <FormNewPost setModal={ setModal }/> }
     </AddPostStyle>
   );
 };

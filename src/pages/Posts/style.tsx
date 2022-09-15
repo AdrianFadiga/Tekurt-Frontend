@@ -51,6 +51,9 @@ export const PostsStyle = styled.section`
     display: grid;
     place-items: center;
     color: white;
+    white-space: pre-wrap;
+    word-break: break-all;
+    padding: 0 10px;
   }
 
   .post:hover figcaption {
@@ -58,7 +61,7 @@ export const PostsStyle = styled.section`
   }
 
   @media(min-width: 1200px) {
-    margin-top: 140px;
+    margin-top: 70px;
     display: grid;
     place-items: center;
 
@@ -67,7 +70,7 @@ export const PostsStyle = styled.section`
     }
 
     main {
-      width: 935px;
+      padding: 0 12%;
       border-top: 1px solid ${({ theme }) => theme.colors.border};
       margin-bottom: 25px;
     }

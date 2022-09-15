@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react';
+import { IoImage } from 'react-icons/io5';
 import { IPost } from '../../interfaces/IPost';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
+import { FormPostStyle } from './style';
 
-function FormNewPost() {
+interface Props {
+  setModal: () => void
+}
+
+const FormNewPost: React.FC<Props> = ({ setModal }) => {
   const [selectedFile, setSelectedFile] = useState<File>();
   const [fileSizeError, setFileSizeError] = useState<boolean>(false);
   const [fileTypeError, setFileTypeError] = useState<boolean>(false);
+  const [srcPreview, setSrcPreview] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
 
@@ -20,6 +27,20 @@ function FormNewPost() {
       authorization: `Bearer ${token}`});
     await requestAPI<IPost[]>(options);
     window.location.reload();
+  };
+
+  const readImage = (target: any) => {
+    setSelectedFile(target.files[0]);
+    
+    const file = new FileReader();
+
+    file.onload = (e) => {
+      console.log(e.target?.result);
+      
+      setSrcPreview(e.target?.result as string);
+    };
+
+    file.readAsDataURL(target.files[0]);
   };
 
   useEffect(() => {
@@ -40,24 +61,46 @@ function FormNewPost() {
   };
 
   return (
-    <section>
+    <FormPostStyle>
+      <button className="emptyModal" onClick={ setModal }/>
       <form onSubmit={(e) => e.preventDefault()}>
-        <input 
-          type="file" 
-          name="sampleFile" 
-          onChange={({target}) => setSelectedFile(target.files[0])}
-        />
-        <input 
-          type="text" 
-          onChange={({target}) => setContent(target.value)}
-          value={content}
-        />
-        <button
-          onClick={() => createPost()}
-          disabled={isDisabled}
-        >
-            Submit
-        </button>          
+        <div className='contentPost'>
+          { selectedFile ? (
+            <>
+              <input 
+                type="text" 
+                onChange={({target}) => setContent(target.value)}
+                value={content}
+                placeholder="No que você está pensando?"
+                maxLength={ 150 }
+              />
+
+              <button
+                onClick={() => createPost()}
+                disabled={isDisabled}
+                className="submitPost"
+              >
+                Publicar
+              </button> 
+            </>                      
+          ) : <h1>Nova publicação</h1>}
+        </div>
+
+        <label className="inputImage">
+          { selectedFile ? (
+            <div className="preview" style={{backgroundImage: `url(${ srcPreview })`}}/>
+          ) : (
+            <>
+              <IoImage />
+              <p>Selecionar Imagem</p>
+              <input 
+                type="file" 
+                name="sampleFile" 
+                onChange={({target}) => readImage(target)}
+              />
+            </>
+          )}
+        </label>     
       </form>
       {
         fileSizeError &&
@@ -67,9 +110,8 @@ function FormNewPost() {
         fileTypeError &&
           <h1>O arquivo deve ser uma imagem</h1>
       }
-    </section>
-    
+    </FormPostStyle>    
   );
-}
+};
 
 export default FormNewPost;
