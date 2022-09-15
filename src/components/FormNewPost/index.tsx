@@ -5,6 +5,7 @@ import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { FormPostStyle } from './style';
 import { BiArrowBack } from 'react-icons/bi';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   setModal: () => void
@@ -17,6 +18,7 @@ const FormNewPost: React.FC<Props> = ({ setModal }) => {
   const [srcPreview, setSrcPreview] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
+  const navigate = useNavigate();
 
   const createPost = async () => {
     const token = localStorage.getItem('authTekurt');
@@ -27,7 +29,7 @@ const FormNewPost: React.FC<Props> = ({ setModal }) => {
       'Content-Type': 'multipart/form-data',
       authorization: `Bearer ${token}`});
     await requestAPI<IPost[]>(options);
-    window.location.reload();
+    navigate('/posts');
   };
 
   const readImage = (target: any) => {
@@ -72,7 +74,9 @@ const FormNewPost: React.FC<Props> = ({ setModal }) => {
         <div className='contentPost'>
           { selectedFile ? (
             <>
-              <button onClick={ clearImage } className="backImage"><BiArrowBack /></button>
+              <button type="button" onClick={ clearImage } className="backImage">
+                <BiArrowBack />
+              </button>
               <input 
                 type="text" 
                 onChange={({target}) => setContent(target.value)}
@@ -85,6 +89,7 @@ const FormNewPost: React.FC<Props> = ({ setModal }) => {
                 onClick={() => createPost()}
                 disabled={isDisabled}
                 className="submitPost"
+                type='submit'
               >
                 Publicar
               </button> 

@@ -67,7 +67,7 @@ export const SearchScreenStyle = styled.section`
     height: min-content;
     max-height: 400px;
     width: 100%;
-    top: 60px;
+    top: 30px;
     -webkit-box-shadow: 1px 5px 8px -1px rgba(0,0,0,0.23); 
     box-shadow: 1px 5px 8px -1px rgba(0,0,0,0.23);
     overflow: auto;
