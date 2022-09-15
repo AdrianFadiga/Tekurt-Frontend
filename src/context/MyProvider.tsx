@@ -38,6 +38,9 @@ const MyProvider: React.FC<Props> = ({ children }) => {
     setProfileImg(response.data);
   };
 
+  const [editingProfile, setEditingProfile] = useState<boolean>(false);
+  const [changePhoto, setChangePhoto] = useState<boolean>(false);
+
   const state = {
     theme,
     toggleTheme,
@@ -45,6 +48,10 @@ const MyProvider: React.FC<Props> = ({ children }) => {
     getProfileInfo,
     profileImg,
     getProfileImg,
+    editingProfile,
+    setEditingProfile,
+    changePhoto,
+    setChangePhoto,
   };
 
   return (
