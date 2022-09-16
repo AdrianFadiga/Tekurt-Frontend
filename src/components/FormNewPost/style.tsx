@@ -23,7 +23,7 @@ export const FormPostStyle = styled.section`
     transform: translate(-50%, -50%);
     z-index: 2;
     border-radius: 30px;
-    width: 60%;
+    width: 90%;
     height: 90vh;
     display: flex;
     flex-direction: column;
@@ -31,6 +31,8 @@ export const FormPostStyle = styled.section`
   }
 
   .contentPost h1 {
+    text-align: center;
+    width: 100%;
     padding: 0;
     height: 100%;
     font-size: 100%;
@@ -48,22 +50,32 @@ export const FormPostStyle = styled.section`
     border-top-right-radius: 30px;
     padding: 10px 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .contentPost input {
+    width: 70%;
     padding: 0;
     margin: 0;
     border: none;
     border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+    padding: 0 5px;
+    color: ${({ theme }) => theme.colors.text};
   }
 
   .contentPost input:focus {
     outline: none;
   }
 
-  .submitPost {
+  .contentPost .backImage {
+    width: 10%;
     font-size: 100%;
+  }
+
+  .submitPost {
+    font-size: 0.8em;
+    width: 15%;
   }
 
   .inputImage {
@@ -99,7 +111,14 @@ export const FormPostStyle = styled.section`
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+  }
+
+  @media(min-width: 1200px) {
+    form {
+      width: 60%;
+    }
   }
 `;
