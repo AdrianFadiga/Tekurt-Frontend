@@ -7,7 +7,8 @@ export const ProfileStyle = styled.div`
   place-items: center;
   position: relative;
   z-index: 1;
-  
+  cursor: pointer;
+
   img {
     border-radius: 50%;
     width: 100%;
@@ -52,6 +53,7 @@ export const ProfileStyle = styled.div`
     }
 
     .profileBtn {
+      cursor: pointer;
       width: 75%;
       border: none;
       display: flex;
