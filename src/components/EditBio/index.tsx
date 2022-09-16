@@ -1,11 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
+import { IoIosArrowDown } from 'react-icons/io';
 import { IContext, MyContext } from '../../context/MyContext';
 import { IDrinking, IOptions, ISign, ISocialStatus } from '../../interfaces';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { BioCardStyle } from '../BioCard/style';
+import CustomSelect from '../CustomSelect';
 
-const editBio = () => {
+interface Props {
+  editBio: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const editBio: React.FC<Props> = ({ editBio }) => {
   const {profileInfo} = useContext(MyContext) as IContext;
   const [socialStatus, setSocialStatus] = useState<ISocialStatus[]>([]);
   const [signs, setSigns] = useState<ISign[]>([]);
@@ -14,10 +20,12 @@ const editBio = () => {
   const getOptions = async () => {
     const options = createOptionsRequest('GET', {}, 'options');
     const response = await requestAPI<IOptions>(options);
+    console.log(response);    
     setDrinking(response.data.drinking);
     setSigns(response.data.signs);
     setSocialStatus(response.data.socialStatus);
   };
+
   useEffect(() => {
     getOptions();
   }, []);
@@ -40,7 +48,9 @@ const editBio = () => {
 
   return (
     <BioCardStyle>
-      <h2>Bio</h2>
+      <div className='headerBio'>
+        <h2>Bio</h2>
+      </div>      
       <table>
         <tbody>
           <tr>
@@ -49,13 +59,27 @@ const editBio = () => {
               <textarea 
                 onChange={({target}) => setBiography(target.value)}
                 value={biography}
+                maxLength={ 300 }
               />
             </td>
           </tr>
           <tr>
             <td>Relacionamento:</td>
             <td>
-              <select
+              <CustomSelect options={ socialStatus.map((a) => a.status) } defaultValue={ profileInfo?.socialStatus.status }/>
+              {/* <label className='selectRel'>
+                <div>
+                  <p>{ profileInfo?.socialStatus.status }</p>
+                  <IoIosArrowDown />
+                </div>                
+                <input type="checkbox" />
+                <div className='options'>
+                  {socialStatus.map(({id, status}) => (
+                    <div key={id}>{status}</div>
+                  ))}
+                </div>
+              </label> */}
+              {/* <select
                 onChange={({target}) => setSocialStatusId(Number(target.value))}>
                 {socialStatus.map(({id, status}) => (
                   <option
@@ -65,30 +89,35 @@ const editBio = () => {
                     {status}
                   </option>
                 ))}
-              </select>
+              </select> */}
             </td>
           </tr>
           <tr>
             <td>Crianças:</td>
             <td>
-              <select
+              <CustomSelect options={ ['Sim', 'Não'] } defaultValue="Sim" />
+              {/* <select
                 onChange={({target}) => setChildren(target.value === 'true')}
               >
                 <option 
                   value="true"
                   selected={children}
-                >Sim</option>
+                >
+                  Sim
+                </option>
+
                 <option 
                   value="false"
                   selected={!children}
                 >Não</option>
-              </select>
+              </select> */}
             </td>
           </tr>
           <tr>
             <td>Fuma:</td>
             <td>
-              <select
+              <CustomSelect options={ ['Sim', 'Não'] } defaultValue="Sim" />
+              {/* <select
                 onChange={({target}) => setSmokes(target.value === 'true')}
               >
                 <option 
@@ -99,13 +128,14 @@ const editBio = () => {
                   value="false"
                   selected={!smokes}
                 >Não</option>
-              </select>
+              </select> */}
             </td>
           </tr>
           <tr>
             <td>Bebe:</td>
             <td>
-              <select
+              <CustomSelect options={ drinking.map((a => a.option)) } defaultValue={ profileInfo?.drinking.option } />
+              {/* <select
                 onChange={({target}) => setDrinkingId(Number(target.value))}>
                 {drinking.map(({id, option}) => (
                   <option
@@ -115,13 +145,14 @@ const editBio = () => {
                     {option}
                   </option>
                 ))}
-              </select>
+              </select> */}
             </td>
           </tr>
           <tr>
             <td>Signo:</td>
             <td>
-              <select
+              <CustomSelect options={ signs.map((a => a.sign)) } defaultValue={ profileInfo?.sign.sign } />
+              {/* <select
                 onChange={({target}) => setSignId(Number(target.value))}>
                 {signs.map(({id, sign}) => (
                   <option
@@ -131,12 +162,13 @@ const editBio = () => {
                     {sign}
                   </option>
                 ))}
-              </select>
+              </select> */}
             </td>
           </tr>
         </tbody>
       </table>
       <button onClick={() => editProfile()}>Salvar</button>
+      <button onClick={() => editBio(false)}>Cancelar</button>
     </BioCardStyle>
   );
 };

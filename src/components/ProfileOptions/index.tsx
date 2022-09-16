@@ -29,6 +29,7 @@ const ProfileOptions: React.FC<Props> = ({user}) => {
     const invited = data.some((f) => f.friendId === loggedId);
     setInvited(invited);
   };
+  
   const inviteOrDelete = async () => {
     const token = localStorage.getItem('authTekurt');
     const action = invited ? 'DELETE' : 'POST';
@@ -75,12 +76,6 @@ const ProfileOptions: React.FC<Props> = ({user}) => {
       >
         <IoImage />
         Galeria
-      </button>
-      <button
-        type="button"
-      >
-        <RiGamepadFill />
-        Jogos
       </button>
     </ProfileOptionsStyle>
   );

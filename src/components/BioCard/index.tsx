@@ -1,13 +1,31 @@
 import { useContext } from 'react';
+import { BiPencil } from 'react-icons/bi';
 import { IContext, MyContext } from '../../context/MyContext';
 import { BioCardStyle } from './style';
 
-const BioCard = () => {
-  const {profileInfo} = useContext(MyContext) as IContext;
+interface Props {
+  editBio: React.Dispatch<React.SetStateAction<boolean>>
+  profileOwner: boolean
+}
+
+const BioCard: React.FC<Props> = ({ editBio, profileOwner }) => {
+  const { profileInfo, editingProfile, changePhoto } = useContext(MyContext) as IContext;
   
   return (
     <BioCardStyle>
-      <h2>Bio</h2>
+      <div className='headerBio'>
+        <h2>Bio</h2>
+        {!profileOwner &&
+          <button
+            className='editBtn'
+            onClick={() => editBio(true)}
+            disabled={editingProfile || changePhoto}
+          >
+            <BiPencil />
+          </button>
+        }
+      </div>
+      
       <table>
         <tbody>
           <tr>
