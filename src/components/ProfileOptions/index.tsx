@@ -9,7 +9,6 @@ import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import FriendBtn from '../FriendBtn';
 import { ProfileOptionsStyle } from './style';
-import { RiGamepadFill } from 'react-icons/ri';
 import { IoImage } from 'react-icons/io5';
 
 interface Props {
@@ -35,7 +34,8 @@ const ProfileOptions: React.FC<Props> = ({user}) => {
     const action = invited ? 'DELETE' : 'POST';
     const options = createOptionsRequest(action, {}, `friend/${user.id}`, {authorization: `Bearer ${token}`});
     await requestAPI(options);
-    setInvited(!invited);
+    // setInvited(!invited);
+    window.location.reload();
   };
   
   useEffect(() => {
