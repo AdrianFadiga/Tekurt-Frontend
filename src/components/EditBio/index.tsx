@@ -40,7 +40,9 @@ const editBio = () => {
 
   return (
     <BioCardStyle>
-      <h2>Bio</h2>
+      <div className='headerBio'>
+        <h2>Bio</h2>
+      </div>      
       <table>
         <tbody>
           <tr>

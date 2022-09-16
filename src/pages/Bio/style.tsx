@@ -9,15 +9,15 @@ export const BioStyle = styled.section`
   }
 
   @media(min-width: 1200px) {
-    margin-top: 70px;
+    margin-top: 80px;
     display: grid;
     place-items: center;
+    padding: 0 6%;
     
     main {
       flex-direction: row;
       justify-content: space-between;
-      padding: 0 20px;
-      width: 1250px;
+      width: 100%;
     }
   }
 `;

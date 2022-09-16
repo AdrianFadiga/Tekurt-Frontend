@@ -6,6 +6,28 @@ export const BioCardStyle = styled.section`
   padding: 40px;
   border-top: 1px solid ${({ theme }) => theme.colors.border};
 
+  .headerBio {
+    display: flex;
+    background-color: ${({ theme }) => theme.colors.background};
+    justify-content: space-between;
+    align-items: center;
+    height: 35px;
+  }
+
+  .editBtn {
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.text};
+    border: none;
+    font-size: 20px;
+    display: grid;
+    place-items: center;
+    background-color: ${({ theme }) => theme.colors.background};
+  }
+
+  .editBtn svg {
+    background-color: transparent;
+  }
+
   h2 {
     color: ${({ theme }) => theme.colors.text};
     font-size: 20px;
