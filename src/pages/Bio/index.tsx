@@ -21,15 +21,14 @@ function Profile() {
     <BioStyle>
       <Navbar />
       <main>
-        <ProfileCard 
+        <ProfileCard
           editingBio={editingBio}
         />
         {
           editingBio
-            ? <EditBio />
-            :  <BioCard editBio={ setEditingBio } profileOwner={ !!username } />
-        }
-          
+            ? <EditBio editBio={ setEditingBio }/>
+            : <BioCard editBio={ setEditingBio } profileOwner={ !!username } />
+        }          
         <FriendsDiv />
       </main>
     </BioStyle>

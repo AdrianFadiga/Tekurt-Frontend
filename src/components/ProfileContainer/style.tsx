@@ -13,7 +13,7 @@ export const ProfileContainerStyle = styled.div`
     height: 150px;
     padding: 6px;
     border-radius: 50%;
-    border: 2px solid blue;
+    border: 2px solid ${({ theme }) => theme.colors.secondary};
     object-fit: cover;
     margin-bottom: 18px;
   }
