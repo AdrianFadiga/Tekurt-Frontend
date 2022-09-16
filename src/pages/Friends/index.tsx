@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { IContext, MyContext } from '../../context/MyContext';
 import Navbar from '../../components/Navbar';
-import FriendsDiv from '../../components/FriendsDiv';
 import FriendsPageCard from '../../components/FriendsPageCard';
 
 const Friends = () => {
@@ -16,9 +15,18 @@ const Friends = () => {
 
   return (
     <section>
-      {/* <Navbar /> */}
+      <Navbar />
       <h1>Amigos:</h1>
       <div>
+        {
+          pendingFriends?.map((friend, i) => (
+            <FriendsPageCard 
+              key={`${friend}...${i}`}
+              friend={friend}
+              pending={true}
+            />
+          ))
+        }    
         {
           acceptedFriends?.map((friend, i) => (
             <FriendsPageCard 
@@ -27,8 +35,7 @@ const Friends = () => {
               pending={false}
             />
           ))
-
-        }    
+        }
       </div>
     </section>
   );
