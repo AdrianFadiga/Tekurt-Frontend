@@ -61,6 +61,10 @@ const FormNewPost: React.FC<Props> = ({ setModal }) => {
     }
   };
 
+  const clearImage = () => {
+    setSelectedFile(undefined);
+  };
+
   return (
     <FormPostStyle>
       <button className="emptyModal" onClick={ setModal }/>
@@ -68,7 +72,7 @@ const FormNewPost: React.FC<Props> = ({ setModal }) => {
         <div className='contentPost'>
           { selectedFile ? (
             <>
-              <button className="backImage"><BiArrowBack /></button>
+              <button onClick={ clearImage } className="backImage"><BiArrowBack /></button>
               <input 
                 type="text" 
                 onChange={({target}) => setContent(target.value)}

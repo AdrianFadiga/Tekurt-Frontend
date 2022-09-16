@@ -114,11 +114,24 @@ export const FormPostStyle = styled.section`
     background-position: center;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+    cursor: default;
   }
 
   @media(min-width: 1200px) {
     form {
       width: 60%;
+    }
+
+    .contentPost input {
+      width: 80%;
+    }
+
+    .submitPost {
+      width: 10%;
+    }
+
+    .contentPost .backImage {
+      width: 5%;
     }
   }
 `;
