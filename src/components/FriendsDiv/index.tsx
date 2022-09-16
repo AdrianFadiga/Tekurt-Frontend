@@ -20,7 +20,6 @@ const FriendsDiv = () => {
           <FriendsCard 
             key={`${i}${friend}`}
             friend={friend}
-            pending={false}
           />
         ))}
       </div>
