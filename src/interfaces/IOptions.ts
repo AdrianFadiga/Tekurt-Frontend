@@ -1,7 +1,7 @@
-import { IDrinking, ISign, ISocialStatus } from './index';
+import { IOptionBio } from './IOptionBio';
 
 export interface IOptions {
-    socialStatus: ISocialStatus[]
-    signs: ISign[]
-    drinking: IDrinking[]
+    socialStatus: IOptionBio[]
+    signs: IOptionBio[]
+    drinking: IOptionBio[]
 }
