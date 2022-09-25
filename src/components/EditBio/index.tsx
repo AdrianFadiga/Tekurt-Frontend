@@ -167,8 +167,11 @@ const editBio: React.FC<Props> = ({ editBio }) => {
           </tr>
         </tbody>
       </table>
-      <button onClick={() => editProfile()}>Salvar</button>
-      <button onClick={() => editBio(false)}>Cancelar</button>
+      
+      <div className='btns-edit'>
+        <button onClick={() => editProfile()}>Salvar</button>
+        <button onClick={() => editBio(false)}>Cancelar</button>
+      </div>
     </BioCardStyle>
   );
 };

@@ -135,9 +135,30 @@ export const BioCardStyle = styled.section`
     background-color: ${({ theme }) => theme.colors.border};
   }
 
+  .btns-edit {
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+  }
+
+  .btns-edit button {
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.text};
+    background-color: ${({ theme }) => theme.colors.border};
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .btns-edit button:nth-child(1) {
+    background-color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.title === 'light' && 'white'};
+  }
+
   @media(min-width: 1200px) {
     width: 500px;
-    height: 600px;
+    height: min-content;
     border-radius: 30px;
     border: none;
     border: ${({ theme }) => theme.title === 'light' && `1px solid ${theme.colors.border}`};
