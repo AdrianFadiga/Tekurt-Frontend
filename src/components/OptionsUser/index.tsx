@@ -13,7 +13,6 @@ interface Props {
 
 const OptionsUser: React.FC<Props> = ({ setModal }) => {
   const { profileImg, toggleTheme } = useContext(MyContext) as IContext;
-  console.log(profileImg);
   const navigate = useNavigate();
 
   const navigateTo = (to: string) => {
