@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { IContext, MyContext } from '../../context/MyContext';
 import Navbar from '../../components/Navbar';
@@ -9,8 +9,10 @@ const Friends = () => {
   const { getProfileInfo, profileInfo } = useContext(MyContext) as IContext;
   const pendingFriends = profileInfo?.friends.filter((f) => f.status === 'pending');
   const acceptedFriends = profileInfo?.friends.filter((f) => f.status === 'accepted');
+  const navigate = useNavigate();
   useEffect(() => {
-    getProfileInfo(username);
+    getProfileInfo(username)
+      .catch(() => navigate('/not-found'));
   }, [username]);
 
   return (

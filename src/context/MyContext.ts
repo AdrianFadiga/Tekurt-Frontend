@@ -6,7 +6,7 @@ export interface IContext {
   theme: DefaultTheme,
   toggleTheme(): void;
   profileInfo: IUser | undefined;
-  getProfileInfo(username: string | undefined): void;
+  getProfileInfo(username: string | undefined): Promise<void>;
   profileImg: IUser | undefined;
   getProfileImg(): void;
   editingProfile: boolean;

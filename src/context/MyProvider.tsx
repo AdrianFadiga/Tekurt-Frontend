@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { DefaultTheme } from 'styled-components';
 import dark from '../styles/themes/dark';
 import ligth from '../styles/themes/light';
@@ -7,7 +7,6 @@ import { MyContext } from './MyContext';
 import { IUser } from '../interfaces/IUser';
 import { createOptionsRequest } from '../services/createOptionsRequest';
 import { requestAPI } from '../services/requestAPI';
-import { useParams } from 'react-router-dom';
 
 interface Props {
   children: React.ReactNode
@@ -22,11 +21,15 @@ const MyProvider: React.FC<Props> = ({ children }) => {
   
   const [profileInfo, setProfileInfo] = useState<IUser>();
   const getProfileInfo = async (username: string | undefined) => {
-    const fetchRoute = username === undefined ? 'users/me' : `users/${username}`;
-    const token = localStorage.getItem('authTekurt');
-    const options = createOptionsRequest('GET', {}, fetchRoute, {authorization: `Bearer ${token}`});
-    const response = await requestAPI<IUser>(options);
-    setProfileInfo(response.data);
+    try {
+      const fetchRoute = username === undefined ? 'users/me' : `users/${username}`;
+      const token = localStorage.getItem('authTekurt');
+      const options = createOptionsRequest('GET', {}, fetchRoute, {authorization: `Bearer ${token}`});
+      const response = await requestAPI<IUser>(options);
+      setProfileInfo(response.data);
+    } catch(err: any) {
+      throw err.data;
+    }
   }; 
   
   const [profileImg, setProfileImg] = useState<IUser>();
