@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
-import { IoIosArrowDown } from 'react-icons/io';
 import { IContext, MyContext } from '../../context/MyContext';
-import { IDrinking, IOptions, ISign, ISocialStatus } from '../../interfaces';
+import { IOptions, IOptionBio } from '../../interfaces';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { BioCardStyle } from '../BioCard/style';
@@ -13,14 +12,13 @@ interface Props {
 
 const editBio: React.FC<Props> = ({ editBio }) => {
   const {profileInfo} = useContext(MyContext) as IContext;
-  const [socialStatus, setSocialStatus] = useState<ISocialStatus[]>([]);
-  const [signs, setSigns] = useState<ISign[]>([]);
-  const [drinking, setDrinking] = useState<IDrinking[]>([]);
+  const [socialStatus, setSocialStatus] = useState<IOptionBio[]>([]);
+  const [signs, setSigns] = useState<IOptionBio[]>([]);
+  const [drinking, setDrinking] = useState<IOptionBio[]>([]);
 
   const getOptions = async () => {
     const options = createOptionsRequest('GET', {}, 'options');
-    const response = await requestAPI<IOptions>(options);
-    console.log(response);    
+    const response = await requestAPI<IOptions>(options); 
     setDrinking(response.data.drinking);
     setSigns(response.data.signs);
     setSocialStatus(response.data.socialStatus);
@@ -66,109 +64,59 @@ const editBio: React.FC<Props> = ({ editBio }) => {
           <tr>
             <td>Relacionamento:</td>
             <td>
-              <CustomSelect options={ socialStatus.map((a) => a.status) } defaultValue={ profileInfo?.socialStatus.status }/>
-              {/* <label className='selectRel'>
-                <div>
-                  <p>{ profileInfo?.socialStatus.status }</p>
-                  <IoIosArrowDown />
-                </div>                
-                <input type="checkbox" />
-                <div className='options'>
-                  {socialStatus.map(({id, status}) => (
-                    <div key={id}>{status}</div>
-                  ))}
-                </div>
-              </label> */}
-              {/* <select
-                onChange={({target}) => setSocialStatusId(Number(target.value))}>
-                {socialStatus.map(({id, status}) => (
-                  <option
-                    selected={profileInfo?.socialStatusId === id}
-                    value={id} 
-                    key={status}>
-                    {status}
-                  </option>
-                ))}
-              </select> */}
+              <CustomSelect
+                setOption={ setSocialStatusId }
+                options={ socialStatus }
+                defaultValue={ socialStatus?.find(({ id }) => id === socialStatusId)?.option }/>
             </td>
           </tr>
           <tr>
             <td>Crianças:</td>
             <td>
-              <CustomSelect options={ ['Sim', 'Não'] } defaultValue="Sim" />
-              {/* <select
-                onChange={({target}) => setChildren(target.value === 'true')}
-              >
-                <option 
-                  value="true"
-                  selected={children}
-                >
-                  Sim
-                </option>
-
-                <option 
-                  value="false"
-                  selected={!children}
-                >Não</option>
-              </select> */}
+              <CustomSelect
+                setOption={ setChildren }
+                binaryOption={ [true, false] }
+                defaultValue={ children }
+              />
             </td>
           </tr>
           <tr>
             <td>Fuma:</td>
             <td>
-              <CustomSelect options={ ['Sim', 'Não'] } defaultValue="Sim" />
-              {/* <select
-                onChange={({target}) => setSmokes(target.value === 'true')}
-              >
-                <option 
-                  value="true"
-                  selected={smokes}
-                >Sim</option>
-                <option 
-                  value="false"
-                  selected={!smokes}
-                >Não</option>
-              </select> */}
+              <CustomSelect
+                setOption={ setSmokes }
+                binaryOption={ [true, false] }
+                defaultValue={ smokes }
+              />
             </td>
           </tr>
           <tr>
             <td>Bebe:</td>
             <td>
-              <CustomSelect options={ drinking.map((a => a.option)) } defaultValue={ profileInfo?.drinking.option } />
-              {/* <select
-                onChange={({target}) => setDrinkingId(Number(target.value))}>
-                {drinking.map(({id, option}) => (
-                  <option
-                    selected={drinkingId === id}
-                    value={id} 
-                    key={option}>
-                    {option}
-                  </option>
-                ))}
-              </select> */}
+              <CustomSelect
+                setOption={ setDrinkingId }
+                options={ drinking }
+                defaultValue={ drinking?.find(({ id }) => id === drinkingId)?.option}
+              />
             </td>
           </tr>
           <tr>
             <td>Signo:</td>
             <td>
-              <CustomSelect options={ signs.map((a => a.sign)) } defaultValue={ profileInfo?.sign.sign } />
-              {/* <select
-                onChange={({target}) => setSignId(Number(target.value))}>
-                {signs.map(({id, sign}) => (
-                  <option
-                    selected={profileInfo?.signId === id}
-                    value={id} 
-                    key={sign}>
-                    {sign}
-                  </option>
-                ))}
-              </select> */}
+              <CustomSelect
+                setOption={ setSignId }
+                options={ signs }
+                defaultValue={ signs?.find(({ id }) => id === signId)?.option}
+              />
             </td>
           </tr>
         </tbody>
       </table>
-      <button onClick={() => editProfile()}>Salvar</button>
-      <button onClick={() => editBio(false)}>Cancelar</button>
+      
+      <div className='btns-edit'>
+        <button onClick={() => editProfile()}>Salvar</button>
+        <button onClick={() => editBio(false)}>Cancelar</button>
+      </div>
     </BioCardStyle>
   );
 };

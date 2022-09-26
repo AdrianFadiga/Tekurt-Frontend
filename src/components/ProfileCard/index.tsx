@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { BsThreeDots } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 import { IContext, MyContext } from '../../context/MyContext';
 import ProfileContainer from '../ProfileContainer';
@@ -25,20 +26,28 @@ const ProfileCard: React.FC<Props> = ({editingBio}) => {
         profileInfo &&
         <ProfileCardStyle>
           { !username &&
-          <div>
-            <button 
-              onClick={() => setEditingProfile(!editingProfile)}
-              disabled={editingBio || changePhoto}
-            >
-            Editar informações
-            </button>          
-            <button 
-              onClick={() => setChangePhoto(!changePhoto)}
-              disabled={editingBio || editingProfile}
-            >
-            Trocar foto
-            </button>
-          </div>
+          // <div>
+          //   
+          // </div>
+            <label>
+              <BsThreeDots />
+              <input type="checkbox" />
+
+              <div>
+                <button 
+                  onClick={() => setEditingProfile(!editingProfile)}
+                  disabled={editingBio || changePhoto}
+                >
+                Editar informações
+                </button>          
+                <button 
+                  onClick={() => setChangePhoto(!changePhoto)}
+                  disabled={editingBio || editingProfile}
+                >
+                Trocar foto
+                </button>
+              </div>
+            </label>            
           } 
           {
             editingProfile ? <ProfileEdit user={profileInfo} /> : <ProfileContainer user={profileInfo} />

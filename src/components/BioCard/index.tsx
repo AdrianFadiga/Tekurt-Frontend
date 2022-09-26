@@ -10,6 +10,7 @@ interface Props {
 
 const BioCard: React.FC<Props> = ({ editBio, profileOwner }) => {
   const { profileInfo, editingProfile, changePhoto } = useContext(MyContext) as IContext;
+  console.log(profileInfo);
   
   return (
     <BioCardStyle>
@@ -34,7 +35,7 @@ const BioCard: React.FC<Props> = ({ editBio, profileOwner }) => {
           </tr>
           <tr>
             <td>Relacionamento:</td>
-            <td>{profileInfo?.socialStatus.status}</td>
+            <td>{profileInfo?.socialStatus.option}</td>
           </tr>
           <tr>
             <td>Crianças:</td>
@@ -50,7 +51,7 @@ const BioCard: React.FC<Props> = ({ editBio, profileOwner }) => {
           </tr>
           <tr>
             <td>Signo:</td>
-            <td>{profileInfo?.sign.sign}</td>
+            <td>{profileInfo?.sign.option}</td>
           </tr>
         </tbody>
       </table>

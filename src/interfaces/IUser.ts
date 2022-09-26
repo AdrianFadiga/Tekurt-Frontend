@@ -18,10 +18,10 @@ export interface IUser {
 	updatedAt: string,
 	friends: Friend[],
 	socialStatus: {
-		status: string
+		option: string
 	},
 	sign: {
-		sign: string
+		option: string
 	},
 	drinking: {
 		option: string

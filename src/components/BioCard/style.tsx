@@ -84,60 +84,30 @@ export const BioCardStyle = styled.section`
     border-radius: 10px;
   }
 
-  .selectRel {
-    display: block;
-    width: 50%;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-    cursor: pointer;
-    background-color: transparent;
-  }
-
-  .selectRel div:nth-of-type(1) {
-    background-color: transparent;
+  .btns-edit {
+    width: 150px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-  }
-
-  .selectRel div:nth-of-type(1) p {
     background-color: transparent;
   }
 
-  .selectRel div:nth-of-type(1) svg {
-    background-color: transparent
-  }
-
-  .selectRel input {
-    display: none;
-  }
-
-  .selectRel .options {
-    display: none;
-  }
-
-  .selectRel input:checked ~ .options {
-    display: block;
-    position: fixed;
-    padding: 5px 0;
-    width: 145px;
-    z-index: 3;
-    overflow: scroll;
-    box-shadow: -1px 0px 11px -1px #0000003d;
-    border-radius: 10px;
-  }
-
-  .options div {
-    padding: 5px 10px;
+  .btns-edit button {
     cursor: pointer;
+    color: ${({ theme }) => theme.colors.text};
+    background-color: ${({ theme }) => theme.colors.border};
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
   }
 
-  .options div:hover {
-    background-color: ${({ theme }) => theme.colors.border};
+  .btns-edit button:nth-child(1) {
+    background-color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.title === 'light' && 'white'};
   }
 
   @media(min-width: 1200px) {
     width: 500px;
-    height: 600px;
+    height: min-content;
     border-radius: 30px;
     border: none;
     border: ${({ theme }) => theme.title === 'light' && `1px solid ${theme.colors.border}`};

@@ -37,9 +37,7 @@ const FormNewPost: React.FC<Props> = ({ setModal }) => {
     
     const file = new FileReader();
 
-    file.onload = (e) => {
-      console.log(e.target?.result);
-      
+    file.onload = (e) => {      
       setSrcPreview(e.target?.result as string);
     };
 
