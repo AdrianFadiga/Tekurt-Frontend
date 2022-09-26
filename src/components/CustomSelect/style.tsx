@@ -27,7 +27,7 @@ export const CustomSelectStyle = styled.label`
 
   input:checked ~ .options {
     display: block;
-    position: fixed;
+    position: absolute;
     padding: 5px 0;
     width: 145px;
     max-height: 200px;
