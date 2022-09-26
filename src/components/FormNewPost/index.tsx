@@ -5,7 +5,6 @@ import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import { FormPostStyle } from './style';
 import { BiArrowBack } from 'react-icons/bi';
-import { useNavigate } from 'react-router-dom';
 
 interface Props {
   setModal: () => void
@@ -18,18 +17,21 @@ const FormNewPost: React.FC<Props> = ({ setModal }) => {
   const [srcPreview, setSrcPreview] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
-  const navigate = useNavigate();
 
   const createPost = async () => {
-    const token = localStorage.getItem('authTekurt');
-    const options = createOptionsRequest('POST', {
-      content: content,
-      file: selectedFile,
-    }, 'posts', {
-      'Content-Type': 'multipart/form-data',
-      authorization: `Bearer ${token}`});
-    await requestAPI<IPost[]>(options);
-    navigate('/posts');
+    try {
+      const token = localStorage.getItem('authTekurt');
+      const options = createOptionsRequest('POST', {
+        content: content,
+        file: selectedFile,
+      }, 'posts', {
+        'Content-Type': 'multipart/form-data',
+        authorization: `Bearer ${token}`});
+      await requestAPI<IPost[]>(options);
+      window.location.reload();
+    } catch(err: any) {
+      console.log(err.data);
+    }
   };
 
   const readImage = (target: any) => {
