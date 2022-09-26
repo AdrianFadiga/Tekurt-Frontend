@@ -14,6 +14,7 @@ interface Props {
 const TestimonialCard: React.FC<Props> = ({testimonial, pending}) => {
   const {pathname} = useLocation();
   const { profileImg } = useContext(MyContext) as IContext;
+  console.log(profileImg?.id);
   const showAcceptAndRefuse = pending && pathname === '/testimonials/';
   const showDeleteButton = testimonial.senderId === profileImg?.id;
   const showPendingTestimonial = !pending || pathname === '/testimonials/' 
@@ -30,6 +31,7 @@ const TestimonialCard: React.FC<Props> = ({testimonial, pending}) => {
     await requestAPI(options);
     window.location.reload();
   };
+
   return (
     <div>
       {
