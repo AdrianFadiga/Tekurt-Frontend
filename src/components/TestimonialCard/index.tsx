@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { IContext, MyContext } from '../../context/MyContext';
 import { ITestimonial } from '../../interfaces/ITestimonial';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
@@ -11,7 +13,11 @@ interface Props {
 
 const TestimonialCard: React.FC<Props> = ({testimonial, pending}) => {
   const {pathname} = useLocation();
-  const showPendingTestimonial = !pending || pathname === '/testimonials/';
+  const { profileImg } = useContext(MyContext) as IContext;
+  const showAcceptAndRefuse = pending && pathname === '/testimonials/';
+  const showDeleteButton = testimonial.senderId === profileImg?.id;
+  const showPendingTestimonial = !pending || pathname === '/testimonials/' 
+  || testimonial.senderId === profileImg?.id;
   const acceptTestimonial = async () => {
     const token = localStorage.getItem('authTekurt');
     const options = createOptionsRequest('PATCH', {}, `testimonials/${testimonial.id}`, {authorization: `Bearer ${token}`});
@@ -36,9 +42,9 @@ const TestimonialCard: React.FC<Props> = ({testimonial, pending}) => {
             </Link>
             <p>{testimonial.content}</p>
           </div>
-      }
+      }      
       {
-        pending && pathname === '/testimonials/' &&
+        showAcceptAndRefuse &&
         <div>
           <TestimonialBtn
             content={'Aceitar'}
@@ -49,6 +55,13 @@ const TestimonialCard: React.FC<Props> = ({testimonial, pending}) => {
             action={() => refuseTestimonial()}>
           </TestimonialBtn>
         </div>
+      }
+      {
+        showDeleteButton &&
+          <TestimonialBtn 
+            content={testimonial.status === 'accepted' ? 'Deletar' : 'Cancelar Envio'}
+            action={() => refuseTestimonial()}
+          />
       }
     </div>
   );
