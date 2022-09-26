@@ -66,6 +66,7 @@ const ProfileOptions: React.FC<Props> = ({user}) => {
       }
       <button
         type="button"
+        onClick={() => navigate(`/testimonials/${username || ''}`)}
       >
         <BsHeartFill />
         Depoimentos
