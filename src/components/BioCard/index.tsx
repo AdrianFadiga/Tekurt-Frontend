@@ -10,7 +10,6 @@ interface Props {
 
 const BioCard: React.FC<Props> = ({ editBio, profileOwner }) => {
   const { profileInfo, editingProfile, changePhoto } = useContext(MyContext) as IContext;
-  console.log(profileInfo);
   
   return (
     <BioCardStyle>
