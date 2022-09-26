@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import AddPost from '../../components/AddPost';
 import Navbar from '../../components/Navbar';
 import { IPost } from '../../interfaces/IPost';
@@ -10,14 +10,19 @@ import { PostsStyle } from './style';
 
 const Gallery = () => {
   const {username} = useParams();
-  const [userPosts, setUserPosts] = useState<IPost[]>([]);  
+  const [userPosts, setUserPosts] = useState<IPost[]>([]);
+  const navigate = useNavigate();  
 
   const getUserId = async () => {
-    const token = localStorage.getItem('authTekurt');
-    const options = createOptionsRequest('GET', {}, `users/${username}`, 
-      {authorization: `Bearer ${token}`});
-    const {data: {id}} = await requestAPI<IUser>(options);
-    return id;
+    try {
+      const token = localStorage.getItem('authTekurt');
+      const options = createOptionsRequest('GET', {}, `users/${username}`, 
+        {authorization: `Bearer ${token}`});
+      const {data: {id}} = await requestAPI<IUser>(options);
+      return id;
+    } catch {
+      navigate('/not-found');
+    }
   };
   
   const getPosts = async () => {

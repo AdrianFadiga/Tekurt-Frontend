@@ -8,15 +8,19 @@ import { useContext } from 'react';
 import { IContext, MyContext } from '../../context/MyContext';
 import FriendsDiv from '../../components/FriendsDiv';
 import { BioStyle } from './style';
+import { useNavigate } from 'react-router-dom'; 
 
 function Profile() {
   const { username } = useParams();
+  const navigate = useNavigate();
   const { getProfileInfo } = useContext(MyContext) as IContext;
   const [editingBio, setEditingBio] = useState<boolean>(false);
 
   useEffect(() => {
-    getProfileInfo(username);
+    getProfileInfo(username)
+      .catch(() => navigate('/not-found'));
   }, [username]);
+
   return (
     <BioStyle>
       <Navbar />

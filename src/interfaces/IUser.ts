@@ -1,4 +1,5 @@
 import { Friend } from '../types/Friend';
+import { ITestimonial } from './ITestimonial';
 
 export interface IUser {
   id: string,
@@ -26,4 +27,5 @@ export interface IUser {
 	drinking: {
 		option: string
 	},
+	testimonials: ITestimonial[]
 }

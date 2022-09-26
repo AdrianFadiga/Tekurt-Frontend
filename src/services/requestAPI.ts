@@ -11,6 +11,6 @@ export const requestAPI = async <T> (options: AxiosRequestConfig): Promise<IResp
   } catch (err: any) {
     const { data, status } = err.response;
 
-    return { data, status, error: true };
+    throw { data, status, error: true };
   }
 };
