@@ -16,8 +16,11 @@ const ProfileEdit: React.FC<Props> = ({user}) => {
   const isValidProfileInfo = () => {
     const validate = (
       firstName.length >= 3 &&
+      firstName.length <= 15 &&
       lastName.length >= 3 &&
-      username.length >= 3
+      lastName.length <= 20 &&
+      username.length >= 3 &&
+      username.length <= 15
     );
     return validate;
   };
