@@ -1,3 +1,4 @@
+import React from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 import { IOptionBio } from '../../interfaces';
 import { CustomSelectStyle } from './style';
@@ -15,6 +16,13 @@ const CustomSelect: React.FC<Props> = ({ options, defaultValue, binaryOption, se
     else setOption(Number(target.id));
   };
 
+  const resetInputs = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    const initalState = target?.checked;
+    const inputs = document.querySelectorAll('#input-option') as NodeListOf<HTMLInputElement>;
+    inputs.forEach((input) => input.checked = false);
+    target.checked = initalState;    
+  };
+
   return (
     <CustomSelectStyle className='selectRel'>
       <div>
@@ -25,8 +33,9 @@ const CustomSelect: React.FC<Props> = ({ options, defaultValue, binaryOption, se
           : defaultValue
         }</p>
         <IoIosArrowDown />
-      </div>                
-      <input type="checkbox" />
+      </div> 
+
+      <input id="input-option" type="checkbox" onChange={ resetInputs } />
       <div className='options'>
         {options?.map(({ id, option }) => (
           <div onClick={ handleClick } id={ String(id) } key={id}>{ option }</div>
