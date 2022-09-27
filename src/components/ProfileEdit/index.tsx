@@ -38,7 +38,7 @@ const ProfileEdit: React.FC<Props> = ({user}) => {
       <img src={user.imageUrl} alt="profile-image" width="100%"/>
       <input
         value={username} 
-        onChange={({target}) => setUsername(target.value.trim())}
+        onChange={({target}) => setUsername(target.value.replaceAll(' ', ''))}
       />
       <input
         value={firstName}
