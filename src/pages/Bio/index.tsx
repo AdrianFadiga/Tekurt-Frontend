@@ -13,12 +13,16 @@ import { useNavigate } from 'react-router-dom';
 function Profile() {
   const { username } = useParams();
   const navigate = useNavigate();
-  const { getProfileInfo } = useContext(MyContext) as IContext;
+  const { getProfileInfo, profileImg } = useContext(MyContext) as IContext;
   const [editingBio, setEditingBio] = useState<boolean>(false);
 
   useEffect(() => {
     getProfileInfo(username)
       .catch(() => navigate('/not-found'));
+  }, [username]);
+
+  useEffect(() => {
+    if (username === profileImg?.username) navigate('/home');
   }, [username]);
 
   return (

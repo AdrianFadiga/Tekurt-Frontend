@@ -16,7 +16,8 @@ const TestimonialCard: React.FC<Props> = ({testimonial, pending}) => {
   const { profileImg } = useContext(MyContext) as IContext;
   console.log(profileImg?.id);
   const showAcceptAndRefuse = pending && pathname === '/testimonials/';
-  const showDeleteButton = testimonial.senderId === profileImg?.id;
+  const showDeleteButton = testimonial.senderId === profileImg?.id || (pathname === '/testimonials/' 
+  && testimonial.status === 'accepted');
   const showPendingTestimonial = !pending || pathname === '/testimonials/' 
   || testimonial.senderId === profileImg?.id;
   const acceptTestimonial = async () => {
