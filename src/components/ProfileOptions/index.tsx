@@ -16,7 +16,8 @@ interface Props {
 }
 
 const ProfileOptions: React.FC<Props> = ({user}) => {
-  const [invited, setInvited] = useState<boolean>(true);
+  const [invited, setInvited] = useState<IFriend>();
+  const [accepted, setAccepted] = useState<boolean>(true);
   const { profileImg } = useContext(MyContext) as IContext;
   const { username } = useParams();
   const navigate = useNavigate();
@@ -25,7 +26,9 @@ const ProfileOptions: React.FC<Props> = ({user}) => {
     const token = localStorage.getItem('authTekurt');
     const options = createOptionsRequest('GET', {}, `friend/${user.id}`, {authorization: `Bearer ${token}`});
     const {data} = await requestAPI<IFriend[]>(options);
-    const invited = data.some((f) => f.friendId === loggedId);
+    const invited = data.find((f) => f.friendId === loggedId);
+    const accepted = invited?.status === 'accepted';
+    setAccepted(accepted);
     setInvited(invited);
   };
   
@@ -34,7 +37,6 @@ const ProfileOptions: React.FC<Props> = ({user}) => {
     const action = invited ? 'DELETE' : 'POST';
     const options = createOptionsRequest(action, {}, `friend/${user.id}`, {authorization: `Bearer ${token}`});
     await requestAPI(options);
-    // setInvited(!invited);
     window.location.reload();
   };
   
@@ -60,7 +62,7 @@ const ProfileOptions: React.FC<Props> = ({user}) => {
       {
         username && user.id !== loggedId &&
       <FriendBtn
-        content={invited ? 'Desfazer amizade' : 'Convite de amizade'}
+        content={invited ? (accepted ? 'Desfazer amizade' : 'Cancelar convite') : 'Convite de amizade'}
         action={() => inviteOrDelete()}>
       </FriendBtn>
       }
