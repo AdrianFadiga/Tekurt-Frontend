@@ -10,6 +10,7 @@ import Friends from './pages/Friends';
 import Posts from './pages/Posts';
 import NotFound from './pages/NotFound';
 import Testimonials from './pages/Testimonials';
+import Suggestions from './pages/Suggestions';
 
 function App() {
   const { theme } = useContext(MyContext) as IContext;
@@ -28,6 +29,7 @@ function App() {
         <Route path="/posts/:username" element={<Posts />} />
         <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/testimonials/:username" element={<Testimonials />} />
+        <Route path="/suggestions" element={<Suggestions/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>  
     </ThemeProvider>    
