@@ -9,16 +9,28 @@ import { IContext, MyContext } from '../../context/MyContext';
 import FriendsDiv from '../../components/FriendsDiv';
 import { BioStyle } from './style';
 import { useNavigate } from 'react-router-dom'; 
+import { IFriend } from '../../interfaces';
+import { createOptionsRequest } from '../../services/createOptionsRequest';
+import { requestAPI } from '../../services/requestAPI';
 
 function Profile() {
   const { username } = useParams();
   const navigate = useNavigate();
   const { getProfileInfo, profileImg } = useContext(MyContext) as IContext;
   const [editingBio, setEditingBio] = useState<boolean>(false);
+  const [friendList, setFriendList] = useState<IFriend>({friends: [], invites: []});
+
+  const getFriendList = async () => {
+    const token = localStorage.getItem('authTekurt');
+    const options = createOptionsRequest('GET', {}, 'friend/me', {authorization: `Bearer ${token}`});
+    const response = await requestAPI<IFriend>(options);
+    setFriendList(response.data);
+  };
 
   useEffect(() => {
     getProfileInfo(username)
       .catch(() => navigate('/not-found'));
+    getFriendList();
   }, [username]);
 
   useEffect(() => {
@@ -31,6 +43,7 @@ function Profile() {
       <main>
         <ProfileCard
           editingBio={editingBio}
+          friendList={friendList}
         />
         {
           editingBio

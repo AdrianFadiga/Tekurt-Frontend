@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { BsFillPersonFill, BsHeartFill } from 'react-icons/bs';
 import { MdHomeFilled } from 'react-icons/md';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -13,36 +13,33 @@ import { IoImage } from 'react-icons/io5';
 
 interface Props {
   user: IUser
+  friendList: IFriend
 }
 
-const ProfileOptions: React.FC<Props> = ({user}) => {
-  const [invited, setInvited] = useState<IFriend>();
-  const [accepted, setAccepted] = useState<boolean>(true);
+const ProfileOptions: React.FC<Props> = ({user, friendList}) => {
   const { profileImg } = useContext(MyContext) as IContext;
   const { username } = useParams();
   const navigate = useNavigate();
   const loggedId = profileImg?.id;
-  const verifyInvite = async () => {
-    const token = localStorage.getItem('authTekurt');
-    const options = createOptionsRequest('GET', {}, `friend/${user.id}`, {authorization: `Bearer ${token}`});
-    const {data} = await requestAPI<IFriend[]>(options);
-    const invited = data.find((f) => f.friendId === loggedId);
-    const accepted = invited?.status === 'accepted';
-    setAccepted(accepted);
-    setInvited(invited);
+
+  const areFriends = friendList.friends.some((f) => f.friendId === user.id && f.status === 'accepted');
+  const iWasInvited = friendList.friends.some((f) => f.friendId === user.id && f.status === 'pending');
+  const iInvited = friendList.invites.some((f) => f.userId === user.id);
+
+  const setActionButton = () => {
+    if (areFriends) return 'Desfazer Amizade';
+    if (iWasInvited) return 'Aceitar Convite';
+    if (iInvited) return 'Desfazer Convite';
+    return 'Convite de Amizade';
   };
   
   const inviteOrDelete = async () => {
     const token = localStorage.getItem('authTekurt');
-    const action = invited ? 'DELETE' : 'POST';
+    const action = areFriends || iInvited ? 'DELETE' : 'POST';
     const options = createOptionsRequest(action, {}, `friend/${user.id}`, {authorization: `Bearer ${token}`});
     await requestAPI(options);
     window.location.reload();
   };
-  
-  useEffect(() => {
-    verifyInvite();
-  }, [user]);
 
   return (
     <ProfileOptionsStyle>
@@ -62,7 +59,7 @@ const ProfileOptions: React.FC<Props> = ({user}) => {
       {
         username && user.id !== loggedId &&
       <FriendBtn
-        content={invited ? (accepted ? 'Desfazer amizade' : 'Cancelar convite') : 'Convite de amizade'}
+        content={setActionButton()}
         action={() => inviteOrDelete()}>
       </FriendBtn>
       }

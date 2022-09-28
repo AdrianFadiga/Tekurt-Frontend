@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { BsThreeDots } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 import { IContext, MyContext } from '../../context/MyContext';
+import { IFriend } from '../../interfaces';
 import ProfileContainer from '../ProfileContainer';
 import ProfileEdit from '../ProfileEdit';
 import ProfileOptions from '../ProfileOptions';
@@ -9,9 +10,10 @@ import { ProfileCardStyle } from './style';
 
 interface Props {
   editingBio: boolean
+  friendList: IFriend
 }
 
-const ProfileCard: React.FC<Props> = ({editingBio}) => {
+const ProfileCard: React.FC<Props> = ({editingBio, friendList}) => {
   const { 
     profileInfo, 
     editingProfile, 
@@ -52,7 +54,10 @@ const ProfileCard: React.FC<Props> = ({editingBio}) => {
           {
             editingProfile ? <ProfileEdit user={profileInfo} /> : <ProfileContainer user={profileInfo} />
           }
-          <ProfileOptions user={profileInfo}/>
+          <ProfileOptions 
+            user={profileInfo}
+            friendList={friendList}
+          />
         </ProfileCardStyle>
       }
     </>
