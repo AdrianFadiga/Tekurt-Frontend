@@ -34,7 +34,7 @@ const FormRegister: React.FC<Props> = ({ setVisible }) => {
   const successRequest = (response: IResponseAPI) => {
     const { access_token } = response.data;
     setToken(access_token);
-    navigate('/home');
+    navigate('/suggestions');
   };
 
   const register = async () => {
@@ -44,7 +44,7 @@ const FormRegister: React.FC<Props> = ({ setVisible }) => {
     if(isValidFields) {
       const options = createOptionsRequest('POST', {
         email: emailRef.current?.value,
-        username: usernameRef.current?.value,
+        username: usernameRef.current?.value.replaceAll(' ', ''),
         firstName: firstNameRef.current?.value,
         lastName: lastNameRef.current?.value,
         password: passwordRef.current?.value,
