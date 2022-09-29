@@ -21,8 +21,9 @@ const OptionsUser: React.FC<Props> = ({ setModal }) => {
     navigate(to);
   };
 
-  const loggout = () => {
-    console.log('deve ssair');
+  const logout = () => {
+    localStorage.removeItem('authTekurt');
+    navigate('/');
   };
 
   return (
@@ -41,7 +42,7 @@ const OptionsUser: React.FC<Props> = ({ setModal }) => {
         <li onClick={ () => navigateTo('/home')}><BsFillPersonFill />Perfil</li>
         <li onClick={ toggleTheme }><CgDarkMode />Alternar Tema</li>
         <li onClick={ () => navigateTo('/about')}><AiFillInfoCircle />Sobre</li>
-        <li onClick={ loggout }><IoLogOut />Sair</li>
+        <li onClick={ logout }><IoLogOut />Sair</li>
       </ul>
       <button className="closeModal" onClick={ setModal } type="button"/>
     </OptionsStyle>
