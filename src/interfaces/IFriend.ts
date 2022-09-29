@@ -1,8 +1,4 @@
-type Friend = {
-    userId: string
-    friendId: string
-    status: string
-}
+import { Friend } from '../types/Friend';
 
 export interface IFriend {
     friends: Friend[],

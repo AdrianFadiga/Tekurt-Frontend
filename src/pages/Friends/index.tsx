@@ -1,15 +1,14 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
-import { IContext, MyContext } from '../../context/MyContext';
 import Navbar from '../../components/Navbar';
 import FriendsPageCard from '../../components/FriendsPageCard';
+import { IContext, MyContext } from '../../context/MyContext';
 
 const Friends = () => {
   const { username } = useParams();
   const { getProfileInfo, profileInfo } = useContext(MyContext) as IContext;
-  const pendingFriends = profileInfo?.friends.filter((f) => f.status === 'pending');
-  const acceptedFriends = profileInfo?.friends.filter((f) => f.status === 'accepted');
   const navigate = useNavigate();
+
   useEffect(() => {
     getProfileInfo(username)
       .catch(() => navigate('/not-found'));
@@ -19,26 +18,16 @@ const Friends = () => {
     <section>
       <Navbar />
       <h1>Amigos:</h1>
-      <div>
+      <section className="friends-container">
         {
-          pendingFriends?.map((friend, i) => (
-            <FriendsPageCard 
-              key={`${friend}...${i}`}
-              friend={friend}
-              pending={true}
-            />
-          ))
-        }    
-        {
-          acceptedFriends?.map((friend, i) => (
-            <FriendsPageCard 
-              key={`${i}..${friend}`}
-              friend={friend}
-              pending={false}
+          profileInfo?.friends.map((friend, i) => (
+            <FriendsPageCard
+              key={`${friend}xXx${i}`}
+              friend={friend}            
             />
           ))
         }
-      </div>
+      </section>
     </section>
   );
 };
