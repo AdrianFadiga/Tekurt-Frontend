@@ -29,7 +29,7 @@ export const ProfileCardStyle = styled.section<Props>`
     font-size: 20px;
   }
 
-  .btns-edit-section, input, .empty-block {
+  .btns-edit-section, .checkbox, .empty-block {
     display: none;
   }
 

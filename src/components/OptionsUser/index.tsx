@@ -26,6 +26,11 @@ const OptionsUser: React.FC<Props> = ({ setModal }) => {
     navigate('/');
   };
 
+  const setModalTheme = () => {
+    setModal();
+    toggleTheme();
+  };
+
   return (
     <OptionsStyle>
       <div className='mobileVisible'>
@@ -40,7 +45,7 @@ const OptionsUser: React.FC<Props> = ({ setModal }) => {
 
       <ul className="list">
         <li onClick={ () => navigateTo('/home')}><BsFillPersonFill />Perfil</li>
-        <li onClick={ toggleTheme }><CgDarkMode />Alternar Tema</li>
+        <li onClick={ setModalTheme }><CgDarkMode />Alternar Tema</li>
         <li onClick={ () => navigateTo('/about')}><AiFillInfoCircle />Sobre</li>
         <li onClick={ logout }><IoLogOut />Sair</li>
       </ul>

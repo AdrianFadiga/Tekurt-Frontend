@@ -7,6 +7,7 @@ export const OptionsStyle = styled.section`
   width: 100%;
   height: 100vh;
   color: ${({ theme }) => theme.colors.text};
+  cursor: default;
 
   div:nth-child(1) {
     position: fixed;
@@ -63,6 +64,12 @@ export const OptionsStyle = styled.section`
     width: 100%;
   }
 
+  .list li:hover svg, .list li:hover{
+    transition: all 0.2s ease-in-out;
+    color: ${({ theme }) => theme.colors.secondary};
+    cursor: pointer;
+  }
+
   .list li {
     cursor: pointer;
     width: 100%;
@@ -117,6 +124,7 @@ export const OptionsStyle = styled.section`
       height: 100vh;
       left: 0;
       top: 0;
+      cursor: default;
     }
   }
 `;

@@ -22,6 +22,14 @@ const ProfileCard: React.FC<Props> = ({editingBio, friendList}) => {
     setChangePhoto 
   } = useContext(MyContext) as IContext;
   const {username} = useParams();
+
+  const setEditing = () => {
+    const inputCheckbox = document.querySelector('.checkbox') as HTMLInputElement;
+    inputCheckbox.checked = false;
+    setEditingProfile(!editingProfile);
+  };
+
+
   return (
     <>
       {
@@ -30,13 +38,13 @@ const ProfileCard: React.FC<Props> = ({editingBio, friendList}) => {
           { !username &&
             <label>
               <BsThreeDots />
-              <input type="checkbox" />
+              <input type="checkbox" className='checkbox'/>
 
               <div className="empty-block" />
 
               <div className='btns-edit-section'>
                 <button 
-                  onClick={() => setEditingProfile(!editingProfile)}
+                  onClick={ setEditing }
                   disabled={editingBio || changePhoto}
                 >
                 Editar informações
@@ -51,7 +59,9 @@ const ProfileCard: React.FC<Props> = ({editingBio, friendList}) => {
             </label>            
           } 
           {
-            editingProfile ? <ProfileEdit user={profileInfo} /> : <ProfileContainer user={profileInfo} />
+            editingProfile
+              ? <ProfileEdit user={profileInfo} setEditingMode={ setEditingProfile }/>
+              : <ProfileContainer user={profileInfo} />
           }
           <ProfileOptions 
             user={profileInfo}

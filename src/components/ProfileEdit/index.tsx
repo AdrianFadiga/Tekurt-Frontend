@@ -6,9 +6,10 @@ import { EditProfileContainerStyle } from './style';
 
 interface Props {
     user: IUser
+    setEditingMode: (bool: boolean) => void
   }
 
-const ProfileEdit: React.FC<Props> = ({user}) => {
+const ProfileEdit: React.FC<Props> = ({user, setEditingMode}) => {
   const [firstName, setName] = useState<string>(user.firstName);
   const [lastName, setLastname] = useState<string>(user.lastName);
   const [username, setUsername] = useState<string>(user.username);
@@ -36,22 +37,36 @@ const ProfileEdit: React.FC<Props> = ({user}) => {
   return (
     <EditProfileContainerStyle>
       <img src={user.imageUrl} alt="profile-image" width="100%"/>
-      <input
-        value={username} 
-        onChange={({target}) => setUsername(target.value.replaceAll(' ', ''))}
-      />
-      <input
-        value={firstName}
-        onChange={({target}) => setName(target.value)}
-      />
-      <input
-        value={lastName}
-        onChange={({target}) => setLastname(target.value)}
-      />
-      <button 
-        onClick={() => editProfile()}
-        disabled={!isValidProfileInfo()}
-      >Salvar</button>
+      <form className='inputs-edit' onSubmit={e => e.preventDefault()}>
+        <input
+          value={username} 
+          onChange={({target}) => setUsername(target.value.replaceAll(' ', ''))}
+        />
+        <input
+          value={firstName}
+          onChange={({target}) => setName(target.value)}
+        />
+        <input
+          value={lastName}
+          onChange={({target}) => setLastname(target.value)}
+        />
+
+        <div className='buttons-edit'>
+          <button
+            onClick={ () => setEditingMode(false) }
+            disabled={!isValidProfileInfo()}
+            type="button"
+          >Cancelar</button>
+          <button
+            onClick={() => editProfile()}
+            disabled={!isValidProfileInfo()}
+            type="submit"
+          >Salvar</button>
+        </div>
+
+        
+      </form>
+      
     </EditProfileContainerStyle>
   );
 };
