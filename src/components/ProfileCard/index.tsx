@@ -26,16 +26,15 @@ const ProfileCard: React.FC<Props> = ({editingBio, friendList}) => {
     <>
       {
         profileInfo &&
-        <ProfileCardStyle>
+        <ProfileCardStyle username={ !username }>
           { !username &&
-          // <div>
-          //   
-          // </div>
             <label>
               <BsThreeDots />
               <input type="checkbox" />
 
-              <div>
+              <div className="empty-block" />
+
+              <div className='btns-edit-section'>
                 <button 
                   onClick={() => setEditingProfile(!editingProfile)}
                   disabled={editingBio || changePhoto}
