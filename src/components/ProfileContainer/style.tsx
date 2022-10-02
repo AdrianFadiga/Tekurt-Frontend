@@ -23,6 +23,18 @@ export const ProfileContainerStyle = styled.div`
     background-color: transparent;
   }
 
+  .name-user {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+  }
+
+  .name-user p {
+    height: 25px;
+    text-align: center;
+    width: 100%;
+  }
+
   .username {
     color: ${({ theme }) => theme.colors.text};
     font-weight: 700;

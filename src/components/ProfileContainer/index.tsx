@@ -10,7 +10,11 @@ const ProfileContainer: React.FC<Props> = ({user}) => {
     <ProfileContainerStyle>
       <img src={user.imageUrl} alt="profile-image" width="100%"/>
       <p className='username'>{ user.username }</p>
-      <p>{`${user.firstName} ${user.lastName}`} - solteiro</p>
+      <div className='name-user'>
+        <p>{`${user.firstName} ${user.lastName}`}</p>
+        <p>{user.socialStatus.option}</p>
+      </div>
+      
     </ProfileContainerStyle>
   );
 };
