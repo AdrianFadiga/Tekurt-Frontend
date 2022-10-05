@@ -14,12 +14,10 @@ const FriendsPageCard: React.FC<Props> = ({friend}) => {
 
   const showButtons = pathname === '/friends/';
 
-  console.log(friend);
-
 
   const acceptOrRefuseFriend = async (action: string) => {
     const token = localStorage.getItem('authTekurt');
-    const options = createOptionsRequest(action, {}, `friend/${friend.friendId}`, {authorization: `Bearer ${token}`});
+    const options = createOptionsRequest(action, {}, `friends/${friend.friendId}`, {authorization: `Bearer ${token}`});
     await requestAPI(options);
     window.location.reload();
   };

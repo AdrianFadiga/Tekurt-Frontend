@@ -22,7 +22,7 @@ function Profile() {
 
   const getFriendList = async () => {
     const token = localStorage.getItem('authTekurt');
-    const options = createOptionsRequest('GET', {}, 'friend/me', {authorization: `Bearer ${token}`});
+    const options = createOptionsRequest('GET', {}, 'friends/me', {authorization: `Bearer ${token}`});
     const response = await requestAPI<IFriend>(options);
     setFriendList(response.data);
   };
