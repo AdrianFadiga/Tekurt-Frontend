@@ -24,4 +24,9 @@ export const SuggestionsStyle = styled.section`
       justify-content: flex-start;
     }    
   }
+
+  @media(min-width: 1200px) {
+    display: grid;
+    place-items: center;
+  }
 `;
