@@ -3,6 +3,7 @@ import { IFriend, IUser } from '../../interfaces';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
 import FriendBtn from '../FriendBtn';
+import { SuggestionCardStyle } from './style';
 
 interface Props {
     user: IUser
@@ -17,7 +18,7 @@ const SuggestionCard: React.FC<Props> = ({user, friendList}) => {
     if (areFriends) return 'Desfazer Amizade';
     if (iWasInvited) return 'Aceitar Convite';
     if (iInvited) return 'Desfazer Convite';
-    return 'Convite de Amizade';
+    return 'Adicionar amigo';
   };
   const navigate = useNavigate();
 
@@ -30,18 +31,27 @@ const SuggestionCard: React.FC<Props> = ({user, friendList}) => {
   };
   
   return (
-    <div>
-      <p>{user.username}</p>
-      <p>{user.firstName}</p>
-      <p>{user.lastName}</p>
-      <img 
-        src={user.imageUrl}
-        onClick={() => navigate(`/user/${user.username}`)} 
-      />
-      <FriendBtn 
-        content={setActionButton()}
-        action={() => inviteOrDelete()} />
-    </div>
+    <SuggestionCardStyle>
+      <div className='image-profile'>
+        <img 
+          src={user.imageUrl}
+          onClick={() => navigate(`/user/${user.username}`)} 
+        />
+      </div>
+      
+
+      <div className='section-user'>
+        <p className='username'>{user.username}</p>
+        <p className='fullname'>{`${user.firstName} ${user.lastName}`}</p>
+      </div>
+      
+      <div className='section-invite'>
+        <FriendBtn 
+          content={setActionButton()}
+          action={() => inviteOrDelete()} />
+      </div>
+      
+    </SuggestionCardStyle>
   );
 };
 

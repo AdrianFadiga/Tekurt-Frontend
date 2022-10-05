@@ -8,6 +8,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 const FriendBtn: React.FC<Props> = ({action, content}) => {
   return (
     <button
+      className={ content === 'Desfazer Convite' ? 'undo-invite' : 'send-invite' }
       onClick={action}>
       {content}
     </button>

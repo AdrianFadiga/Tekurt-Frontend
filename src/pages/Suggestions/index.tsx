@@ -5,6 +5,7 @@ import { IContext, MyContext } from '../../context/MyContext';
 import { IFriend, IUser } from '../../interfaces';
 import { createOptionsRequest } from '../../services/createOptionsRequest';
 import { requestAPI } from '../../services/requestAPI';
+import { SuggestionsStyle } from './style';
 
 const Suggestions = () => {
   const [allUsers, setAllUsers] = useState<IUser[]>();
@@ -32,18 +33,22 @@ const Suggestions = () => {
   }, [profileImg]);
 
   return (
-    <section>
+    <SuggestionsStyle>
       <Navbar />
-      {
-        allUsers?.map((user, i) => (
-          <SuggestionCard
-            key={`${user}_z_${i}`} 
-            user={user} 
-            friendList={friendList}
-          />
-        ))
-      }
-    </section>
+      <main>
+        <h1>Sugestões de amizade</h1>
+        {
+          allUsers?.map((user, i) => (
+            <SuggestionCard
+              key={`${user}_z_${i}`} 
+              user={user} 
+              friendList={friendList}
+            />
+          ))
+        }
+      </main>
+      
+    </SuggestionsStyle>
   );
 };
 
