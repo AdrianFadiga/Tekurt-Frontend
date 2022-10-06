@@ -3,6 +3,7 @@ import { useContext, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import FriendsPageCard from '../../components/FriendsPageCard';
 import { IContext, MyContext } from '../../context/MyContext';
+import { FriendsStyle } from './style';
 
 const Friends = () => {
   const { username } = useParams();
@@ -15,7 +16,7 @@ const Friends = () => {
   }, [username]);
 
   return (
-    <section>
+    <FriendsStyle>
       <Navbar />
       <h1>Amigos:</h1>
       <section className="friends-container">
@@ -28,7 +29,7 @@ const Friends = () => {
           ))
         }
       </section>
-    </section>
+    </FriendsStyle>
   );
 };
 

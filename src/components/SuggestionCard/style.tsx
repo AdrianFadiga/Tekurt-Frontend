@@ -54,7 +54,7 @@ export const SuggestionCardStyle = styled.section`
     border-radius: 5px;
     border: none;
 
-    padding: 10px 5px;
+    padding: 8px 5px;
     cursor: pointer;
   }
 
@@ -71,7 +71,5 @@ export const SuggestionCardStyle = styled.section`
   @media(min-width: 700px) {
     margin: 0 10px;
     margin-bottom: 20px;
-
-        
   }
 `;

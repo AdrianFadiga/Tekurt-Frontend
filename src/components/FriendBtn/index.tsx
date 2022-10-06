@@ -2,13 +2,14 @@ import { ButtonHTMLAttributes } from 'react';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
     action(): void
-    content: string 
+    content: string
+    typeBtn: string
 }
 
-const FriendBtn: React.FC<Props> = ({action, content}) => {
+const FriendBtn: React.FC<Props> = ({action, content, typeBtn}) => {
   return (
     <button
-      className={ content === 'Desfazer Convite' ? 'undo-invite' : 'send-invite' }
+      className={ typeBtn }
       onClick={action}>
       {content}
     </button>

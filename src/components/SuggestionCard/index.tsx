@@ -46,7 +46,8 @@ const SuggestionCard: React.FC<Props> = ({user, friendList}) => {
       </div>
       
       <div className='section-invite'>
-        <FriendBtn 
+        <FriendBtn
+          typeBtn={ setActionButton() === 'Desfazer Convite' ? 'undo-invite' : 'send-invite' }
           content={setActionButton()}
           action={() => inviteOrDelete()} />
       </div>
