@@ -36,7 +36,7 @@ const ProfileOptions: React.FC<Props> = ({user, friendList}) => {
   const inviteOrDelete = async () => {
     const token = localStorage.getItem('authTekurt');
     const action = areFriends || iInvited ? 'DELETE' : 'POST';
-    const options = createOptionsRequest(action, {}, `friend/${user.id}`, {authorization: `Bearer ${token}`});
+    const options = createOptionsRequest(action, {}, `friends/${user.id}`, {authorization: `Bearer ${token}`});
     await requestAPI(options);
     window.location.reload();
   };
